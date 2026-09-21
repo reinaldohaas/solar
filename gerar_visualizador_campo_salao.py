@@ -37,6 +37,7 @@ SIGSC_ORTO_TIF = r"C:\Users\haas\github\SIGSC\raster\ortofoto_sigsc\Orto-RGB_SG-
 DRONE_ORTO_TIF = os.path.join(SOLAR_DIR, "Ortofoto_Drone_2026_Completo.tif")
 DRONE_DSM_TIF = os.path.join(SOLAR_DIR, "DSM_Drone_2026_Completo.tif")
 HTML_OUT = os.path.join(SOLAR_DIR, "visualizador_campo_salao.html")
+INDEX_OUT = os.path.join(SOLAR_DIR, "index.html")
 
 def apply_earthwork_cut(elev_grid, half_w, half_h, rows, cols, salao_x, salao_z, campo_x, campo_z, cota_cut=546.80, cota_cut_quadra=547.20):
     """
@@ -1036,10 +1037,13 @@ def main():
 
     with open(HTML_OUT, 'w', encoding='utf-8') as f:
         f.write(html)
+
+    with open(INDEX_OUT, 'w', encoding='utf-8') as f:
+        f.write(html)
     
     size_mb = os.path.getsize(HTML_OUT) / (1024 * 1024)
     print(f"\n Visualizador Atualizado com Sucesso!")
-    print(f" Arquivo: {HTML_OUT} ({size_mb:.2f} MB)")
+    print(f" Arquivos gerados: {HTML_OUT} e {INDEX_OUT} ({size_mb:.2f} MB)")
     print(f" Giro de 3° à direita: Azimute ajustado para 31.02°")
     print(f" Corte no barranco (cota {cota_cut}m) + Corte na quadra de areia (cota {cota_cut_quadra}m)")
     print(f" Painéis solares completamente removidos sobre o salão")
