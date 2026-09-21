@@ -1,0 +1,27 @@
+# Pesados: Fotos brutas e extrações de drone
+fotos_drone_local_projeto/
+Estrada-Ribeiro-dos-Ovos-*-dsm_extraido/
+__pycache__/
+*.pyc
+
+# Arquivos raster pesados (GeoTIFF, KMZ volumosos e pacotes ZIP)
+*.tif
+*.tiff
+*.kmz
+*.zip
+*.gpkg
+
+# Arquivos temporários de teste e cache
+*.cache
+*_cache.json
+preview_*.png
+preview_*.jpg
+test_*.png
+crop_*.jpg
+inspecionar_*.jpg
+sample_*.jpg
+ortho_*.png
+salao_overlay.png
+ortofoto_sigsc_overlay.png
+campo_areia_*.png
+texture_*.png

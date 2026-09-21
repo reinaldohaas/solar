@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">
+<Document>
+	<name>Estrada Ribeirão dos Ovos - 01/06/2024</name>
+	<styleUrl>#hideChildrenStyle</styleUrl>
+	<atom:link rel="app" href="https://www.google.com/earth/about/versions/#earth-pro" title="Google Earth Pro 7.3.7.1155"></atom:link>
+	<Style id="hideChildrenStyle">
+		<ListStyle id="hideChildren">
+			<listItemType>checkHideChildren</listItemType>
+		</ListStyle>
+	</Style>
+	<NetworkLink>
+		<open>1</open>
+		<Region>
+			<LatLonAltBox>
+				<north>-27.390099</north>
+				<south>-27.401728</south>
+				<east>-49.340914</east>
+				<west>-49.351674</west>
+				<minAltitude>0</minAltitude>
+				<maxAltitude>0</maxAltitude>
+			</LatLonAltBox>
+			<Lod>
+				<minLodPixels>114</minLodPixels>
+				<maxLodPixels>-1</maxLodPixels>
+				<minFadeExtent>0</minFadeExtent>
+				<maxFadeExtent>0</maxFadeExtent>
+			</Lod>
+		</Region>
+		<Link>
+			<href>0_0.kml</href>
+			<viewRefreshMode>onRegion</viewRefreshMode>
+		</Link>
+	</NetworkLink>
+</Document>
+</kml>

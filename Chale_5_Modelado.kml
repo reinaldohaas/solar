@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<name>Chale 5 Modelado</name>
+
+<Style id="poly">
+<LineStyle>
+<color>ff000000</color>
+<width>2</width>
+</LineStyle>
+<PolyStyle>
+<color>7d8b4513</color>
+</PolyStyle>
+</Style>
+
+<Placemark>
+<name>Chale 5 Modelado</name>
+<styleUrl>#poly</styleUrl>
+<Polygon>
+<extrude>1</extrude>
+<altitudeMode>relativeToGround</altitudeMode>
+<outerBoundaryIs>
+<LinearRing>
+<coordinates>
+-49.34667213926482,-27.3961524362592,0
+</coordinates>
+</LinearRing>
+</outerBoundaryIs>
+</Polygon>
+</Placemark>
+
+</Document>
+</kml>

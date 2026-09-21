@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+<Document>
+  <name>Campo de Futebol e Vôlei de Areia com Redes 3D (Cota Real SIGSC)</name>
+
+  <Style id="areia_mar">
+    <LineStyle><color>ff88aa99</color><width>2.0</width></LineStyle>
+    <PolyStyle><color>ffe0efff</color></PolyStyle>
+  </Style>
+  <Style id="rede_lateral">
+    <LineStyle><color>88ffffff</color><width>1.0</width></LineStyle>
+    <PolyStyle><color>55222222</color></PolyStyle>
+  </Style>
+  <Style id="rede_teto">
+    <LineStyle><color>66aaaaaa</color><width>1.0</width></LineStyle>
+    <PolyStyle><color>40333333</color></PolyStyle>
+  </Style>
+  <Style id="poste_aco">
+    <LineStyle><color>ffd0d0d0</color><width>3.5</width></LineStyle>
+  </Style>
+  <Style id="cabo_aco">
+    <LineStyle><color>ff888888</color><width>1.5</width></LineStyle>
+  </Style>
+  <Style id="rede_volei">
+    <LineStyle><color>ffffffff</color><width>1.8</width></LineStyle>
+    <PolyStyle><color>ccffffff</color></PolyStyle>
+  </Style>
+  <Style id="trave_gol">
+    <LineStyle><color>ffffffff</color><width>3.0</width></LineStyle>
+  </Style>
+  <Style id="linha_jogo">
+    <LineStyle><color>ffff3300</color><width>2.5</width></LineStyle>
+  </Style>
+  <Style id="pin_esporte">
+    <IconStyle>
+      <scale>1.3</scale>
+      <Icon><href>http://maps.google.com/mapfiles/kml/shapes/sports.png</href></Icon>
+      <color>ff00ffaa</color>
+    </IconStyle>
+  </Style>
+
+
+  <Placemark>
+    <name>Campo de Areia do Mar (22m × 12m) — Cota Real 547.56m</name>
+    <styleUrl>#pin_esporte</styleUrl>
+    <description><![CDATA[
+      <div style="font-family: Arial, sans-serif; min-width: 320px; line-height: 1.5;">
+        <h3 style="color: #0b5394; margin-bottom: 6px;">Complexo Esportivo: Arena de Areia do Mar</h3>
+        <p><b>Dimensões da Caixa de Areia:</b> 22,00 m × 12,00 m (Área: 264,0 m²)</p>
+        <p><b>Cota Base Altimétrica (MDT SIGSC):</b> 547.56 m acima do nível do mar</p>
+        <p><b>Material da Quadra:</b> Areia do mar tratada, drenante e higienizada</p>
+        <p><b>Estrutura de Fechamento Integral:</b></p>
+        <ul>
+          <li><b>Redes Perimetrais (ao redor):</b> Altura 6,00 m em malha de polietileno trançado 10×10 cm de alta tenacidade com proteção UV.</li>
+          <li><b>Rede Superior (acima / teto):</b> Cobertura total anti-fuga a 6,00 m de altura (Cota 553.56m), sustentada por cabos de aço galvanizados.</li>
+          <li><b>Sustentação:</b> 10 postes tubulares metálicos galvanizados a fogo.</li>
+          <li><b>Modalidades Atendidas:</b> Futebol de Areia / Beach Soccer, Vôlei de Praia, Futevôlei e Beach Tennis.</li>
+          <li><b>Equipamentos:</b> Rede central oficial com mastros, traves tubulares brancas de futebol de areia e linhas demarcatórias azuis (16m × 8m).</li>
+        </ul>
+      </div>
+    ]]></description>
+    <Point>
+      <altitudeMode>absolute</altitudeMode>
+      <coordinates>-49.3466848,-27.3958116,554.56</coordinates>
+    </Point>
+  </Placemark>
+
+  <Folder><name>Caixa de Areia e Marcações</name>
+    <Placemark>
+      <name>Piso de Areia do Mar</name>
+      <styleUrl>#areia_mar</styleUrl>
+      <Polygon>
+        <altitudeMode>absolute</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -49.3468115,-27.3958143,547.64 -49.3466137,-27.3959051,547.64 -49.3465582,-27.3958088,547.64 -49.3467560,-27.3957180,547.64 -49.3468115,-27.3958143,547.64
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Linhas de Jogo (16m x 8m)</name>
+      <styleUrl>#linha_jogo</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3467753,-27.3958106,547.68 -49.3466314,-27.3958767,547.68 -49.3465944,-27.3958125,547.68 -49.3467382,-27.3957464,547.68 -49.3467753,-27.3958106,547.68
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Rede Central de Vôlei / Beach Tennis</name>
+      <styleUrl>#rede_volei</styleUrl>
+      <Polygon>
+        <altitudeMode>absolute</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -49.3467126,-27.3958597,548.56 -49.3466571,-27.3957634,548.56 -49.3466571,-27.3957634,549.99 -49.3467126,-27.3958597,549.99 -49.3467126,-27.3958597,548.56
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Trave de Futebol 1</name>
+      <styleUrl>#trave_gol</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3467862,-27.3957802,547.56 -49.3467862,-27.3957802,549.56 -49.3467723,-27.3957561,549.56 -49.3467723,-27.3957561,547.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Trave de Futebol 2</name>
+      <styleUrl>#trave_gol</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3465974,-27.3958670,547.56 -49.3465974,-27.3958670,549.56 -49.3465835,-27.3958429,549.56 -49.3465835,-27.3958429,547.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Folder>
+  <Folder><name>Redes de Proteção Perimetrais (ao redor - 6m)</name>
+    <Placemark>
+      <name>Rede Lado Sul (Estrada)</name>
+      <styleUrl>#rede_lateral</styleUrl>
+      <Polygon>
+        <altitudeMode>absolute</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -49.3468115,-27.3958143,546.37 -49.3466137,-27.3959051,547.93 -49.3466137,-27.3959051,553.56 -49.3468115,-27.3958143,553.56 -49.3468115,-27.3958143,546.37
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Rede Lado Leste (Fundo)</name>
+      <styleUrl>#rede_lateral</styleUrl>
+      <Polygon>
+        <altitudeMode>absolute</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -49.3466137,-27.3959051,547.93 -49.3465582,-27.3958088,547.20 -49.3465582,-27.3958088,553.56 -49.3466137,-27.3959051,553.56 -49.3466137,-27.3959051,547.93
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Rede Lado Norte (Mata)</name>
+      <styleUrl>#rede_lateral</styleUrl>
+      <Polygon>
+        <altitudeMode>absolute</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -49.3465582,-27.3958088,547.20 -49.3467560,-27.3957180,547.40 -49.3467560,-27.3957180,553.56 -49.3465582,-27.3958088,553.56 -49.3465582,-27.3958088,547.20
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Rede Lado Oeste (Salão)</name>
+      <styleUrl>#rede_lateral</styleUrl>
+      <Polygon>
+        <altitudeMode>absolute</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -49.3467560,-27.3957180,547.40 -49.3468115,-27.3958143,546.37 -49.3468115,-27.3958143,553.56 -49.3467560,-27.3957180,553.56 -49.3467560,-27.3957180,547.40
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+  </Folder>
+  <Folder><name>Postes Metálicos Estruturais (6m)</name>
+    <Placemark>
+      <name>Poste 1</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3468115,-27.3958143,546.37 -49.3468115,-27.3958143,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Poste 2</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3467456,-27.3958445,547.51 -49.3467456,-27.3958445,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Poste 3</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3466796,-27.3958748,548.16 -49.3466796,-27.3958748,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Poste 4</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3466137,-27.3959051,547.93 -49.3466137,-27.3959051,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Poste 5</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3465859,-27.3958570,547.50 -49.3465859,-27.3958570,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Poste 6</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3465582,-27.3958088,547.20 -49.3465582,-27.3958088,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Poste 7</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3466241,-27.3957786,547.73 -49.3466241,-27.3957786,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Poste 8</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3466900,-27.3957483,547.61 -49.3466900,-27.3957483,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Poste 9</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3467560,-27.3957180,547.40 -49.3467560,-27.3957180,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+    <Placemark>
+      <name>Poste 10</name>
+      <styleUrl>#poste_aco</styleUrl>
+      <LineString>
+        <altitudeMode>absolute</altitudeMode>
+        <coordinates>
+          -49.3467837,-27.3957661,547.02 -49.3467837,-27.3957661,553.56
+        </coordinates>
+      </LineString>
+    </Placemark>
+  </Folder>
+  <Folder><name>Rede de Proteção Superior (acima / teto anti-fuga)</name>
+    <Placemark>
+      <name>Rede Superior de Cobertura (Teto 6,00m)</name>
+      <styleUrl>#rede_teto</styleUrl>
+      <Polygon>
+        <altitudeMode>absolute</altitudeMode>
+        <outerBoundaryIs><LinearRing><coordinates>
+          -49.3468115,-27.3958143,553.56 -49.3466137,-27.3959051,553.56 -49.3465582,-27.3958088,553.56 -49.3467560,-27.3957180,553.56 -49.3468115,-27.3958143,553.56
+        </coordinates></LinearRing></outerBoundaryIs>
+      </Polygon>
+    </Placemark>
+    <Placemark>
+      <name>Cabos de Aço de Travamento Superior</name>
+      <styleUrl>#cabo_aco</styleUrl>
+      <MultiGeometry>
+        <LineString><altitudeMode>absolute</altitudeMode><coordinates>-49.3468115,-27.3958143,553.56 -49.3465582,-27.3958088,553.56</coordinates></LineString>
+        <LineString><altitudeMode>absolute</altitudeMode><coordinates>-49.3466137,-27.3959051,553.56 -49.3467560,-27.3957180,553.56</coordinates></LineString>
+        <LineString><altitudeMode>absolute</altitudeMode><coordinates>-49.3467126,-27.3958597,553.56 -49.3466571,-27.3957634,553.56</coordinates></LineString>
+      </MultiGeometry>
+    </Placemark>
+  </Folder>
+</Document>
+</kml>
