@@ -309,22 +309,32 @@ def gerar_kml_setor_solar(poly_wgs84, nome_setor, sampler, table_w=8.0, table_d=
 
     if nome_setor == "P1":
         # Atendimento à solicitação:
-        # Retirar 8 mesas de cima (107 a 114) e 5 mesas (20, 21, 34, 35 e 50)
-        # e redistribuí-las mantendo as 114 mesas no setor P1.
-        excl_zone_top = box(663400, 6968770, 663600, 6968850)
-        excl_zone_mid = box(663512, 6968715, 663538, 6968742)
-        pitch_y = 6.8
-        gap_x = 0.9
-        setback = 2.4
-        usable = geom_utm.buffer(-setback)
-        minx, miny, maxx, maxy = usable.bounds
+        # Retirar as mesas acima da linha amarela (canto superior/esquerdo arborizado)
+        # e reposicioná-las no início das demais fileiras mantendo as 114 mesas no setor P1.
+        def is_below_yellow_line(x_top, y_center):
+            if y_center >= 6968764.5:
+                return False
+            elif y_center >= 6968758.0:
+                return x_top <= 663455.5
+            elif y_center >= 6968752.0:
+                return x_top <= 663473.0
+            elif y_center >= 6968746.0:
+                return x_top <= 663481.0
+            else:
+                return x_top <= 663497.5
+
+        pitch_y = 6.0
+        gap_x = 0.50
+        usable_ref = geom_utm.buffer(-0.68)
+        minx, miny, maxx, maxy = usable_ref.bounds
+        usable_fit = geom_utm.buffer(-0.15)
         tables = []
         y = miny
         while y + table_d <= maxy:
             x = minx
             while x + table_w <= maxx:
                 t_box = box(x, y, x + table_w, y + table_d)
-                if usable.contains(t_box) and not excl_zone_top.intersects(t_box) and not excl_zone_mid.intersects(t_box):
+                if usable_fit.contains(t_box) and is_below_yellow_line(x + table_w, y + table_d / 2.0):
                     tables.append((x, y))
                 x += table_w + gap_x
             y += pitch_y

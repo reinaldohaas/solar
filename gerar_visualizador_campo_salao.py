@@ -39,12 +39,13 @@ DRONE_DSM_TIF = os.path.join(SOLAR_DIR, "DSM_Drone_2026_Completo.tif")
 HTML_OUT = os.path.join(SOLAR_DIR, "visualizador_campo_salao.html")
 INDEX_OUT = os.path.join(SOLAR_DIR, "index.html")
 
-def apply_earthwork_cut(elev_grid, half_w, half_h, rows, cols, salao_x, salao_z, campo_x, campo_z, cota_cut=546.80, cota_cut_quadra=547.20):
+def apply_earthwork_cut(elev_grid, half_w, half_h, rows, cols, salao_x, salao_z, campo_x, campo_z, cota_cut=547.05, cota_cut_quadra=547.25):
     """
-    Aplica escavação / terraplanagem no relevo:
-    1. Salão e corte no barranco atrás do prédio (cota 546.80m)
-    2. Platô da quadra de areia (cota 547.20m), impedindo que o solo suba acima da areia (547.56m)
-    Ambos alinhados no novo azimute rotacionado 3° à direita (31.02°).
+    Aplica terraplanagem (corte e aterro compensado) no relevo:
+    1. Platô do Salão (cota 547.05m) com corte no barranco posterior e nivelamento frontal.
+    2. Platô da Quadra de Areia (cota 547.25m) com corte na encosta superior e aterro compactado
+       com talude suave na borda inferior, eliminando qualquer buraco ou degrau abrupto sob o campo.
+    Ambos alinhados no azimute rotacionado 3° à direita (31.02°).
     """
     cut_grid = np.copy(elev_grid)
     c_angle = np.radians(31.02)
@@ -56,45 +57,40 @@ def apply_earthwork_cut(elev_grid, half_w, half_h, rows, cols, salao_x, salao_z,
         for c in range(cols):
             wx = -half_w + c * (2 * half_w / (cols - 1))
 
-            # --- 1. CORTE DO SALÃO E BARRANCO ---
+            # --- 1. PLATÔ DO SALÃO E CORTE NO BARRANCO ---
             dx_s = wx - salao_x
             dz_s = wz - salao_z
             lx_s = dx_s * cos_a + dz_s * sin_a
             lz_s = -dx_s * sin_a + dz_s * cos_a
 
-            # Platô do Salão (12x8m + folga)
-            if abs(lx_s) <= 7.0 and -5.5 <= lz_s <= 5.0:
-                cut_grid[r, c] = min(cut_grid[r, c], cota_cut)
-            # Talude de corte posterior no barranco real existente
-            elif abs(lx_s) <= 8.5 and -9.0 <= lz_s < -5.5:
-                t = (-5.5 - lz_s) / 3.5
-                t = np.clip(t, 0.0, 1.0)
-                target_h = cota_cut + t * (elev_grid[r, c] - cota_cut)
-                cut_grid[r, c] = min(cut_grid[r, c], target_h)
-            # Taludes laterais salão
-            elif 7.0 < abs(lx_s) <= 9.5 and -5.5 <= lz_s <= 5.0:
-                t = (abs(lx_s) - 7.0) / 2.5
-                t = np.clip(t, 0.0, 1.0)
-                target_h = cota_cut + t * (elev_grid[r, c] - cota_cut)
-                cut_grid[r, c] = min(cut_grid[r, c], target_h)
+            if abs(lx_s) <= 7.2 and -5.2 <= lz_s <= 5.5:
+                cut_grid[r, c] = cota_cut
+            elif abs(lx_s) <= 10.5 and -9.5 <= lz_s <= 9.0:
+                dist_x = max(0.0, abs(lx_s) - 7.2) / 3.3
+                if lz_s < -5.2:
+                    dist_z = (-5.2 - lz_s) / 4.3
+                elif lz_s > 5.5:
+                    dist_z = (lz_s - 5.5) / 3.5
+                else:
+                    dist_z = 0.0
+                t = np.clip(np.hypot(dist_x, dist_z), 0.0, 1.0)
+                s = 0.5 - 0.5 * np.cos(np.pi * t)
+                cut_grid[r, c] = cota_cut + s * (elev_grid[r, c] - cota_cut)
 
-            # --- 2. CORTE DO RELEVO NA ÁREA DA QUADRA DE AREIA ---
+            # --- 2. PLATÔ E TALUDE SUAVE NA ÁREA DA QUADRA DE AREIA ---
             dx_q = wx - campo_x
             dz_q = wz - campo_z
             lx_q = dx_q * cos_a + dz_q * sin_a
             lz_q = -dx_q * sin_a + dz_q * cos_a
 
-            # Platô da Quadra (22x12m com envelope de escavação 24x14m)
-            if abs(lx_q) <= 12.0 and abs(lz_q) <= 7.0:
-                cut_grid[r, c] = min(cut_grid[r, c], cota_cut_quadra)
-            # Transição suave do talude perimetral da quadra
-            elif abs(lx_q) <= 14.5 and abs(lz_q) <= 9.5:
-                dist_x = max(0.0, abs(lx_q) - 12.0) / 2.5
-                dist_z = max(0.0, abs(lz_q) - 7.0) / 2.5
-                t = max(dist_x, dist_z)
-                t = np.clip(t, 0.0, 1.0)
-                target_h = cota_cut_quadra + t * (elev_grid[r, c] - cota_cut_quadra)
-                cut_grid[r, c] = min(cut_grid[r, c], target_h)
+            if abs(lx_q) <= 12.2 and abs(lz_q) <= 7.2:
+                cut_grid[r, c] = cota_cut_quadra
+            elif abs(lx_q) <= 17.5 and abs(lz_q) <= 12.5:
+                dist_x = max(0.0, abs(lx_q) - 12.2) / 5.3
+                dist_z = max(0.0, abs(lz_q) - 7.2) / 5.3
+                t = np.clip(np.hypot(dist_x, dist_z), 0.0, 1.0)
+                s = 0.5 - 0.5 * np.cos(np.pi * t)
+                cut_grid[r, c] = cota_cut_quadra + s * ( cut_grid[r, c] - cota_cut_quadra)
 
     return cut_grid
 
@@ -126,13 +122,13 @@ def main():
     campo_3d_x = round(663468.93 - cx_complex, 2)  # 71.43
     campo_3d_z = round(-(6968640.32 - cy_complex), 2)  # -15.32
 
-    cota_salao = 547.32
-    cota_cut = 546.80
-    cota_quadra = 547.56
-    cota_cut_quadra = 547.20
+    cota_salao = 547.10
+    cota_cut = 547.05
+    cota_quadra = 547.30
+    cota_cut_quadra = 547.25
 
-    # 2. Aplicar Terraplanagem (Barranco atrás do salão + Base da quadra)
-    print("2. Aplicando Corte de Terraplanagem no Barranco e na Quadra de Areia...")
+    # 2. Aplicar Terraplanagem (Barranco atrás do salão + Platô nivelado da quadra)
+    print("2. Aplicando Corte e Nivelamento no Barranco e na Quadra de Areia...")
     sigsc_cut = apply_earthwork_cut(
         sigsc_elev, half_w, half_h, rows_m, cols_m,
         salao_3d_x, salao_3d_z, campo_3d_x, campo_3d_z,
@@ -372,25 +368,28 @@ def main():
   <div class="hud-header">
     <h1>🏛️ Salão 12×8m & Arena de Areia</h1>
     <p>Complexo de Lazer • Sítio das Andorinhas<br>
-    <b>Giro 3° à Direita (31.02°)</b> • <b>Corte no Barranco & Quadra</b> • <b>Telhado Limpo</b></p>
+    <b>Giro 3° à Direita (31.02°)</b> • <b>Platô Corte/Aterro</b> • <b>Telhado Limpo</b></p>
     <div class="badge-container">
       <span class="badge badge-rot">Giro 3° Direita (31.02°)</span>
-      <span class="badge badge-cut">Corte Barranco & Quadra</span>
+      <span class="badge badge-cut">Platô Nivelado Sem Vãos</span>
       <span class="badge badge-drone">Drone HD Sem Cortes</span>
-      <span class="badge badge-clean">Telhado Tradicional Limpo</span>
+      <span class="badge badge-clean">Escala Z 1:1 Real</span>
     </div>
+    <a href="index.html" style="margin-top: 10px; display: inline-flex; align-items: center; gap: 6px; background: #0284c7; color: #fff; text-decoration: none; font-size: 11px; font-weight: 700; padding: 6px 12px; border-radius: 6px; border: 1px solid #38bdf8;">
+      ⬅️ Voltar ao Sítio Completo 3D (Principal)
+    </a>
   </div>
 
   <!-- Status Bar -->
   <div class="hud-status">
     <div style="display: flex; align-items: center; gap: 6px;">
       <div class="status-dot" id="statusDot"></div>
-      <span id="statusMdtText">Base: <b>Drone 2026 HD + SIGSC LiDAR</b></span>
+      <span id="statusMdtText">Base: <b>Drone 2026 HD + SIGSC LiDAR 1:1</b></span>
     </div>
     <span style="opacity: 0.3;">|</span>
-    <span>Piso Salão: <b>547.32 m</b></span>
+    <span>Platô Salão: <b>547.05 m</b></span>
     <span style="opacity: 0.3;">|</span>
-    <span>Quadra de Areia: <b>547.56 m</b></span>
+    <span>Platô Quadra: <b>547.25 m</b></span>
   </div>
 
   <!-- Painel de Controle de Terreno & Corte -->
@@ -402,13 +401,22 @@ def main():
 
     <!-- Toggle Corte de Terraplanagem -->
     <button class="btn-toggle-cut" id="btnToggleCut" onclick="toggleEarthworkCut()">
-      <span>🚜 Corte de Terraplanagem</span>
+      <span>🚜 Terraplanagem (Corte + Aterro)</span>
       <span id="lblCutStatus">ATIVO (PLATÔS)</span>
     </button>
 
     <div class="terrain-info" id="terrainInfoBox" style="margin-bottom: 10px;">
-      <b>Corte Executado:</b> Escavação no barranco atrás do salão (cota 546.80m) e rebaixamento do relevo na quadra (cota 547.20m), eliminando a invasão do solo sobre a areia.<br>
-      <b>Alinhamento:</b> Girado 3° à direita (31.02°).
+      <b>Platô Compensado:</b> Corte no barranco do salão (547.05m) e nivelamento completo sob o campo de areia (547.25m) com talude suave, sem vãos ou buracos.<br>
+      <b>Proporção Vertical:</b> Escala Z 1:1 métrica real.
+    </div>
+
+    <!-- Controle de Proporção Z -->
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; margin-bottom: 9px;">
+      <div style="font-size: 11px; font-weight: 700; color: #cbd5e1; margin-bottom: 4px; display: flex; justify-content: space-between;">
+        <span>Proporção Vertical (Z):</span>
+        <span style="font-size: 10.5px; color: #34d399;" id="lblZScale">1.00x (Real 1:1)</span>
+      </div>
+      <input type="range" id="sliderZScale" min="0.5" max="2.0" step="0.05" value="1.0" style="width: 100%; accent-color: #10b981; cursor: pointer;" oninput="setZScale(this.value)">
     </div>
 
     <!-- Seletor de Textura de Superfície -->
@@ -640,21 +648,29 @@ def main():
       bumpMap: sandTex,
       bumpScale: 0.05
     }});
-    const sandMesh = new THREE.Mesh(new THREE.BoxGeometry(22.0, 0.40, 12.0), sandMat);
-    sandMesh.position.set(0, 0.15, 0);
+    const sandMesh = new THREE.Mesh(new THREE.BoxGeometry(22.0, 0.45, 12.0), sandMat);
+    sandMesh.position.set(0, 0.125, 0);
     sandMesh.receiveShadow = true;
     campoGroup.add(sandMesh);
 
+    // Base sólida de sub-leito / contenção sob a quadra (elimina qualquer vão inferior)
+    const campoBaseMat = new THREE.MeshStandardMaterial({{ color: 0x57534e, roughness: 0.9 }});
+    const campoPlinth = new THREE.Mesh(new THREE.BoxGeometry(22.35, 1.80, 12.25), campoBaseMat);
+    campoPlinth.position.set(0, -0.95, 0);
+    campoPlinth.receiveShadow = true;
+    campoPlinth.castShadow = true;
+    campoGroup.add(campoPlinth);
+
     // Contenção Perimetral de Madeira da Quadra
     const timberMat = new THREE.MeshStandardMaterial({{ color: 0x5c3a21, roughness: 0.8 }});
-    const bord1 = new THREE.Mesh(new THREE.BoxGeometry(22.3, 0.50, 0.15), timberMat);
-    bord1.position.set(0, 0.20, 6.05);
-    const bord2 = new THREE.Mesh(new THREE.BoxGeometry(22.3, 0.50, 0.15), timberMat);
-    bord2.position.set(0, 0.20, -6.05);
-    const bord3 = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.50, 12.0), timberMat);
-    bord3.position.set(11.1, 0.20, 0);
-    const bord4 = new THREE.Mesh(new THREE.BoxGeometry(0.15, 0.50, 12.0), timberMat);
-    bord4.position.set(-11.1, 0.20, 0);
+    const bord1 = new THREE.Mesh(new THREE.BoxGeometry(22.35, 0.65, 0.16), timberMat);
+    bord1.position.set(0, 0.10, 6.05);
+    const bord2 = new THREE.Mesh(new THREE.BoxGeometry(22.35, 0.65, 0.16), timberMat);
+    bord2.position.set(0, 0.10, -6.05);
+    const bord3 = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.65, 12.25), timberMat);
+    bord3.position.set(11.1, 0.10, 0);
+    const bord4 = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.65, 12.25), timberMat);
+    bord4.position.set(-11.1, 0.10, 0);
     campoGroup.add(bord1, bord2, bord3, bord4);
 
     // Linhas demarcatórias
@@ -931,17 +947,28 @@ def main():
     optGroup2.visible = false;
     optGroup3.visible = false;
 
-    // --- 6. CONTROLES DE TERRA & MDT ---
+    // --- 6. CONTROLES DE TERRA, PROPORÇÃO Z & MDT ---
     let isCutActive = true;
+    let currentZScale = 1.0;
     let morphProgress = 1.0;
+    const pivotY = salaoData.y;
 
     function updateTargetHeights() {{
       const srcArray = isCutActive ? heightsSigscCut : heightsSigscNat;
       for (let i = 0; i < numVerts; i++) {{
-        heightsTarget[i] = srcArray[i];
+        heightsTarget[i] = pivotY + (srcArray[i] - pivotY) * currentZScale;
       }}
       morphProgress = 0.0;
     }}
+
+    window.setZScale = function(val) {{
+      currentZScale = parseFloat(val);
+      const lbl = document.getElementById('lblZScale');
+      if (lbl) {{
+        lbl.innerText = currentZScale.toFixed(2) + 'x' + (Math.abs(currentZScale - 1.0) < 0.01 ? ' (Real 1:1)' : '');
+      }}
+      updateTargetHeights();
+    }};
 
     window.toggleEarthworkCut = function() {{
       isCutActive = !isCutActive;
@@ -952,8 +979,8 @@ def main():
       if (isCutActive) {{
         btn.classList.remove('cut-off');
         lbl.innerText = 'ATIVO (PLATÔS)';
-        info.innerHTML = `<b>Corte Ativo:</b> Platô no barranco do salão (cota 546.80m) e rebaixo nivelado da quadra de areia (cota 547.20m).<br>
-          <b>Alinhamento:</b> Girado 3° à direita (31.02°).`;
+        info.innerHTML = `<b>Platô Compensado:</b> Corte no barranco do salão (547.05m) e nivelamento completo sob o campo de areia (547.25m) com talude suave, sem vãos ou buracos.<br>
+          <b>Proporção Vertical:</b> Escala Z ${{currentZScale.toFixed(2)}}x.`;
       }} else {{
         btn.classList.add('cut-off');
         lbl.innerText = 'DESATIVADO (NATURAL)';
@@ -1037,15 +1064,12 @@ def main():
 
     with open(HTML_OUT, 'w', encoding='utf-8') as f:
         f.write(html)
-
-    with open(INDEX_OUT, 'w', encoding='utf-8') as f:
-        f.write(html)
     
     size_mb = os.path.getsize(HTML_OUT) / (1024 * 1024)
-    print(f"\n Visualizador Atualizado com Sucesso!")
-    print(f" Arquivos gerados: {HTML_OUT} e {INDEX_OUT} ({size_mb:.2f} MB)")
+    print(f"\n Visualizador Secundário Atualizado com Sucesso!")
+    print(f" Arquivo gerado: {HTML_OUT} ({size_mb:.2f} MB)")
     print(f" Giro de 3° à direita: Azimute ajustado para 31.02°")
-    print(f" Corte no barranco (cota {cota_cut}m) + Corte na quadra de areia (cota {cota_cut_quadra}m)")
+    print(f" Platô do salão ({cota_cut}m) + Platô nivelado da quadra ({cota_cut_quadra}m) com talude suave")
     print(f" Painéis solares completamente removidos sobre o salão")
     print(f" Estrutura de madeira corrigida sem hastes ou pendurais furando as telhas")
     print(f" Drone HD completo e hipsometria DSM sem cortes arbitrários")
