@@ -146,6 +146,30 @@
       <input type="range" id="sliderSun" min="0.0" max="1.2" step="0.05" value="0.65" oninput="updateLighting()">
     </div>
 
+    <!-- Controle de Escala Z e Nivelamento Vertical do Terreno -->
+    <div class="slider-box" style="border: 1px solid rgba(16, 185, 129, 0.45); background: rgba(6, 78, 59, 0.25); margin-top: 8px;">
+      <div class="slider-row" style="margin-bottom: 4px;">
+        <span style="font-weight: 700; color: #34d399;">⛰️ Escala Z do Terreno</span>
+        <span id="valTerrainZ" class="slider-val" style="color: #34d399; font-weight: 800;">1.00x (1:1)</span>
+      </div>
+      <input type="range" id="sliderTerrainZ" min="0.05" max="2.50" step="0.05" value="1.0" style="accent-color: #10b981;" oninput="setTerrainZScale(this.value)">
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-top: 5px; margin-bottom: 7px;">
+        <button class="btn btn-secondary" style="padding: 3px 0; font-size: 10px;" onclick="setTerrainZScale(0.25)">0.25x</button>
+        <button class="btn btn-secondary" style="padding: 3px 0; font-size: 10px;" onclick="setTerrainZScale(0.50)">0.50x</button>
+        <button class="btn btn-secondary" style="padding: 3px 0; font-size: 10px;" onclick="setTerrainZScale(0.75)">0.75x</button>
+        <button class="btn btn-secondary" style="padding: 3px 0; font-size: 10px; background: #065f46; border-color: #10b981;" onclick="setTerrainZScale(1.00)">1.0x</button>
+        <button class="btn btn-secondary" style="padding: 3px 0; font-size: 10px;" onclick="setTerrainZScale(1.50)">1.50x</button>
+      </div>
+      <div class="slider-row" style="margin-top: 4px; margin-bottom: 3px;">
+        <span style="font-weight: 600; color: #cbd5e1;">↕️ Altura / Offset Z do Terreno</span>
+        <span id="valTerrainOffset" class="slider-val" style="color: #38bdf8;">0.0 m</span>
+      </div>
+      <div style="display: flex; gap: 5px; align-items: center;">
+        <input type="range" id="sliderTerrainOffset" min="-10.0" max="10.0" step="0.1" value="0.0" style="flex: 1; accent-color: #38bdf8;" oninput="setTerrainZOffset(this.value)">
+        <button class="btn btn-secondary" style="width: auto; padding: 2px 7px; font-size: 9.5px;" onclick="setTerrainZOffset(0)">Zero</button>
+      </div>
+    </div>
+
     <!-- Seletor de Opções Arquitetônicas: Salão 12x8m e Campo de Futebol de Areia -->
     <div class="slider-box" style="border: 1px solid rgba(56, 189, 248, 0.4); background: rgba(15, 23, 42, 0.92); margin-top: 10px;">
       <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
@@ -483,17 +507,20 @@
     tables.forEach(t => {
       const mesaMesh = new THREE.Mesh(tableGeom, moduleMat);
       mesaMesh.position.set(t.x, t.y + 0.95, t.z);
+      mesaMesh.userData = { baseY: t.y, offsetH: 0.95 };
       mesaMesh.castShadow = true;
       solarGroup.add(mesaMesh);
 
       // Pés dianteiros (Norte, -Z, bordo inferior a ~0.60m)
       const postFront = new THREE.Mesh(postGeomFront, postMat);
       postFront.position.set(t.x - 2.5, t.y + 0.35, t.z - 1.4);
+      postFront.userData = { baseY: t.y, offsetH: 0.35 };
       solarGroup.add(postFront);
 
       // Pés traseiros (Sul, +Z, bordo elevado a ~2.15m)
       const postBack = new THREE.Mesh(postGeomBack, postMat);
       postBack.position.set(t.x + 2.5, t.y + 0.90, t.z + 1.4);
+      postBack.userData = { baseY: t.y, offsetH: 0.90 };
       solarGroup.add(postBack);
     });
     scene.add(solarGroup);
@@ -1007,22 +1034,74 @@
     function toggleSolarPanels() {
       showSolarPanels = !showSolarPanels;
       solarGroup.visible = showSolarPanels;
-      solarGroupOpt1.visible = showSolarPanels;
-      solarGroupOpt2.visible = showSolarPanels;
-      solarGroupOpt3.visible = showSolarPanels;
       const btn = document.getElementById('btnSolar');
       btn.classList.toggle('btn-toggle-active', showSolarPanels);
       btn.textContent = showSolarPanels ? '☀️ Ocultar Painéis Solares' : '☀️ Exibir Painéis Solares';
       btn.style.background = showSolarPanels ? '#1e3a8a' : '#1e293b';
     }
 
+    // --- CONTROLE DE ESCALA Z E OFFSET DO TERRENO ---
+    let currentTerrainZScale = 1.0;
+    let currentTerrainZOffset = 0.0;
+    const pivotTerrainY = salao.y;
+
+    function applyTerrainZTransform() {
+      const ty = pivotTerrainY * (1.0 - currentTerrainZScale) + currentTerrainZOffset;
+      terrain.scale.set(1.0, currentTerrainZScale, 1.0);
+      terrain.position.set(0.0, ty, 0.0);
+
+      boundaryGroup.scale.set(1.0, currentTerrainZScale, 1.0);
+      boundaryGroup.position.set(0.0, ty, 0.0);
+
+      sectorsGroup.scale.set(1.0, currentTerrainZScale, 1.0);
+      sectorsGroup.position.set(0.0, ty, 0.0);
+
+      // Mantém a Quadra e as Torres de Iluminação no platô correspondente sem deformar a altura 1:1 das estruturas
+      const scaledCampoY = pivotTerrainY + (campo.y - pivotTerrainY) * currentTerrainZScale;
+      campoGroup.position.y = scaledCampoY;
+      floodLightsList.forEach(spot => {
+        spot.position.y = scaledCampoY + 7.5;
+        spot.target.position.y = scaledCampoY + 0.2;
+        spot.target.updateMatrixWorld();
+      });
+
+      // Mantém todas as 233 mesas solares apoiadas sobre o terreno sem deformar os módulos
+      solarGroup.children.forEach(ch => {
+        if (ch.userData && ch.userData.baseY !== undefined) {
+          ch.position.y = pivotTerrainY + (ch.userData.baseY - pivotTerrainY) * currentTerrainZScale + currentTerrainZOffset + ch.userData.offsetH;
+        }
+      });
+    }
+
+    function setTerrainZScale(val) {
+      currentTerrainZScale = parseFloat(val);
+      const sl = document.getElementById('sliderTerrainZ');
+      if (sl && Math.abs(parseFloat(sl.value) - currentTerrainZScale) > 0.001) sl.value = currentTerrainZScale;
+      const lbl = document.getElementById('valTerrainZ');
+      if (lbl) {
+        lbl.innerText = currentTerrainZScale.toFixed(2) + 'x' + (Math.abs(currentTerrainZScale - 1.0) < 0.01 ? ' (1:1)' : '');
+      }
+      applyTerrainZTransform();
+    }
+
+    function setTerrainZOffset(val) {
+      currentTerrainZOffset = parseFloat(val);
+      const sl = document.getElementById('sliderTerrainOffset');
+      if (sl && Math.abs(parseFloat(sl.value) - currentTerrainZOffset) > 0.001) sl.value = currentTerrainZOffset;
+      const lbl = document.getElementById('valTerrainOffset');
+      if (lbl) {
+        lbl.innerText = (currentTerrainZOffset >= 0 ? '+' : '') + currentTerrainZOffset.toFixed(1) + ' m';
+      }
+      applyTerrainZTransform();
+    }
+
     // --- FUNÇÕES DE SELEÇÃO DE OPÇÕES ARQUITETÔNICAS (SALÃO 12x8m & CAMPO) ---
     let currentOption = 1;
     const optionDescriptions = {
-      1: "<b>Opção 1: Lounge Panorâmico & Deck com Pergolado</b><br>Deck em madeira nobre teca (12×4,5m) com pergolado ripado, ombrelones e mesas bistrô interligando o salão de 96 m² à quadra de areia.",
-      2: "<b>Opção 2: Camarote & Varandão com Arquibancada</b><br>Varandão coberto amplo (12×3m) e arquibancada integrada em 2 níveis de madeira e concreto voltada para a lateral da quadra de areia para assistir aos jogos.",
-      3: "<b>Opção 3: Pavilhão Rústico Colonial (Duas Águas)</b><br>Salão com telhado aparente em duas águas e tesouras de madeira rústica, cumeeira a 5,2m, beiral estendido de 1,2m, pilares de eucalipto e quiosque de apoio.",
-      4: "<b>Opção 4: Arena Esportiva Noturna com Refletores</b><br>4 Torres de iluminação esportiva de 7,5m nos cantos da quadra com refletores LED de alta potência (luz ativa no 3D!), rede de futevôlei e demarcações oficiais."
+      1: "<b>Opção 1: Madeira Bruta / Rústica (Duas Águas)</b><br>Pilares de tora de eucalipto tratado (Ø30cm), tesouras de madeira rústica e telhas cerâmicas terracota. 100% aberto sem paredes.",
+      2: "<b>Opção 2: Estrutura Metálica Duas Águas</b><br>Pilares tubulares metálicos e cobertura em telha termoacústica sanduíche grafite em duas águas. 100% aberto sem paredes.",
+      3: "<b>Opção 3: Telhado 1 Água Inclinado com o Terreno</b><br>Cobertura mono-inclinada (9,3° de declive acompanhando o caimento natural da encosta) com forro amadeirado.",
+      4: "<b>Opção 4: Arena Esportiva Noturna com Refletores</b><br>4 Torres de iluminação esportiva de 7,5m nos cantos da quadra com refletores LED de alta potência (luz ativa no 3D!)."
     };
 
     function setComplexOption(opt) {

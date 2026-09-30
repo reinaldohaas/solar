@@ -410,13 +410,28 @@ def main():
       <b>Proporção Vertical:</b> Escala Z 1:1 métrica real.
     </div>
 
-    <!-- Controle de Proporção Z -->
-    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; margin-bottom: 9px;">
-      <div style="font-size: 11px; font-weight: 700; color: #cbd5e1; margin-bottom: 4px; display: flex; justify-content: space-between;">
-        <span>Proporção Vertical (Z):</span>
-        <span style="font-size: 10.5px; color: #34d399;" id="lblZScale">1.00x (Real 1:1)</span>
+    <!-- Controle de Escala Z e Nivelamento Vertical do Terreno -->
+    <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; margin-bottom: 9px; background: rgba(16, 185, 129, 0.08); padding: 8px; border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.28);">
+      <div style="font-size: 11px; font-weight: 700; color: #cbd5e1; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center;">
+        <span>⛰️ Escala Z do Terreno:</span>
+        <span style="font-size: 10.5px; color: #34d399; font-weight: 800;" id="lblZScale">1.00x (Real 1:1)</span>
       </div>
-      <input type="range" id="sliderZScale" min="0.5" max="2.0" step="0.05" value="1.0" style="width: 100%; accent-color: #10b981; cursor: pointer;" oninput="setZScale(this.value)">
+      <input type="range" id="sliderZScale" min="0.05" max="2.50" step="0.05" value="1.0" style="width: 100%; accent-color: #10b981; cursor: pointer;" oninput="setZScale(this.value)">
+      <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-top: 4px; margin-bottom: 7px;">
+        <button onclick="setZScalePreset(0.25)" style="background:#1e293b; color:#cbd5e1; border:1px solid #334155; border-radius:4px; font-size:9.5px; padding:3px 0; cursor:pointer; font-weight:600;">0.25x</button>
+        <button onclick="setZScalePreset(0.50)" style="background:#1e293b; color:#cbd5e1; border:1px solid #334155; border-radius:4px; font-size:9.5px; padding:3px 0; cursor:pointer; font-weight:600;">0.50x</button>
+        <button onclick="setZScalePreset(0.75)" style="background:#1e293b; color:#cbd5e1; border:1px solid #334155; border-radius:4px; font-size:9.5px; padding:3px 0; cursor:pointer; font-weight:600;">0.75x</button>
+        <button onclick="setZScalePreset(1.00)" style="background:#065f46; color:#ecfdf5; border:1px solid #10b981; border-radius:4px; font-size:9.5px; padding:3px 0; cursor:pointer; font-weight:700;">1.0x</button>
+        <button onclick="setZScalePreset(1.50)" style="background:#1e293b; color:#cbd5e1; border:1px solid #334155; border-radius:4px; font-size:9.5px; padding:3px 0; cursor:pointer; font-weight:600;">1.50x</button>
+      </div>
+      <div style="font-size: 10.5px; font-weight: 700; color: #cbd5e1; margin-bottom: 3px; display: flex; justify-content: space-between; align-items: center;">
+        <span>↕️ Altura / Offset Z do Terreno:</span>
+        <span style="font-size: 10px; color: #38bdf8; font-weight: 700;" id="lblZOffset">0.00 m</span>
+      </div>
+      <div style="display: flex; gap: 5px; align-items: center;">
+        <input type="range" id="sliderZOffset" min="-5.0" max="5.0" step="0.05" value="0.0" style="flex: 1; accent-color: #38bdf8; cursor: pointer;" oninput="setZOffset(this.value)">
+        <button onclick="setZOffset(0)" style="background:#1e293b; color:#94a3b8; border:1px solid #334155; border-radius:4px; font-size:9px; padding:2px 5px; cursor:pointer;">Zero</button>
+      </div>
     </div>
 
     <!-- Seletor de Textura de Superfície -->
@@ -950,22 +965,48 @@ def main():
     // --- 6. CONTROLES DE TERRA, PROPORÇÃO Z & MDT ---
     let isCutActive = true;
     let currentZScale = 1.0;
+    let currentZOffset = 0.0;
     let morphProgress = 1.0;
     const pivotY = salaoData.y;
 
     function updateTargetHeights() {{
       const srcArray = isCutActive ? heightsSigscCut : heightsSigscNat;
       for (let i = 0; i < numVerts; i++) {{
-        heightsTarget[i] = pivotY + (srcArray[i] - pivotY) * currentZScale;
+        heightsTarget[i] = pivotY + (srcArray[i] - pivotY) * currentZScale + currentZOffset;
       }}
+      const scaledCampoY = pivotY + (campoData.y - pivotY) * currentZScale;
+      campoGroup.position.y = scaledCampoY;
+      optGroup4.children.forEach(tower => {{
+        tower.position.y = scaledCampoY;
+      }});
+      floodlights.forEach(spot => {{
+        spot.target.position.y = scaledCampoY;
+      }});
       morphProgress = 0.0;
     }}
 
     window.setZScale = function(val) {{
       currentZScale = parseFloat(val);
+      const sl = document.getElementById('sliderZScale');
+      if (sl && Math.abs(parseFloat(sl.value) - currentZScale) > 0.001) sl.value = currentZScale;
       const lbl = document.getElementById('lblZScale');
       if (lbl) {{
         lbl.innerText = currentZScale.toFixed(2) + 'x' + (Math.abs(currentZScale - 1.0) < 0.01 ? ' (Real 1:1)' : '');
+      }}
+      updateTargetHeights();
+    }};
+
+    window.setZScalePreset = function(val) {{
+      window.setZScale(val);
+    }};
+
+    window.setZOffset = function(val) {{
+      currentZOffset = parseFloat(val);
+      const sl = document.getElementById('sliderZOffset');
+      if (sl && Math.abs(parseFloat(sl.value) - currentZOffset) > 0.001) sl.value = currentZOffset;
+      const lbl = document.getElementById('lblZOffset');
+      if (lbl) {{
+        lbl.innerText = (currentZOffset >= 0 ? '+' : '') + currentZOffset.toFixed(2) + ' m';
       }}
       updateTargetHeights();
     }};
@@ -980,7 +1021,7 @@ def main():
         btn.classList.remove('cut-off');
         lbl.innerText = 'ATIVO (PLATÔS)';
         info.innerHTML = `<b>Platô Compensado:</b> Corte no barranco do salão (547.05m) e nivelamento completo sob o campo de areia (547.25m) com talude suave, sem vãos ou buracos.<br>
-          <b>Proporção Vertical:</b> Escala Z ${{currentZScale.toFixed(2)}}x.`;
+          <b>Proporção Vertical:</b> Escala Z ${{currentZScale.toFixed(2)}}x | Offset ${{currentZOffset.toFixed(2)}}m.`;
       }} else {{
         btn.classList.add('cut-off');
         lbl.innerText = 'DESATIVADO (NATURAL)';
