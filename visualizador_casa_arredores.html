@@ -155,7 +155,7 @@
     </div>
     <div class="toggle-row">
       <span>Réguas Métricas 1:1 (Grades 1m×1m)</span>
-      <input type="checkbox" id="chk-rulers" checked onchange="toggleRulers(this.checked)">
+      <input type="checkbox" id="chk-rulers" onchange="toggleRulers(this.checked)">
     </div>
     <div class="toggle-row">
       <span>Ferramenta Trena / Medição 3D</span>
@@ -898,7 +898,7 @@
       quadraGroup.add(pole);
     });
 
-    // TELAS / REDES DE PROTEÇÃO (H = 6,00 m) APENAS EM VOLTA DA QUADRA (SEM TETO SUPERIOR)
+    // TELAS / REDES DE PROTEÇÃO (H = 6,00 m) EM VOLTA DA QUADRA (LADO OESTE ABERTO PARA A CASA)
     const telasGroup = new THREE.Group();
     quadraGroup.add(telasGroup);
 
@@ -920,24 +920,19 @@
     telaNorte.position.set(0, 3.0, 6.0);
     telasGroup.add(telaNorte);
 
-    // 3. Tela Fundo Oeste (12,0 m x 6,0 m)
-    const telaOeste = new THREE.Mesh(new THREE.PlaneGeometry(12.0, 6.0, 12, 6), telaMat);
-    telaOeste.position.set(-11.0, 3.0, 0);
-    telaOeste.rotation.y = Math.PI / 2;
-    telasGroup.add(telaOeste);
-
-    // 4. Tela Fundo Leste (12,0 m x 6,0 m)
+    // 3. Tela Fundo Leste (12,0 m x 6,0 m)
     const telaLeste = new THREE.Mesh(new THREE.PlaneGeometry(12.0, 6.0, 12, 6), telaMat);
     telaLeste.position.set(11.0, 3.0, 0);
     telaLeste.rotation.y = Math.PI / 2;
     telasGroup.add(telaLeste);
 
-    // Cabos de Aço Perimetrais Interligando o Topo das Telas (a 6,00 m)
+    // Lado Oeste voltado para a Casa do Sítio: ABERTO (sem tela), com acesso livre e vista desimpedida!
+
+    // Cabos de Aço Perimetrais Interligando o Topo das Telas Sul, Leste e Norte (a 6,00 m)
     const cableMat = new THREE.LineBasicMaterial({ color: 0xe2e8f0, linewidth: 2 });
     const cablePts = [
       new THREE.Vector3(-11, 6.0, -6), new THREE.Vector3(11, 6.0, -6),
-      new THREE.Vector3(11, 6.0, 6), new THREE.Vector3(-11, 6.0, 6),
-      new THREE.Vector3(-11, 6.0, -6)
+      new THREE.Vector3(11, 6.0, 6), new THREE.Vector3(-11, 6.0, 6)
     ];
     telasGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(cablePts), cableMat));
 
@@ -961,7 +956,12 @@
     chalesData.forEach(c => {
       const cGroup = new THREE.Group();
       cGroup.position.set(c.lx, c.base_y, c.lz);
-      cGroup.rotation.y = -salaoData.rot_rad;
+      if (c.id === 4 || c.id === 5) {
+        // Chalés 4 e 5 isolados girados frontalmente na direção da Casa do Sítio
+        cGroup.rotation.y = Math.atan2(casaData.lx - c.lx, casaData.lz - c.lz);
+      } else {
+        cGroup.rotation.y = -salaoData.rot_rad;
+      }
 
       // Pilotis / Pilares de fundação ancorados no relevo natural da encosta (-4.0m)
       const pilotiCoords = [
@@ -1070,6 +1070,9 @@
     quadraScaleRuler.position.set(0, 0.20, 6.25);
     quadraGroup.add(quadraScaleRuler);
     scale1to1Rulers.push(quadraScaleRuler);
+
+    // Ocultar réguas por padrão para visualização limpa
+    scale1to1Rulers.forEach(r => { r.visible = false; });
 
     // =========================================================================
     // 10. INTERAÇÃO, CONTROLES DE ESCALA Z E NAVEGAÇÃO 3D
