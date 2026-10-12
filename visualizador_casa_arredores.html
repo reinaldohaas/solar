@@ -98,8 +98,8 @@
     <div class="stat-row"><span class="stat-lbl">Malha 3D Real:</span><span class="stat-val">240 × 180 (43,200 pts de 1m)</span></div>
     <div class="stat-row"><span class="stat-lbl">Casa do Sítio:</span><span class="stat-val">200 m² (14,0 × 14,3 m) | Cota Piso: 540,95 m</span></div>
     <div class="stat-row"><span class="stat-lbl">Salão de Eventos:</span><span class="stat-val">12 × 8 m (96 m²) | Cota Piso: 547,10 m</span></div>
-    <div class="stat-row"><span class="stat-lbl">Usina Solar Salão:</span><span class="stat-val">18 Módulos (10,44 kWp)</span></div>
-    <div class="stat-row"><span class="stat-lbl">Quadra de Areia:</span><span class="stat-val">22 × 12 m (264 m²) | Telas H=6m ao Redor</span></div>
+    <div class="stat-row"><span class="stat-lbl">Usina Solar Salão:</span><span class="stat-val">36 Módulos (20,88 kWp - 2 Águas)</span></div>
+    <div class="stat-row"><span class="stat-lbl">Quadra de Areia:</span><span class="stat-val">22 × 12 m (264 m²) | Telas H=6m em Volta</span></div>
     <div class="stat-row"><span class="stat-lbl">Chalés 1 a 5:</span><span class="stat-val">22 m² cada (5,5 × 4,0 m) | No Terreno Natural</span></div>
 
     <!-- Controle de Escala Z (1:1 Estrito) -->
@@ -123,10 +123,9 @@
       <span style="font-size: 9.5px; color: #f59e0b;">Sem Paredes</span>
     </div>
     <div class="btn-group">
-      <button class="btn active" id="btnOpt1" onclick="setSalaoOption(1)">🪵 1. Madeira Rústica</button>
+      <button class="btn active" id="btnOpt1" onclick="setSalaoOption(1)">🪵 1. Madeira Rústica (2 Águas)</button>
       <button class="btn" id="btnOpt2" onclick="setSalaoOption(2)">🏗️ 2. Metálica 2 Águas</button>
-      <button class="btn" id="btnOpt3" onclick="setSalaoOption(3)">📐 3. Telhado 1 Água</button>
-      <button class="btn" id="btnOpt4" onclick="setSalaoOption(4)">⚽ 4. Refletores Arena</button>
+      <button class="btn btn-full" id="btnOpt3" onclick="setSalaoOption(3)">📐 3. Telhado 1 Água (Declive Encosta)</button>
     </div>
 
     <!-- Câmeras Rápidas -->
@@ -380,7 +379,7 @@
     const clayTextures = createClayTileTextures();
 
     // =========================================================================
-    // 5. CASA DO SÍTIO: 200 m² TOTAL (14,0 m x 14,3 m) & TELHADOS ALINHADOS AOS KMZ
+    // 5. CASA DO SÍTIO: 100% ALINHADA COM TELHADO 1 & TELHADO 2 KMZ
     // =========================================================================
     const casaGroup = new THREE.Group();
     casaGroup.position.set(casaData.lx, casaData.base_y, casaData.lz);
@@ -570,27 +569,7 @@
         casaGroup.add(ringMesh);
       }
 
-      // Piso / Laje Estrutural da Casa do Sítio (200 m²: 14,0 m x 14,3 m)
-      const casaFloorMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.6 });
-      const casaFloor = new THREE.Mesh(new THREE.BoxGeometry(14.0, 0.20, 14.3), casaFloorMat);
-      casaFloor.position.set(0.15, 0.10, -0.45);
-      casaFloor.receiveShadow = true;
-      casaGroup.add(casaFloor);
-
-      // Pilares de sustentação da varanda coberta sob os beirais externos
-      const verandaPostMat = new THREE.MeshStandardMaterial({ color: 0x452311, roughness: 0.8 });
-      const verandaPostCoords = [
-        [-6.5, 6.3], [6.5, 6.3], [-6.5, -6.8], [6.5, -6.8],
-        [-6.5, 0.0], [6.5, 0.0]
-      ];
-      verandaPostCoords.forEach(c => {
-        const pMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.14, 3.2, 8), verandaPostMat);
-        pMesh.position.set(c[0], 1.6, c[1]);
-        pMesh.castShadow = true;
-        casaGroup.add(pMesh);
-      });
-
-      // Paredes e Embasamento da Casa do Sítio
+      // Paredes e Embasamento da Casa do Sítio rigorosamente georreferenciados
       const wallUTM = [
         [663412.43, 6968631.12],
         [663409.24, 6968631.68],
@@ -605,6 +584,20 @@
       ];
       const wallPts = wallUTM.map(p => roofMetrics(p[0], p[1]));
 
+      // Piso da Casa do Sítio: geometria planar criada estritamente pelo contorno georreferenciado
+      const floorShape = new THREE.Shape();
+      floorShape.moveTo(wallPts[0].lx, -wallPts[0].lz);
+      for (let i = 1; i < wallPts.length; i++) {
+        floorShape.lineTo(wallPts[i].lx, -wallPts[i].lz);
+      }
+      floorShape.closePath();
+      const floorGeom = new THREE.ShapeGeometry(floorShape);
+      floorGeom.rotateX(-Math.PI / 2);
+      const floorMesh = new THREE.Mesh(floorGeom, new THREE.MeshStandardMaterial({ color: 0x94a3b8, roughness: 0.6, side: THREE.DoubleSide }));
+      floorMesh.position.y = 0.08;
+      floorMesh.receiveShadow = true;
+      casaGroup.add(floorMesh);
+
       const wallPos = [];
       const plinthPos = [];
       for (let i = 0; i < wallPts.length; i++) {
@@ -615,7 +608,7 @@
           p1.lx, 0.0, p1.lz, p2.lx, 0.0, p2.lz, p2.lx, p2.h + 0.02, p2.lz,
           p1.lx, 0.0, p1.lz, p2.lx, p2.h + 0.02, p2.lz, p1.lx, p1.h + 0.02, p1.lz
         );
-        // Embasamento de pedra/concreto descendo até -3,0m para fixação no terreno natural em declive
+        // Embasamento descendo até -3,0m para ancorar suavemente no relevo em declive
         plinthPos.push(
           p1.lx, -3.0, p1.lz, p2.lx, -3.0, p2.lz, p2.lx, 0.18, p2.lz,
           p1.lx, -3.0, p1.lz, p2.lx, 0.18, p2.lz, p1.lx, 0.18, p1.lz
@@ -663,7 +656,7 @@
     })();
 
     // =========================================================================
-    // 6. SALÃO DE FESTAS 12x8m (96 m² ESTRUTURA ABERTA SEM PAREDES + USINA SOLAR)
+    // 6. SALÃO DE FESTAS 12x8m (SEM ESTACAS PASSANDO DO TELHADO + SOLAR 2 ÁGUAS)
     // =========================================================================
     const salaoGroup = new THREE.Group();
     salaoGroup.position.set(salaoData.lx, salaoData.base_y, salaoData.lz);
@@ -684,7 +677,7 @@
     salaoFloor.receiveShadow = true;
     salaoGroup.add(salaoFloor);
 
-    // Blocos de Fundação dos Pilares
+    // Pilares e Blocos de Fundação
     const footingMat = new THREE.MeshStandardMaterial({ color: 0x475569, roughness: 0.9 });
     const pilarPositions = [
       [-5.7, 1.85, -3.7], [0, 1.85, -3.7], [5.7, 1.85, -3.7],
@@ -719,15 +712,13 @@
     ditch.position.set(0, -0.40, -4.6);
     salaoGroup.add(ditch);
 
-    // Grupos das 4 Opções Arquitetônicas
+    // Grupos das Opções Arquitetônicas
     const optGroup1 = new THREE.Group();
     const optGroup2 = new THREE.Group();
     const optGroup3 = new THREE.Group();
-    const optGroup4 = new THREE.Group();
     salaoGroup.add(optGroup1, optGroup2, optGroup3);
-    scene.add(optGroup4);
 
-    // --- OPÇÃO 1: MADEIRA RÚSTICA (2 ÁGUAS) + TELHAS DE BARRO + USINA SOLAR ---
+    // --- OPÇÃO 1: MADEIRA RÚSTICA (2 ÁGUAS) + TELHAS DE BARRO + SOLAR 2 ÁGUAS ---
     const salaoClayMap = clayTextures.mapTex.clone();
     salaoClayMap.needsUpdate = true;
     salaoClayMap.repeat.set(6.5, 2.5);
@@ -744,44 +735,29 @@
       metalness: 0.04
     });
 
+    // Pilares de sustentação com altura controlada (não passam do telhado)
     pilarPositions.forEach(p => {
-      const pMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.18, 3.6, 12), rusticWoodMat);
-      pMesh.position.set(p[0], 1.8, p[2]);
+      const pMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.18, 3.5, 12), rusticWoodMat);
+      pMesh.position.set(p[0], 1.75, p[2]);
       pMesh.castShadow = true;
       optGroup1.add(pMesh);
     });
 
+    // Vigas mestras longitudinais
     const vigaMaster1 = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 12.4, 12), rusticWoodMat);
-    vigaMaster1.rotation.z = Math.PI / 2; vigaMaster1.position.set(0, 3.65, -3.7);
+    vigaMaster1.rotation.z = Math.PI / 2; vigaMaster1.position.set(0, 3.55, -3.7);
     const vigaMaster2 = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 12.4, 12), rusticWoodMat);
-    vigaMaster2.rotation.z = Math.PI / 2; vigaMaster2.position.set(0, 3.65, 3.7);
+    vigaMaster2.rotation.z = Math.PI / 2; vigaMaster2.position.set(0, 3.55, 3.7);
     optGroup1.add(vigaMaster1, vigaMaster2);
 
+    // Tirantes horizontais de madeira rústica (sem estacas verticais furando o telhado)
     [-5.7, 0, 5.7].forEach(x => {
-      const truss = new THREE.Group();
-      truss.position.set(x, 0, 0);
-      const tieBeam = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 8.2, 10), rusticWoodMat);
-      tieBeam.rotation.x = Math.PI / 2; tieBeam.position.set(0, 3.65, 0);
-      truss.add(tieBeam);
-      const kingPost = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 1.40, 10), rusticWoodMat);
-      kingPost.position.set(0, 4.35, 0);
-      truss.add(kingPost);
-      const rafterLen = 4.35;
-      const angleRafter = Math.atan2(1.50, 4.0);
-      const rafterN = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.10, rafterLen, 10), rusticWoodMat);
-      rafterN.rotation.x = -angleRafter; rafterN.position.set(0, 4.40, -2.0);
-      truss.add(rafterN);
-      const rafterS = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.10, rafterLen, 10), rusticWoodMat);
-      rafterS.rotation.x = angleRafter; rafterS.position.set(0, 4.40, 2.0);
-      truss.add(rafterS);
-      optGroup1.add(truss);
+      const tieBeam = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.11, 8.0, 10), rusticWoodMat);
+      tieBeam.rotation.x = Math.PI / 2; tieBeam.position.set(x, 3.55, 0);
+      optGroup1.add(tieBeam);
     });
 
-    const ridgeBeam = new THREE.Mesh(new THREE.CylinderGeometry(0.13, 0.13, 13.2, 12), rusticWoodMat);
-    ridgeBeam.rotation.z = Math.PI / 2;
-    ridgeBeam.position.set(0, 5.15, 0);
-    optGroup1.add(ridgeBeam);
-
+    // Telhado Duas Águas Limpo e Elegante
     const roofSlopeBack = new THREE.Mesh(new THREE.BoxGeometry(13.2, 0.12, 4.70), tileCeramicMat);
     roofSlopeBack.rotation.x = -THREE.MathUtils.degToRad(21.8);
     roofSlopeBack.position.set(0, 4.45, -2.18);
@@ -793,20 +769,21 @@
     roofSlopeFront.castShadow = true;
     optGroup1.add(roofSlopeBack, roofSlopeFront);
 
-    // Cumeeira Cerâmica
-    const salaoRidgeCap = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.18, 13.3, 16), new THREE.MeshStandardMaterial({ color: 0x9a3b14, roughness: 0.68 }));
+    // Cumeeira Cerâmica suave
+    const salaoRidgeCap = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.16, 13.3, 16), new THREE.MeshStandardMaterial({ color: 0x9a3b14, roughness: 0.68 }));
     salaoRidgeCap.rotation.z = Math.PI / 2;
-    salaoRidgeCap.position.set(0, 5.28, 0);
+    salaoRidgeCap.position.set(0, 5.25, 0);
     salaoRidgeCap.castShadow = true;
     optGroup1.add(salaoRidgeCap);
 
-    // Usina Solar Fotovoltaica na Cobertura (18 Módulos de 580W = 10,44 kWp)
+    // USINA SOLAR FOTOVOLTAICA INSTALADA NOS DOIS LADOS DO TELHADO (36 Módulos = 20,88 kWp)
     const solarFrameMat = new THREE.MeshStandardMaterial({ color: 0x94a3b8, metalness: 0.9, roughness: 0.2 });
     const solarCellMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, metalness: 0.95, roughness: 0.12 });
-    const solarModGroup = new THREE.Group();
-    solarModGroup.rotation.x = THREE.MathUtils.degToRad(21.8);
-    solarModGroup.position.set(0, 4.54, 2.18);
 
+    // Lado Frontal (18 Módulos)
+    const solarModGroupFront = new THREE.Group();
+    solarModGroupFront.rotation.x = THREE.MathUtils.degToRad(21.8);
+    solarModGroupFront.position.set(0, 4.54, 2.18);
     for (let row = 0; row < 2; row++) {
       for (let col = 0; col < 9; col++) {
         const mod = new THREE.Group();
@@ -814,36 +791,47 @@
         const frame = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.04, 2.05), solarFrameMat);
         const cell = new THREE.Mesh(new THREE.BoxGeometry(1.11, 0.045, 2.01), solarCellMat);
         mod.add(frame, cell);
-        solarModGroup.add(mod);
+        solarModGroupFront.add(mod);
       }
     }
-    optGroup1.add(solarModGroup);
+    optGroup1.add(solarModGroupFront);
+
+    // Lado Traseiro (18 Módulos)
+    const solarModGroupBack = new THREE.Group();
+    solarModGroupBack.rotation.x = -THREE.MathUtils.degToRad(21.8);
+    solarModGroupBack.position.set(0, 4.54, -2.18);
+    for (let row = 0; row < 2; row++) {
+      for (let col = 0; col < 9; col++) {
+        const mod = new THREE.Group();
+        mod.position.set(-5.0 + col * 1.25, 0.05, -1.1 + row * 2.2);
+        const frame = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.04, 2.05), solarFrameMat);
+        const cell = new THREE.Mesh(new THREE.BoxGeometry(1.11, 0.045, 2.01), solarCellMat);
+        mod.add(frame, cell);
+        solarModGroupBack.add(mod);
+      }
+    }
+    optGroup1.add(solarModGroupBack);
 
     // --- OPÇÃO 2: ESTRUTURA METÁLICA ---
     const steelDarkMat = new THREE.MeshStandardMaterial({ color: 0x1e293b, metalness: 0.8, roughness: 0.3 });
     const panelSandwichMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.5, roughness: 0.4 });
 
     pilarPositions.forEach(p => {
-      const pSteel = new THREE.Mesh(new THREE.BoxGeometry(0.2, 3.6, 0.2), steelDarkMat);
-      pSteel.position.set(p[0], 1.8, p[2]);
+      const pSteel = new THREE.Mesh(new THREE.BoxGeometry(0.2, 3.5, 0.2), steelDarkMat);
+      pSteel.position.set(p[0], 1.75, p[2]);
       pSteel.castShadow = true;
       optGroup2.add(pSteel);
     });
 
-    const steelBeam1 = new THREE.Mesh(new THREE.BoxGeometry(12.4, 0.22, 0.15), steelDarkMat);
-    steelBeam1.position.set(0, 3.6, -3.7);
-    const steelBeam2 = new THREE.Mesh(new THREE.BoxGeometry(12.4, 0.22, 0.15), steelDarkMat);
-    steelBeam2.position.set(0, 3.6, 3.7);
+    const steelBeam1 = new THREE.Mesh(new THREE.BoxGeometry(12.4, 0.20, 0.15), steelDarkMat);
+    steelBeam1.position.set(0, 3.55, -3.7);
+    const steelBeam2 = new THREE.Mesh(new THREE.BoxGeometry(12.4, 0.20, 0.15), steelDarkMat);
+    steelBeam2.position.set(0, 3.55, 3.7);
     optGroup2.add(steelBeam1, steelBeam2);
 
     [-5.7, 0, 5.7].forEach(x => {
-      const mTruss = new THREE.Group();
-      mTruss.position.set(x, 0, 0);
       const bot = new THREE.Mesh(new THREE.BoxGeometry(0.12, 0.12, 8.0), steelDarkMat);
-      bot.position.set(0, 3.6, 0); mTruss.add(bot);
-      const post = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.95, 0.08), steelDarkMat);
-      post.position.set(0, 4.07, 0); mTruss.add(post);
-      optGroup2.add(mTruss);
+      bot.position.set(x, 3.55, 0); optGroup2.add(bot);
     });
 
     const roofSteelBack = new THREE.Mesh(new THREE.BoxGeometry(12.8, 0.08, 4.6), panelSandwichMat);
@@ -860,13 +848,13 @@
 
     // --- OPÇÃO 3: TELHADO 1 ÁGUA (DECLIVE COM A ENCOSTA) ---
     [-5.7, 0, 5.7].forEach(x => {
-      const pBack = new THREE.Mesh(new THREE.BoxGeometry(0.2, 4.3, 0.2), steelDarkMat);
-      pBack.position.set(x, 2.15, -3.7); pBack.castShadow = true; optGroup3.add(pBack);
-      const pFront = new THREE.Mesh(new THREE.BoxGeometry(0.2, 3.0, 0.2), steelDarkMat);
-      pFront.position.set(x, 1.5, 3.7); pFront.castShadow = true; optGroup3.add(pFront);
+      const pBack = new THREE.Mesh(new THREE.BoxGeometry(0.2, 4.1, 0.2), steelDarkMat);
+      pBack.position.set(x, 2.05, -3.7); pBack.castShadow = true; optGroup3.add(pBack);
+      const pFront = new THREE.Mesh(new THREE.BoxGeometry(0.2, 2.9, 0.2), steelDarkMat);
+      pFront.position.set(x, 1.45, 3.7); pFront.castShadow = true; optGroup3.add(pFront);
     });
     const roofMonoGroup = new THREE.Group();
-    roofMonoGroup.position.set(0, 3.65, 0);
+    roofMonoGroup.position.set(0, 3.60, 0);
     const roofMono = new THREE.Mesh(new THREE.BoxGeometry(13.0, 0.12, 9.4), panelSandwichMat);
     roofMono.rotation.x = THREE.MathUtils.degToRad(9.3);
     roofMono.position.set(0, 0.65, 0);
@@ -874,45 +862,12 @@
     roofMonoGroup.add(roofMono);
     optGroup3.add(roofMonoGroup);
 
-    // --- OPÇÃO 4: REFLETORES ARENA NOTURNA NA QUADRA ---
-    const floodlights = [];
-    const poleMat = new THREE.MeshStandardMaterial({ color: 0x334155, metalness: 0.8, roughness: 0.2 });
-    const towerPositions = [
-      [quadraData.lx - 11.5, quadraData.base_y, quadraData.lz - 6.5],
-      [quadraData.lx + 11.5, quadraData.base_y, quadraData.lz - 6.5],
-      [quadraData.lx - 11.5, quadraData.base_y, quadraData.lz + 6.5],
-      [quadraData.lx + 11.5, quadraData.base_y, quadraData.lz + 6.5]
-    ];
-    towerPositions.forEach(posT => {
-      const tower = new THREE.Group();
-      tower.position.set(posT[0], posT[1], posT[2]);
-      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.18, 7.5, 12), poleMat);
-      pole.position.set(0, 3.75, 0);
-      tower.add(pole);
-      const crossbar = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.08, 0.08), poleMat);
-      crossbar.position.set(0, 7.4, 0);
-      tower.add(crossbar);
-
-      const spot = new THREE.SpotLight(0xffffff, 0.0);
-      spot.position.set(0, 7.4, 0);
-      spot.angle = Math.PI / 4.2;
-      spot.penumbra = 0.4;
-      spot.decay = 1.5;
-      spot.distance = 45;
-      spot.castShadow = true;
-      spot.target.position.set(quadraData.lx, quadraData.base_y, quadraData.lz);
-      scene.add(spot.target);
-      tower.add(spot);
-      floodlights.push(spot);
-      optGroup4.add(tower);
-    });
-
     optGroup1.visible = true;
     optGroup2.visible = false;
     optGroup3.visible = false;
 
     // =========================================================================
-    // 7. QUADRA DE AREIA 22x12m COM TELAS DE PROTEÇÃO AO REDOR (H=6,00 m)
+    // 7. QUADRA DE AREIA 22x12m: TELAS DE PROTEÇÃO (H=6m) APENAS EM VOLTA
     // =========================================================================
     const quadraGroup = new THREE.Group();
     quadraGroup.position.set(quadraData.lx, quadraData.base_y, quadraData.lz);
@@ -930,19 +885,20 @@
     bordaMesh.position.y = 0.20;
     quadraGroup.add(bordaMesh);
 
+    // 10 Postes Metálicos Estruturais de Sustentação das Telas (H = 6,00 m)
     const postMat = new THREE.MeshStandardMaterial({ color: 0xe2e8f0, metalness: 0.7, roughness: 0.3 });
     const quadraPostPositions = [
       [-11, -6], [-5.5, -6], [0, -6], [5.5, -6], [11, -6],
       [-11, 6], [-5.5, 6], [0, 6], [5.5, 6], [11, 6]
     ];
     quadraPostPositions.forEach(p => {
-      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 6.0, 8), postMat);
+      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.10, 6.0, 8), postMat);
       pole.position.set(p[0], 3.0, p[1]);
       pole.castShadow = true;
       quadraGroup.add(pole);
     });
 
-    // TELAS / REDES DE PROTEÇÃO AO REDOR DA QUADRA (4 LATERAIS H=6m + TETO SUPERIOR)
+    // TELAS / REDES DE PROTEÇÃO (H = 6,00 m) APENAS EM VOLTA DA QUADRA (SEM TETO SUPERIOR)
     const telasGroup = new THREE.Group();
     quadraGroup.add(telasGroup);
 
@@ -976,13 +932,7 @@
     telaLeste.rotation.y = Math.PI / 2;
     telasGroup.add(telaLeste);
 
-    // 5. Tela de Proteção Superior (Teto Anti-Fuga 22,0 m x 12,0 m a 6m de altura)
-    const telaTeto = new THREE.Mesh(new THREE.PlaneGeometry(22.0, 12.0, 22, 12), telaMat);
-    telaTeto.position.set(0, 6.0, 0);
-    telaTeto.rotation.x = Math.PI / 2;
-    telasGroup.add(telaTeto);
-
-    // Cabos de Aço Perimetrais de Sustentação a 6,0 m de altura
+    // Cabos de Aço Perimetrais Interligando o Topo das Telas (a 6,00 m)
     const cableMat = new THREE.LineBasicMaterial({ color: 0xe2e8f0, linewidth: 2 });
     const cablePts = [
       new THREE.Vector3(-11, 6.0, -6), new THREE.Vector3(11, 6.0, -6),
@@ -1052,7 +1002,6 @@
       cGroup.add(rMesh);
 
       // Varanda Frontal Integrada (5,50 m × 1,20 m = 6,6 m²)
-      // Área Total Construída = 15,4 m² interno + 6,6 m² varanda = 22,0 m²
       const railMat = new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.5 });
       const railFront = new THREE.Mesh(new THREE.BoxGeometry(5.40, 0.90, 0.06), railMat);
       railFront.position.set(0, 0.65, 1.95);
@@ -1104,13 +1053,13 @@
       return group;
     }
 
-    // Régua 1:1 na Casa do Sítio (14,0m x 14,3m = 200 m²)
-    const casaScaleRuler = create1to1ScaleFrame(14.0, 4.65, 'CASA 200m² 1:1', 0xf59e0b);
+    // Régua 1:1 na Casa do Sítio (14,0m x 4,65m)
+    const casaScaleRuler = create1to1ScaleFrame(14.0, 4.65, 'CASA 1:1', 0xf59e0b);
     casaScaleRuler.position.set(0, 0.05, 7.2);
     casaGroup.add(casaScaleRuler);
     scale1to1Rulers.push(casaScaleRuler);
 
-    // Régua 1:1 no Salão (12m x 8m = 96 m²)
+    // Régua 1:1 no Salão (12m x 5,2m)
     const salaoScaleRuler = create1to1ScaleFrame(12.0, 5.2, 'SALÃO 12x8m 1:1', 0x38bdf8);
     salaoScaleRuler.position.set(0, 0.12, 4.25);
     salaoGroup.add(salaoScaleRuler);
@@ -1156,20 +1105,7 @@
       optGroup2.visible = (opt === 2);
       optGroup3.visible = (opt === 3);
 
-      const isNight = (opt === 4);
-      floodlights.forEach(fl => { fl.intensity = isNight ? 2.5 : 0.0; });
-      if (isNight) {
-        optGroup1.visible = true;
-        scene.background = new THREE.Color(0x020617);
-        hemiLight.intensity = 0.2;
-        sunLight.intensity = 0.15;
-      } else {
-        scene.background = new THREE.Color(0x090d16);
-        hemiLight.intensity = 0.85;
-        sunLight.intensity = 1.35;
-      }
-
-      for (let i = 1; i <= 4; i++) {
+      for (let i = 1; i <= 3; i++) {
         const b = document.getElementById('btnOpt' + i);
         if (b) b.classList.toggle('active', i === opt);
       }
