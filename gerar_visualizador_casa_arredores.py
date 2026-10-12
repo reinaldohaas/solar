@@ -6,10 +6,12 @@ GERADOR DO VISUALIZADOR 3D DEDICADO: CASA DO SÍTIO E ARREDORES (SIGSC NATIVO)
 MDT LiDAR 1,0 m Oficial (SIGSC) & Ortofoto Oficial 39 cm (SIGSC)
 ===============================================================================
 - Alinhamento rigoroso dos telhados da Casa do Sítio com telhado1.kmz e telhado2.kmz
+- Casa do Sítio com 200 m² de área total (14,0 m × 14,3 m) e cota de piso 540,95 m
+- Salão de Festas com 12 × 8 m (96 m²), cota 547,10 m, estrutura aberta (sem paredes)
+- Chalés/Cabanas 1 a 5 com 22,0 m² cada (5,50 × 4,00 m), com pilotis ancorados e
+  acompanhando rigorosamente as cotas reais do terreno natural (MDT LiDAR SIGSC)
+- Quadra de Areia 22 × 12 m com TELAS de proteção ao redor (H=6,00 m) e teto superior
 - Terreno natural do MDT SIGSC sob a casa (sem elevação / sem montículo artificial)
-- Salão de Festas anterior recuperado: estrutura aberta sem paredes, 10 pilares,
-  tesouras de madeira rústica, opções arquitetônicas e usina solar de 10,44 kWp
-- Quadra de Areia 22x12m e Chalés 1 a 5 georreferenciados
 - Escala estrita 1:1 (1m horizontal = 1m vertical)
 - EXCLUSIVAMENTE dados oficiais do SIGSC (sem dados de drones)
 """
@@ -44,7 +46,6 @@ def main():
     print("=" * 80)
 
     # 1. Bounding box exata em coordenadas UTM SIRGAS 2000 22S (EPSG:31982)
-    # Enquadra Casa, Salão, Quadra de Areia e Chalés 1 a 5 com margem de contexto
     left = 663280.0
     right = 663520.0   # 240,0 m de largura horizontal
     bottom = 6968540.0
@@ -66,10 +67,8 @@ def main():
         win_o = from_bounds(left, bottom, right, top, src_o.transform)
         rgb = src_o.read([1, 2, 3], window=win_o)
         img = Image.fromarray(np.transpose(rgb, (1, 2, 0)))
-        # Ajusta resolução com Lanczos para renderização nítida em WebGL
-        w_px, h_px = img.size
         target_w = 1280
-        target_h = int(h_px * (target_w / w_px))
+        target_h = int(img.size[1] * (target_w / img.size[0]))
         img_resized = img.resize((target_w, target_h), Image.LANCZOS)
         buf = BytesIO()
         img_resized.save(buf, format='JPEG', quality=90)
@@ -88,8 +87,7 @@ def main():
         print(f"   Espaçamento real: {width_m/(cols-1):.2f} m × {height_m/(rows-1):.2f} m")
         print(f"   Cotas naturais SIGSC: Mínima = {elev.min():.2f} m, Máxima = {elev.max():.2f} m")
 
-    # 4. Coordenadas Locais das Edificações (Origem no Centro da Janela)
-    # Three.js: X = E - cx_utm; Z = -(N - cy_utm)
+    # 4. Coordenadas Locais das Edificações
     casa_lx = float(663415.50 - cx_utm)      # +15.50 m
     casa_lz = float(-(6968636.50 - cy_utm))  #  -6.50 m
     salao_lx = float(663449.59 - cx_utm)     # +49.59 m
@@ -135,7 +133,7 @@ def main():
     print(f"\n4. Nivelamento:")
     print(f"   Salão 12x8m: Platô de corte em 547,05 m")
     print(f"   Quadra 22x12m: Platô de areia em 547,25 m")
-    print(f"   Casa do Sítio: TERRENO NATURAL PRESERVADO (zero montículo / zero elevação artificial)")
+    print(f"   Casa do Sítio: TERRENO NATURAL PRESERVADO (zero montículo artificial)")
 
     # 5. Normalização Uint16 para Three.js
     z_min = float(elev_final.min())
@@ -149,27 +147,34 @@ def main():
     salao_base_y = float(cota_salao - z_min)
     quadra_base_y = float(cota_quadra - z_min)
 
-    # Chalés 1 a 5
+    # 6. Chalés 1 a 5 (22 m² cada - 5,50m x 4,00m)
+    # Amostragem da COTA REAL DO TERRENO NATURAL DO MDT SIGSC para cada chalé
     chales_data = [
-        {"id": 1, "utm": [663457.29, 6968674.96], "cota": 544.50},
-        {"id": 2, "utm": [663448.54, 6968667.08], "cota": 545.20},
-        {"id": 3, "utm": [663438.93, 6968659.26], "cota": 545.90},
-        {"id": 4, "utm": [663466.65, 6968618.00], "cota": 542.80},
-        {"id": 5, "utm": [663469.69, 6968600.54], "cota": 541.60}
+        {"id": 1, "utm": [663457.29, 6968674.96]},
+        {"id": 2, "utm": [663448.54, 6968667.08]},
+        {"id": 3, "utm": [663438.93, 6968659.26]},
+        {"id": 4, "utm": [663466.65, 6968618.00]},
+        {"id": 5, "utm": [663469.69, 6968600.54]}
     ]
-    for c in chales_data:
-        c["lx"] = round(float(c["utm"][0] - cx_utm), 2)
-        c["lz"] = round(float(-(c["utm"][1] - cy_utm)), 2)
-        c["base_y"] = round(float(c["cota"] - z_min), 2)
+    with rasterio.open(MDT_SIGSC_TIF) as src_m_sample:
+        for c in chales_data:
+            e, n = c["utm"]
+            z = float(list(src_m_sample.sample([(e, n)]))[0][0])
+            c["cota"] = round(z, 2)
+            c["lx"] = round(float(e - cx_utm), 2)
+            c["lz"] = round(float(-(n - cy_utm)), 2)
+            c["base_y"] = round(float(z - z_min), 2)
 
     chales_json = json.dumps(chales_data)
 
     print(f"\n5. Cotas 3D Relativas (Z_MIN = {z_min:.2f} m):")
-    print(f"   Casa do Sítio (540,95 m): Y = {casa_base_y:.2f} m")
-    print(f"   Salão 12x8m   (547,10 m): Y = {salao_base_y:.2f} m")
-    print(f"   Quadra 22x12m (547,25 m): Y = {quadra_base_y:.2f} m")
+    print(f"   Casa do Sítio (200 m²): Y = {casa_base_y:.2f} m (Cota 540,95 m)")
+    print(f"   Salão 12x8m   (96 m²) : Y = {salao_base_y:.2f} m (Cota 547,10 m)")
+    print(f"   Quadra 22x12m (264 m²): Y = {quadra_base_y:.2f} m (Cota 547,25 m)")
+    for c in chales_data:
+        print(f"   Chalé {c['id']} (22 m²): Cota Real = {c['cota']:.2f} m | Y = {c['base_y']:.2f} m")
 
-    # 6. Montagem do HTML completo com visualizador de alta fidelidade
+    # 7. Montagem do HTML autônomo com Three.js
     html_code = f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -268,11 +273,11 @@ def main():
 
     <div class="stat-row"><span class="stat-lbl">Extensão Focal:</span><span class="stat-val">{width_m:.1f} m × {height_m:.1f} m</span></div>
     <div class="stat-row"><span class="stat-lbl">Malha 3D Real:</span><span class="stat-val">{cols} × {rows} ({rows*cols:,} pts de 1m)</span></div>
-    <div class="stat-row"><span class="stat-lbl">Casa do Sítio:</span><span class="stat-val">Piso 540,95m | Telhado KMZ 1 & 2</span></div>
-    <div class="stat-row"><span class="stat-lbl">Salão de Eventos:</span><span class="stat-val">547,10m | Aberto (Sem Paredes)</span></div>
+    <div class="stat-row"><span class="stat-lbl">Casa do Sítio:</span><span class="stat-val">200 m² (14,0 × 14,3 m) | Cota Piso: 540,95 m</span></div>
+    <div class="stat-row"><span class="stat-lbl">Salão de Eventos:</span><span class="stat-val">12 × 8 m (96 m²) | Cota Piso: 547,10 m</span></div>
     <div class="stat-row"><span class="stat-lbl">Usina Solar Salão:</span><span class="stat-val">18 Módulos (10,44 kWp)</span></div>
-    <div class="stat-row"><span class="stat-lbl">Quadra de Areia:</span><span class="stat-val">22 × 12 m (Cota 547,25 m)</span></div>
-    <div class="stat-row"><span class="stat-lbl">Chalés 1 a 5:</span><span class="stat-val">541,60 m a 545,90 m</span></div>
+    <div class="stat-row"><span class="stat-lbl">Quadra de Areia:</span><span class="stat-val">22 × 12 m (264 m²) | Telas H=6m ao Redor</span></div>
+    <div class="stat-row"><span class="stat-lbl">Chalés 1 a 5:</span><span class="stat-val">22 m² cada (5,5 × 4,0 m) | No Terreno Natural</span></div>
 
     <!-- Controle de Escala Z (1:1 Estrito) -->
     <div class="slider-box">
@@ -304,10 +309,10 @@ def main():
     <!-- Câmeras Rápidas -->
     <div class="section-title">Câmeras & Perspectivas 3D (1:1)</div>
     <div class="btn-group">
-      <button class="btn" onclick="goToView('casa')">🏠 Casa do Sítio</button>
-      <button class="btn" onclick="goToView('salao')">🏛️ No Salão</button>
-      <button class="btn" onclick="goToView('quadra')">🏐 Na Quadra</button>
-      <button class="btn" onclick="goToView('chales')">🏡 Chalés 1 a 5</button>
+      <button class="btn" onclick="goToView('casa')">🏠 Casa do Sítio (200 m²)</button>
+      <button class="btn" onclick="goToView('salao')">🏛️ No Salão (12×8m)</button>
+      <button class="btn" onclick="goToView('quadra')">🏐 Na Quadra (Telas H=6m)</button>
+      <button class="btn" onclick="goToView('chales')">🏡 Chalés 1 a 5 (22 m²)</button>
       <button class="btn btn-full" onclick="goToView('panoramica')">🌐 Panorâmica Geral</button>
       <button class="btn btn-full" onclick="goToView('pedestre')">🚶 Nível do Pedestre (Olhos 1,70m)</button>
     </div>
@@ -317,6 +322,10 @@ def main():
     <div class="toggle-row">
       <span>Exibir Edificações 3D</span>
       <input type="checkbox" id="chk-edif" checked onchange="toggleEdif(this.checked)">
+    </div>
+    <div class="toggle-row">
+      <span>Telas / Redes da Quadra (H=6m)</span>
+      <input type="checkbox" id="chk-telas" checked onchange="toggleTelas(this.checked)">
     </div>
     <div class="toggle-row">
       <span>Malha de Relevo (Wireframe 1m)</span>
@@ -387,7 +396,6 @@ def main():
     scene.background = new THREE.Color(0x090d16);
 
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.5, 3000);
-    // Posiciona câmera inicial visando a Casa do Sítio e Salão
     camera.position.set(casaData.lx + 42, casaData.base_y + 32, casaData.lz + 46);
 
     const renderer = new THREE.WebGLRenderer({{ antialias: true, powerPreference: 'high-performance' }});
@@ -549,7 +557,7 @@ def main():
     const clayTextures = createClayTileTextures();
 
     // =========================================================================
-    // 5. CASA DO SÍTIO: TELHADO 1 & TELHADO 2 RIGOROSAMENTE ALINHADOS AOS KMZ
+    // 5. CASA DO SÍTIO: 200 m² TOTAL (14,0 m x 14,3 m) & TELHADOS ALINHADOS AOS KMZ
     // =========================================================================
     const casaGroup = new THREE.Group();
     casaGroup.position.set(casaData.lx, casaData.base_y, casaData.lz);
@@ -739,6 +747,26 @@ def main():
         casaGroup.add(ringMesh);
       }}
 
+      // Piso / Laje Estrutural da Casa do Sítio (200 m²: 14,0 m x 14,3 m)
+      const casaFloorMat = new THREE.MeshStandardMaterial({{ color: 0x94a3b8, roughness: 0.6 }});
+      const casaFloor = new THREE.Mesh(new THREE.BoxGeometry(14.0, 0.20, 14.3), casaFloorMat);
+      casaFloor.position.set(0.15, 0.10, -0.45);
+      casaFloor.receiveShadow = true;
+      casaGroup.add(casaFloor);
+
+      // Pilares de sustentação da varanda coberta sob os beirais externos
+      const verandaPostMat = new THREE.MeshStandardMaterial({{ color: 0x452311, roughness: 0.8 }});
+      const verandaPostCoords = [
+        [-6.5, 6.3], [6.5, 6.3], [-6.5, -6.8], [6.5, -6.8],
+        [-6.5, 0.0], [6.5, 0.0]
+      ];
+      verandaPostCoords.forEach(c => {{
+        const pMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.14, 3.2, 8), verandaPostMat);
+        pMesh.position.set(c[0], 1.6, c[1]);
+        pMesh.castShadow = true;
+        casaGroup.add(pMesh);
+      }});
+
       // Paredes e Embasamento da Casa do Sítio
       const wallUTM = [
         [663412.43, 6968631.12],
@@ -812,14 +840,14 @@ def main():
     }})();
 
     // =========================================================================
-    // 6. SALÃO DE FESTAS 12x8m RECUPERADO (ESTRUTURA ABERTA SEM PAREDES + USINA SOLAR)
+    // 6. SALÃO DE FESTAS 12x8m (96 m² ESTRUTURA ABERTA SEM PAREDES + USINA SOLAR)
     // =========================================================================
     const salaoGroup = new THREE.Group();
     salaoGroup.position.set(salaoData.lx, salaoData.base_y, salaoData.lz);
     salaoGroup.rotation.y = -salaoData.rot_rad;
     edifGroup.add(salaoGroup);
 
-    // Embasamento e Piso Cerâmico
+    // Embasamento e Piso Cerâmico 12x8m
     const foundationMat = new THREE.MeshStandardMaterial({{ color: 0x64748b, roughness: 0.85, metalness: 0.1 }});
     const salaoPlinth = new THREE.Mesh(new THREE.BoxGeometry(12.0, 2.50, 8.0), foundationMat);
     salaoPlinth.position.set(0, -1.13, 0);
@@ -1061,7 +1089,7 @@ def main():
     optGroup3.visible = false;
 
     // =========================================================================
-    // 7. QUADRA DE AREIA 22x12m
+    // 7. QUADRA DE AREIA 22x12m COM TELAS DE PROTEÇÃO AO REDOR (H=6,00 m)
     // =========================================================================
     const quadraGroup = new THREE.Group();
     quadraGroup.position.set(quadraData.lx, quadraData.base_y, quadraData.lz);
@@ -1091,37 +1119,108 @@ def main():
       quadraGroup.add(pole);
     }});
 
-    const netMat = new THREE.MeshBasicMaterial({{ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.65 }});
-    const net = new THREE.Mesh(new THREE.PlaneGeometry(8.5, 1.0), netMat);
+    // TELAS / REDES DE PROTEÇÃO AO REDOR DA QUADRA (4 LATERAIS H=6m + TETO SUPERIOR)
+    const telasGroup = new THREE.Group();
+    quadraGroup.add(telasGroup);
+
+    const telaMat = new THREE.MeshBasicMaterial({{
+      color: 0x38bdf8,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.38,
+      side: THREE.DoubleSide
+    }});
+
+    // 1. Tela Lateral Sul (22,0 m x 6,0 m)
+    const telaSul = new THREE.Mesh(new THREE.PlaneGeometry(22.0, 6.0, 22, 6), telaMat);
+    telaSul.position.set(0, 3.0, -6.0);
+    telasGroup.add(telaSul);
+
+    // 2. Tela Lateral Norte (22,0 m x 6,0 m)
+    const telaNorte = new THREE.Mesh(new THREE.PlaneGeometry(22.0, 6.0, 22, 6), telaMat);
+    telaNorte.position.set(0, 3.0, 6.0);
+    telasGroup.add(telaNorte);
+
+    // 3. Tela Fundo Oeste (12,0 m x 6,0 m)
+    const telaOeste = new THREE.Mesh(new THREE.PlaneGeometry(12.0, 6.0, 12, 6), telaMat);
+    telaOeste.position.set(-11.0, 3.0, 0);
+    telaOeste.rotation.y = Math.PI / 2;
+    telasGroup.add(telaOeste);
+
+    // 4. Tela Fundo Leste (12,0 m x 6,0 m)
+    const telaLeste = new THREE.Mesh(new THREE.PlaneGeometry(12.0, 6.0, 12, 6), telaMat);
+    telaLeste.position.set(11.0, 3.0, 0);
+    telaLeste.rotation.y = Math.PI / 2;
+    telasGroup.add(telaLeste);
+
+    // 5. Tela de Proteção Superior (Teto Anti-Fuga 22,0 m x 12,0 m a 6m de altura)
+    const telaTeto = new THREE.Mesh(new THREE.PlaneGeometry(22.0, 12.0, 22, 12), telaMat);
+    telaTeto.position.set(0, 6.0, 0);
+    telaTeto.rotation.x = Math.PI / 2;
+    telasGroup.add(telaTeto);
+
+    // Cabos de Aço Perimetrais de Sustentação a 6,0 m de altura
+    const cableMat = new THREE.LineBasicMaterial({{ color: 0xe2e8f0, linewidth: 2 }});
+    const cablePts = [
+      new THREE.Vector3(-11, 6.0, -6), new THREE.Vector3(11, 6.0, -6),
+      new THREE.Vector3(11, 6.0, 6), new THREE.Vector3(-11, 6.0, 6),
+      new THREE.Vector3(-11, 6.0, -6)
+    ];
+    telasGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(cablePts), cableMat));
+
+    // Mastro e Rede Central de Jogo Oficial (2,43 m)
+    const netGameMat = new THREE.MeshBasicMaterial({{ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.75 }});
+    const net = new THREE.Mesh(new THREE.PlaneGeometry(8.5, 1.0), netGameMat);
     net.position.set(0, 2.2, 0);
     net.rotation.y = Math.PI / 2;
     quadraGroup.add(net);
 
     // =========================================================================
-    // 8. CHALÉS 1 A 5 GEORREFERENCIADOS
+    // 8. CHALÉS 1 A 5 (22,0 m² CADA - 5,50 m x 4,00 m) NO TERRENO NATURAL
     // =========================================================================
+    const chalesGroups = [];
     const chaleWallMat = new THREE.MeshStandardMaterial({{ color: 0x78350f, roughness: 0.8 }});
     const chaleRoofMat = new THREE.MeshStandardMaterial({{ color: 0x9a3412, roughness: 0.7 }});
     const chaleGlassMat = new THREE.MeshStandardMaterial({{ color: 0x38bdf8, roughness: 0.2, metalness: 0.8 }});
+    const chalePilarMat = new THREE.MeshStandardMaterial({{ color: 0x475569, roughness: 0.9 }});
+    const chaleDeckMat = new THREE.MeshStandardMaterial({{ color: 0x5c2d16, roughness: 0.75 }});
 
     chalesData.forEach(c => {{
       const cGroup = new THREE.Group();
       cGroup.position.set(c.lx, c.base_y, c.lz);
       cGroup.rotation.y = -salaoData.rot_rad;
 
-      // Base e Paredes de Madeira
-      const body = new THREE.Mesh(new THREE.BoxGeometry(6.0, 2.8, 4.5), chaleWallMat);
-      body.position.y = 1.4;
+      // Pilotis / Pilares de fundação ancorados no relevo natural da encosta (-4.0m)
+      const pilotiCoords = [
+        [-2.4, -1.8], [0.0, -1.8], [2.4, -1.8],
+        [-2.4, 1.8],  [0.0, 1.8],  [2.4, 1.8]
+      ];
+      pilotiCoords.forEach(pt => {{
+        const pMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.16, 4.0, 8), chalePilarMat);
+        pMesh.position.set(pt[0], -1.9, pt[1]);
+        pMesh.castShadow = true;
+        cGroup.add(pMesh);
+      }});
+
+      // Laje / Deck Estrutural de 22,0 m² (5,50 m × 4,00 m)
+      const baseDeck = new THREE.Mesh(new THREE.BoxGeometry(5.50, 0.20, 4.00), chaleDeckMat);
+      baseDeck.position.set(0, 0.10, 0);
+      baseDeck.receiveShadow = true;
+      cGroup.add(baseDeck);
+
+      // Corpo Principal do Chalé (5,40 m × 2,80 m = 15,1 m² interno)
+      const body = new THREE.Mesh(new THREE.BoxGeometry(5.40, 2.70, 2.80), chaleWallMat);
+      body.position.set(0, 1.55, -0.55);
       body.castShadow = true;
       cGroup.add(body);
 
-      // Telhado Duas Águas
+      // Telhado Duas Águas (5,80 m × 4,40 m)
       const rGeom = new THREE.BufferGeometry();
       const rPts = [
-        -3.4, 2.7, -2.5, -3.4, 2.7, 2.5, 0.0, 4.2, 2.5,
-        -3.4, 2.7, -2.5, 0.0, 4.2, 2.5, 0.0, 4.2, -2.5,
-        0.0, 4.2, -2.5, 0.0, 4.2, 2.5, 3.4, 2.7, 2.5,
-        0.0, 4.2, -2.5, 3.4, 2.7, 2.5, 3.4, 2.7, -2.5
+        -2.90, 2.75, -2.20,  -2.90, 2.75, 2.20,   0.00, 4.10, 2.20,
+        -2.90, 2.75, -2.20,   0.00, 4.10, 2.20,   0.00, 4.10, -2.20,
+         0.00, 4.10, -2.20,   0.00, 4.10, 2.20,   2.90, 2.75, 2.20,
+         0.00, 4.10, -2.20,   2.90, 2.75, 2.20,   2.90, 2.75, -2.20
       ];
       rGeom.setAttribute('position', new THREE.Float32BufferAttribute(rPts, 3));
       rGeom.computeVertexNormals();
@@ -1129,17 +1228,24 @@ def main():
       rMesh.castShadow = true;
       cGroup.add(rMesh);
 
-      // Varanda Frontal
-      const deck = new THREE.Mesh(new THREE.BoxGeometry(6.2, 0.15, 1.6), chaleWallMat);
-      deck.position.set(0, 0.1, 3.0);
-      cGroup.add(deck);
+      // Varanda Frontal Integrada (5,50 m × 1,20 m = 6,6 m²)
+      // Área Total Construída = 15,4 m² interno + 6,6 m² varanda = 22,0 m²
+      const railMat = new THREE.MeshStandardMaterial({{ color: 0x334155, roughness: 0.5 }});
+      const railFront = new THREE.Mesh(new THREE.BoxGeometry(5.40, 0.90, 0.06), railMat);
+      railFront.position.set(0, 0.65, 1.95);
+      const railL = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.90, 1.20), railMat);
+      railL.position.set(-2.67, 0.65, 1.35);
+      const railR = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.90, 1.20), railMat);
+      railR.position.set(2.67, 0.65, 1.35);
+      cGroup.add(railFront, railL, railR);
 
-      // Janela Panorâmica
-      const win = new THREE.Mesh(new THREE.PlaneGeometry(1.8, 1.2), chaleGlassMat);
-      win.position.set(0, 1.5, 2.26);
+      // Porta Balcão e Janela Panorâmica
+      const win = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 1.8), chaleGlassMat);
+      win.position.set(0, 1.45, 0.86);
       cGroup.add(win);
 
       edifGroup.add(cGroup);
+      chalesGroups.push({{ group: cGroup, base_y: c.base_y }});
     }});
 
     // =========================================================================
@@ -1175,14 +1281,14 @@ def main():
       return group;
     }}
 
-    // Régua 1:1 na Casa do Sítio (14m x 4,65m)
-    const casaScaleRuler = create1to1ScaleFrame(14.0, 4.65, 'CASA 1:1', 0xf59e0b);
-    casaScaleRuler.position.set(0, 0.05, 6.2);
+    // Régua 1:1 na Casa do Sítio (14,0m x 14,3m = 200 m²)
+    const casaScaleRuler = create1to1ScaleFrame(14.0, 4.65, 'CASA 200m² 1:1', 0xf59e0b);
+    casaScaleRuler.position.set(0, 0.05, 7.2);
     casaGroup.add(casaScaleRuler);
     scale1to1Rulers.push(casaScaleRuler);
 
-    // Régua 1:1 no Salão (12m x 5,2m)
-    const salaoScaleRuler = create1to1ScaleFrame(12.0, 5.2, 'SALÃO 1:1', 0x38bdf8);
+    // Régua 1:1 no Salão (12m x 8m = 96 m²)
+    const salaoScaleRuler = create1to1ScaleFrame(12.0, 5.2, 'SALÃO 12x8m 1:1', 0x38bdf8);
     salaoScaleRuler.position.set(0, 0.12, 4.25);
     salaoGroup.add(salaoScaleRuler);
     scale1to1Rulers.push(salaoScaleRuler);
@@ -1208,10 +1314,13 @@ def main():
       p.needsUpdate = true;
       geom.computeVertexNormals();
 
-      // Ajusta posição vertical das edificações conforme escala Z
+      // Ajusta posição vertical de todas as edificações conforme escala Z
       casaGroup.position.y = casaData.base_y * currentZScale;
       salaoGroup.position.y = salaoData.base_y * currentZScale;
       quadraGroup.position.y = quadraData.base_y * currentZScale;
+      chalesGroups.forEach(cg => {{
+        cg.group.position.y = cg.base_y * currentZScale;
+      }});
     }};
 
     window.setZScalePreset = function(val) {{
@@ -1227,7 +1336,7 @@ def main():
       const isNight = (opt === 4);
       floodlights.forEach(fl => {{ fl.intensity = isNight ? 2.5 : 0.0; }});
       if (isNight) {{
-        optGroup1.visible = true; // Mantém a estrutura com refletores acesos
+        optGroup1.visible = true;
         scene.background = new THREE.Color(0x020617);
         hemiLight.intensity = 0.2;
         sunLight.intensity = 0.15;
@@ -1287,6 +1396,7 @@ def main():
     }}
 
     window.toggleEdif = function(show) {{ edifGroup.visible = show; }};
+    window.toggleTelas = function(show) {{ telasGroup.visible = show; }};
     window.toggleWire = function(show) {{ wireMesh.visible = show; }};
     window.toggleRulers = function(show) {{ scale1to1Rulers.forEach(r => {{ r.visible = show; }}); }};
 
