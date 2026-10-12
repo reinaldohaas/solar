@@ -1,0 +1,22320 @@
+  0
+SECTION
+  2
+HEADER
+  9
+$ACADVER
+  1
+AC1032
+  9
+$ACADMAINTVER
+ 90
+4
+  9
+$DWGCODEPAGE
+  3
+ANSI_1252
+  9
+$LASTSAVEDBY
+  1
+ezdxf
+  9
+$REQUIREDVERSIONS
+160
+0
+  9
+$INSBASE
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$EXTMIN
+ 10
+1e+20
+ 20
+1e+20
+ 30
+1e+20
+  9
+$EXTMAX
+ 10
+-1e+20
+ 20
+-1e+20
+ 30
+-1e+20
+  9
+$LIMMIN
+ 10
+0.0
+ 20
+0.0
+  9
+$LIMMAX
+ 10
+420.0
+ 20
+297.0
+  9
+$ORTHOMODE
+ 70
+0
+  9
+$REGENMODE
+ 70
+1
+  9
+$FILLMODE
+ 70
+1
+  9
+$QTEXTMODE
+ 70
+0
+  9
+$MIRRTEXT
+ 70
+1
+  9
+$LTSCALE
+ 40
+1.0
+  9
+$ATTMODE
+ 70
+1
+  9
+$TEXTSIZE
+ 40
+2.5
+  9
+$TRACEWID
+ 40
+1.0
+  9
+$TEXTSTYLE
+  7
+OpenSans
+  9
+$CLAYER
+  8
+0
+  9
+$CELTYPE
+  6
+ByLayer
+  9
+$CECOLOR
+ 62
+256
+  9
+$CELTSCALE
+ 40
+1.0
+  9
+$DISPSILH
+ 70
+0
+  9
+$DIMSCALE
+ 40
+1.0
+  9
+$DIMASZ
+ 40
+0.175
+  9
+$DIMEXO
+ 40
+0.125
+  9
+$DIMDLI
+ 40
+3.75
+  9
+$DIMRND
+ 40
+0.0
+  9
+$DIMDLE
+ 40
+0.0
+  9
+$DIMEXE
+ 40
+0.375
+  9
+$DIMTP
+ 40
+0.0
+  9
+$DIMTM
+ 40
+0.0
+  9
+$DIMTXT
+ 40
+0.25
+  9
+$DIMCEN
+ 40
+2.5
+  9
+$DIMTSZ
+ 40
+0.0
+  9
+$DIMTOL
+ 70
+0
+  9
+$DIMLIM
+ 70
+0
+  9
+$DIMTIH
+ 70
+0
+  9
+$DIMTOH
+ 70
+0
+  9
+$DIMSE1
+ 70
+0
+  9
+$DIMSE2
+ 70
+0
+  9
+$DIMTAD
+ 70
+1
+  9
+$DIMZIN
+ 70
+12
+  9
+$DIMBLK
+  1
+ARCHTICK
+  9
+$DIMASO
+ 70
+1
+  9
+$DIMSHO
+ 70
+1
+  9
+$DIMPOST
+  1
+
+  9
+$DIMAPOST
+  1
+
+  9
+$DIMALT
+ 70
+0
+  9
+$DIMALTD
+ 70
+3
+  9
+$DIMALTF
+ 40
+0.03937007874
+  9
+$DIMLFAC
+ 40
+100.0
+  9
+$DIMTOFL
+ 70
+1
+  9
+$DIMTVP
+ 40
+0.0
+  9
+$DIMTIX
+ 70
+0
+  9
+$DIMSOXD
+ 70
+0
+  9
+$DIMSAH
+ 70
+0
+  9
+$DIMBLK1
+  1
+
+  9
+$DIMBLK2
+  1
+
+  9
+$DIMSTYLE
+  2
+EZDXF
+  9
+$DIMCLRD
+ 70
+0
+  9
+$DIMCLRE
+ 70
+0
+  9
+$DIMCLRT
+ 70
+0
+  9
+$DIMTFAC
+ 40
+0.5
+  9
+$DIMGAP
+ 40
+0.1
+  9
+$DIMJUST
+ 70
+0
+  9
+$DIMSD1
+ 70
+0
+  9
+$DIMSD2
+ 70
+0
+  9
+$DIMTOLJ
+ 70
+0
+  9
+$DIMTZIN
+ 70
+8
+  9
+$DIMALTZ
+ 70
+0
+  9
+$DIMALTTZ
+ 70
+0
+  9
+$DIMUPT
+ 70
+1
+  9
+$DIMDEC
+ 70
+2
+  9
+$DIMTDEC
+ 70
+2
+  9
+$DIMALTU
+ 70
+2
+  9
+$DIMALTTD
+ 70
+3
+  9
+$DIMTXSTY
+  7
+OpenSansCondensed-Light
+  9
+$DIMAUNIT
+ 70
+0
+  9
+$DIMADEC
+ 70
+2
+  9
+$DIMALTRND
+ 40
+0.0
+  9
+$DIMAZIN
+ 70
+3
+  9
+$DIMDSEP
+ 70
+46
+  9
+$DIMATFIT
+ 70
+3
+  9
+$DIMFRAC
+ 70
+0
+  9
+$DIMLDRBLK
+  1
+
+  9
+$DIMLUNIT
+ 70
+2
+  9
+$DIMLWD
+ 70
+-2
+  9
+$DIMLWE
+ 70
+-2
+  9
+$DIMTMOVE
+ 70
+2
+  9
+$DIMFXL
+ 40
+1.0
+  9
+$DIMFXLON
+ 70
+0
+  9
+$DIMJOGANG
+ 40
+0.785398163397
+  9
+$DIMTFILL
+ 70
+0
+  9
+$DIMTFILLCLR
+ 70
+0
+  9
+$DIMARCSYM
+ 70
+0
+  9
+$DIMLTYPE
+  6
+
+  9
+$DIMLTEX1
+  6
+
+  9
+$DIMLTEX2
+  6
+
+  9
+$DIMTXTDIRECTION
+ 70
+0
+  9
+$LUNITS
+ 70
+2
+  9
+$LUPREC
+ 70
+4
+  9
+$SKETCHINC
+ 40
+1.0
+  9
+$FILLETRAD
+ 40
+10.0
+  9
+$AUNITS
+ 70
+0
+  9
+$AUPREC
+ 70
+2
+  9
+$MENU
+  1
+.
+  9
+$ELEVATION
+ 40
+0.0
+  9
+$PELEVATION
+ 40
+0.0
+  9
+$THICKNESS
+ 40
+0.0
+  9
+$LIMCHECK
+ 70
+0
+  9
+$CHAMFERA
+ 40
+0.0
+  9
+$CHAMFERB
+ 40
+0.0
+  9
+$CHAMFERC
+ 40
+0.0
+  9
+$CHAMFERD
+ 40
+0.0
+  9
+$SKPOLY
+ 70
+0
+  9
+$TDCREATE
+ 40
+2461326.815798611
+  9
+$TDUCREATE
+ 40
+2458532.153996898
+  9
+$TDUPDATE
+ 40
+2461326.815798611
+  9
+$TDUUPDATE
+ 40
+2458532.1544311
+  9
+$TDINDWG
+ 40
+0.0
+  9
+$TDUSRTIMER
+ 40
+0.0
+  9
+$USRTIMER
+ 70
+1
+  9
+$ANGBASE
+ 50
+0.0
+  9
+$ANGDIR
+ 70
+0
+  9
+$PDMODE
+ 70
+0
+  9
+$PDSIZE
+ 40
+0.0
+  9
+$PLINEWID
+ 40
+0.0
+  9
+$SPLFRAME
+ 70
+0
+  9
+$SPLINETYPE
+ 70
+6
+  9
+$SPLINESEGS
+ 70
+8
+  9
+$HANDSEED
+  5
+195
+  9
+$SURFTAB1
+ 70
+6
+  9
+$SURFTAB2
+ 70
+6
+  9
+$SURFTYPE
+ 70
+6
+  9
+$SURFU
+ 70
+6
+  9
+$SURFV
+ 70
+6
+  9
+$UCSBASE
+  2
+
+  9
+$UCSNAME
+  2
+
+  9
+$UCSORG
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSXDIR
+ 10
+1.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSYDIR
+ 10
+0.0
+ 20
+1.0
+ 30
+0.0
+  9
+$UCSORTHOREF
+  2
+
+  9
+$UCSORTHOVIEW
+ 70
+0
+  9
+$UCSORGTOP
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGBOTTOM
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGLEFT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGRIGHT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGFRONT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$UCSORGBACK
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSBASE
+  2
+
+  9
+$PUCSNAME
+  2
+
+  9
+$PUCSORG
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSXDIR
+ 10
+1.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSYDIR
+ 10
+0.0
+ 20
+1.0
+ 30
+0.0
+  9
+$PUCSORTHOREF
+  2
+
+  9
+$PUCSORTHOVIEW
+ 70
+0
+  9
+$PUCSORGTOP
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGBOTTOM
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGLEFT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGRIGHT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGFRONT
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PUCSORGBACK
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$USERI1
+ 70
+0
+  9
+$USERI2
+ 70
+0
+  9
+$USERI3
+ 70
+0
+  9
+$USERI4
+ 70
+0
+  9
+$USERI5
+ 70
+0
+  9
+$USERR1
+ 40
+0.0
+  9
+$USERR2
+ 40
+0.0
+  9
+$USERR3
+ 40
+0.0
+  9
+$USERR4
+ 40
+0.0
+  9
+$USERR5
+ 40
+0.0
+  9
+$WORLDVIEW
+ 70
+1
+  9
+$SHADEDGE
+ 70
+3
+  9
+$SHADEDIF
+ 70
+70
+  9
+$TILEMODE
+ 70
+1
+  9
+$MAXACTVP
+ 70
+64
+  9
+$PINSBASE
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  9
+$PLIMCHECK
+ 70
+0
+  9
+$PEXTMIN
+ 10
+1e+20
+ 20
+1e+20
+ 30
+1e+20
+  9
+$PEXTMAX
+ 10
+-1e+20
+ 20
+-1e+20
+ 30
+-1e+20
+  9
+$PLIMMIN
+ 10
+0.0
+ 20
+0.0
+  9
+$PLIMMAX
+ 10
+420.0
+ 20
+297.0
+  9
+$UNITMODE
+ 70
+0
+  9
+$VISRETAIN
+ 70
+1
+  9
+$PLINEGEN
+ 70
+0
+  9
+$PSLTSCALE
+ 70
+1
+  9
+$TREEDEPTH
+ 70
+3020
+  9
+$CMLSTYLE
+  2
+Standard
+  9
+$CMLJUST
+ 70
+0
+  9
+$CMLSCALE
+ 40
+20.0
+  9
+$PROXYGRAPHICS
+ 70
+1
+  9
+$MEASUREMENT
+ 70
+1
+  9
+$CELWEIGHT
+370
+-1
+  9
+$ENDCAPS
+280
+0
+  9
+$JOINSTYLE
+280
+0
+  9
+$LWDISPLAY
+290
+0
+  9
+$INSUNITS
+ 70
+6
+  9
+$HYPERLINKBASE
+  1
+
+  9
+$STYLESHEET
+  1
+
+  9
+$XEDIT
+290
+1
+  9
+$CEPSNTYPE
+380
+0
+  9
+$PSTYLEMODE
+290
+1
+  9
+$FINGERPRINTGUID
+  2
+{95AAFEB2-05D7-47D0-8746-39452D9D06AD}
+  9
+$VERSIONGUID
+  2
+{A14CCC45-8DE1-4F5E-A020-52FF5E1B3C6D}
+  9
+$EXTNAMES
+290
+1
+  9
+$PSVPSCALE
+ 40
+0.0
+  9
+$OLESTARTUP
+290
+0
+  9
+$SORTENTS
+280
+127
+  9
+$INDEXCTL
+280
+0
+  9
+$HIDETEXT
+280
+1
+  9
+$XCLIPFRAME
+280
+1
+  9
+$HALOGAP
+280
+0
+  9
+$OBSCOLOR
+ 70
+257
+  9
+$OBSLTYPE
+280
+0
+  9
+$INTERSECTIONDISPLAY
+280
+0
+  9
+$INTERSECTIONCOLOR
+ 70
+257
+  9
+$DIMASSOC
+280
+2
+  9
+$PROJECTNAME
+  1
+
+  9
+$CAMERADISPLAY
+290
+0
+  9
+$LENSLENGTH
+ 40
+50.0
+  9
+$CAMERAHEIGHT
+ 40
+0.0
+  9
+$STEPSPERSEC
+ 40
+24.0
+  9
+$STEPSIZE
+ 40
+100.0
+  9
+$3DDWFPREC
+ 40
+2.0
+  9
+$PSOLWIDTH
+ 40
+0.005
+  9
+$PSOLHEIGHT
+ 40
+0.08
+  9
+$LOFTANG1
+ 40
+1.570796326795
+  9
+$LOFTANG2
+ 40
+1.570796326795
+  9
+$LOFTMAG1
+ 40
+0.0
+  9
+$LOFTMAG2
+ 40
+0.0
+  9
+$LOFTPARAM
+ 70
+7
+  9
+$LOFTNORMALS
+280
+1
+  9
+$LATITUDE
+ 40
+37.795
+  9
+$LONGITUDE
+ 40
+-122.394
+  9
+$NORTHDIRECTION
+ 40
+0.0
+  9
+$TIMEZONE
+ 70
+-8000
+  9
+$LIGHTGLYPHDISPLAY
+280
+1
+  9
+$TILEMODELIGHTSYNCH
+280
+1
+  9
+$CMATERIAL
+347
+20
+  9
+$SOLIDHIST
+280
+0
+  9
+$SHOWHIST
+280
+1
+  9
+$DWFFRAME
+280
+2
+  9
+$DGNFRAME
+280
+2
+  9
+$REALWORLDSCALE
+290
+1
+  9
+$INTERFERECOLOR
+ 62
+256
+  9
+$CSHADOW
+280
+0
+  9
+$SHADOWPLANELOCATION
+ 40
+0.0
+  0
+ENDSEC
+  0
+SECTION
+  2
+CLASSES
+  0
+CLASS
+  1
+ACDBDICTIONARYWDFLT
+  2
+AcDbDictionaryWithDefault
+  3
+ObjectDBX Classes
+ 90
+0
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+SUN
+  2
+AcDbSun
+  3
+SCENEOE
+ 90
+1153
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+VISUALSTYLE
+  2
+AcDbVisualStyle
+  3
+ObjectDBX Classes
+ 90
+4095
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+MATERIAL
+  2
+AcDbMaterial
+  3
+ObjectDBX Classes
+ 90
+1153
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+SCALE
+  2
+AcDbScale
+  3
+ObjectDBX Classes
+ 90
+1153
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+TABLESTYLE
+  2
+AcDbTableStyle
+  3
+ObjectDBX Classes
+ 90
+4095
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+MLEADERSTYLE
+  2
+AcDbMLeaderStyle
+  3
+ACDB_MLEADERSTYLE_CLASS
+ 90
+4095
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+DICTIONARYVAR
+  2
+AcDbDictionaryVar
+  3
+ObjectDBX Classes
+ 90
+0
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+CELLSTYLEMAP
+  2
+AcDbCellStyleMap
+  3
+ObjectDBX Classes
+ 90
+1152
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+MENTALRAYRENDERSETTINGS
+  2
+AcDbMentalRayRenderSettings
+  3
+SCENEOE
+ 90
+1024
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+ACDBDETAILVIEWSTYLE
+  2
+AcDbDetailViewStyle
+  3
+ObjectDBX Classes
+ 90
+1025
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+ACDBSECTIONVIEWSTYLE
+  2
+AcDbSectionViewStyle
+  3
+ObjectDBX Classes
+ 90
+1025
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+RASTERVARIABLES
+  2
+AcDbRasterVariables
+  3
+ISM
+ 90
+0
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+LAYOUT
+  2
+AcDbLayout
+  3
+ObjectDBX Classes
+ 90
+0
+ 91
+0
+280
+0
+281
+0
+  0
+CLASS
+  1
+ACDBPLACEHOLDER
+  2
+AcDbPlaceHolder
+  3
+ObjectDBX Classes
+ 90
+0
+ 91
+0
+280
+0
+281
+0
+  0
+ENDSEC
+  0
+SECTION
+  2
+TABLES
+  0
+TABLE
+  2
+VPORT
+  5
+8
+330
+0
+100
+AcDbSymbolTable
+ 70
+1
+  0
+VPORT
+  5
+23
+330
+8
+100
+AcDbSymbolTableRecord
+100
+AcDbViewportTableRecord
+  2
+*Active
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 11
+1.0
+ 21
+1.0
+ 12
+0.0
+ 22
+0.0
+ 13
+0.0
+ 23
+0.0
+ 14
+0.5
+ 24
+0.5
+ 15
+0.5
+ 25
+0.5
+ 16
+0.0
+ 26
+0.0
+ 36
+1.0
+ 17
+0.0
+ 27
+0.0
+ 37
+0.0
+ 40
+1000.0
+ 41
+1.34
+ 42
+50.0
+ 43
+0.0
+ 44
+0.0
+ 50
+0.0
+ 51
+0.0
+ 71
+0
+ 72
+1000
+ 73
+1
+ 74
+3
+ 75
+0
+ 76
+0
+ 77
+0
+ 78
+0
+281
+0
+ 65
+0
+146
+0.0
+  0
+ENDTAB
+  0
+TABLE
+  2
+LTYPE
+  5
+2
+330
+0
+100
+AcDbSymbolTable
+ 70
+21
+  0
+LTYPE
+  5
+24
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+ByBlock
+ 70
+0
+  3
+
+ 72
+65
+ 73
+0
+ 40
+0.0
+  0
+LTYPE
+  5
+25
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+ByLayer
+ 70
+0
+  3
+
+ 72
+65
+ 73
+0
+ 40
+0.0
+  0
+LTYPE
+  5
+26
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+Continuous
+ 70
+0
+  3
+
+ 72
+65
+ 73
+0
+ 40
+0.0
+  0
+LTYPE
+  5
+2F
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+CENTER
+ 70
+0
+  3
+Center ____ _ ____ _ ____ _ ____ _ ____ _ ____
+ 72
+65
+ 73
+4
+ 40
+5.08
+ 49
+3.175
+ 74
+0
+ 49
+-0.635
+ 74
+0
+ 49
+0.635
+ 74
+0
+ 49
+-0.635
+ 74
+0
+  0
+LTYPE
+  5
+30
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+CENTERX2
+ 70
+0
+  3
+Center (2x) ________  __  ________  __  ________
+ 72
+65
+ 73
+4
+ 40
+8.89
+ 49
+6.35
+ 74
+0
+ 49
+-0.635
+ 74
+0
+ 49
+1.27
+ 74
+0
+ 49
+-0.635
+ 74
+0
+  0
+LTYPE
+  5
+31
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+CENTER2
+ 70
+0
+  3
+Center (.5x) ____ _ ____ _ ____ _ ____ _ ____
+ 72
+65
+ 73
+4
+ 40
+2.54
+ 49
+1.587
+ 74
+0
+ 49
+-0.318
+ 74
+0
+ 49
+0.318
+ 74
+0
+ 49
+-0.318
+ 74
+0
+  0
+LTYPE
+  5
+32
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DASHED
+ 70
+0
+  3
+Dashed __ __ __ __ __ __ __ __ __ __ __ __ __ _
+ 72
+65
+ 73
+2
+ 40
+1.524
+ 49
+1.27
+ 74
+0
+ 49
+-0.254
+ 74
+0
+  0
+LTYPE
+  5
+33
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DASHEDX2
+ 70
+0
+  3
+Dashed (2x) ____  ____  ____  ____  ____  ____
+ 72
+65
+ 73
+2
+ 40
+3.048
+ 49
+2.54
+ 74
+0
+ 49
+-0.508
+ 74
+0
+  0
+LTYPE
+  5
+34
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DASHED2
+ 70
+0
+  3
+Dashed (.5x) _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ 72
+65
+ 73
+2
+ 40
+0.762
+ 49
+0.635
+ 74
+0
+ 49
+-0.127
+ 74
+0
+  0
+LTYPE
+  5
+35
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+PHANTOM
+ 70
+0
+  3
+Phantom ______  __  __  ______  __  __  ______
+ 72
+65
+ 73
+6
+ 40
+6.35
+ 49
+3.175
+ 74
+0
+ 49
+-0.635
+ 74
+0
+ 49
+0.635
+ 74
+0
+ 49
+-0.635
+ 74
+0
+ 49
+0.635
+ 74
+0
+ 49
+-0.635
+ 74
+0
+  0
+LTYPE
+  5
+36
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+PHANTOMX2
+ 70
+0
+  3
+Phantom (2x)____________    ____    ____    ____________
+ 72
+65
+ 73
+6
+ 40
+10.795
+ 49
+6.35
+ 74
+0
+ 49
+-0.635
+ 74
+0
+ 49
+1.27
+ 74
+0
+ 49
+-0.635
+ 74
+0
+ 49
+1.27
+ 74
+0
+ 49
+-0.635
+ 74
+0
+  0
+LTYPE
+  5
+37
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+PHANTOM2
+ 70
+0
+  3
+Phantom (.5x) ___ _ _ ___ _ _ ___ _ _ ___ _ _ ___
+ 72
+65
+ 73
+6
+ 40
+3.175
+ 49
+1.587
+ 74
+0
+ 49
+-0.318
+ 74
+0
+ 49
+0.318
+ 74
+0
+ 49
+-0.318
+ 74
+0
+ 49
+0.318
+ 74
+0
+ 49
+-0.318
+ 74
+0
+  0
+LTYPE
+  5
+38
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DASHDOT
+ 70
+0
+  3
+Dash dot __ . __ . __ . __ . __ . __ . __ . __
+ 72
+65
+ 73
+4
+ 40
+3.556
+ 49
+2.54
+ 74
+0
+ 49
+-0.508
+ 74
+0
+ 49
+0.0
+ 74
+0
+ 49
+-0.508
+ 74
+0
+  0
+LTYPE
+  5
+39
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DASHDOTX2
+ 70
+0
+  3
+Dash dot (2x) ____  .  ____  .  ____  .  ____
+ 72
+65
+ 73
+4
+ 40
+6.096
+ 49
+5.08
+ 74
+0
+ 49
+-0.508
+ 74
+0
+ 49
+0.0
+ 74
+0
+ 49
+-0.508
+ 74
+0
+  0
+LTYPE
+  5
+3A
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DASHDOT2
+ 70
+0
+  3
+Dash dot (.5x) _ . _ . _ . _ . _ . _ . _ . _
+ 72
+65
+ 73
+4
+ 40
+1.778
+ 49
+1.27
+ 74
+0
+ 49
+-0.254
+ 74
+0
+ 49
+0.0
+ 74
+0
+ 49
+-0.254
+ 74
+0
+  0
+LTYPE
+  5
+3B
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DOT
+ 70
+0
+  3
+Dot .  .  .  .  .  .  .  .  .  .  .  .  .  .  .  .
+ 72
+65
+ 73
+2
+ 40
+0.508
+ 49
+0.0
+ 74
+0
+ 49
+-0.508
+ 74
+0
+  0
+LTYPE
+  5
+3C
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DOTX2
+ 70
+0
+  3
+Dot (2x) .    .    .    .    .    .    .    . 
+ 72
+65
+ 73
+2
+ 40
+1.016
+ 49
+0.0
+ 74
+0
+ 49
+-1.016
+ 74
+0
+  0
+LTYPE
+  5
+3D
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DOT2
+ 70
+0
+  3
+Dot (.5) . . . . . . . . . . . . . . . . . . . 
+ 72
+65
+ 73
+2
+ 40
+0.254
+ 49
+0.0
+ 74
+0
+ 49
+-0.254
+ 74
+0
+  0
+LTYPE
+  5
+3E
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DIVIDE
+ 70
+0
+  3
+Divide __ . . __ . . __ . . __ . . __ . . __
+ 72
+65
+ 73
+6
+ 40
+4.064
+ 49
+2.54
+ 74
+0
+ 49
+-0.508
+ 74
+0
+ 49
+0.0
+ 74
+0
+ 49
+-0.508
+ 74
+0
+ 49
+0.0
+ 74
+0
+ 49
+-0.508
+ 74
+0
+  0
+LTYPE
+  5
+3F
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DIVIDEX2
+ 70
+0
+  3
+Divide (2x) ____  . .  ____  . .  ____  . .  ____
+ 72
+65
+ 73
+6
+ 40
+6.604
+ 49
+5.08
+ 74
+0
+ 49
+-0.508
+ 74
+0
+ 49
+0.0
+ 74
+0
+ 49
+-0.508
+ 74
+0
+ 49
+0.0
+ 74
+0
+ 49
+-0.508
+ 74
+0
+  0
+LTYPE
+  5
+40
+330
+2
+100
+AcDbSymbolTableRecord
+100
+AcDbLinetypeTableRecord
+  2
+DIVIDE2
+ 70
+0
+  3
+Divide(.5x) _ . _ . _ . _ . _ . _ . _ . _
+ 72
+65
+ 73
+6
+ 40
+2.032
+ 49
+1.27
+ 74
+0
+ 49
+-0.254
+ 74
+0
+ 49
+0.0
+ 74
+0
+ 49
+-0.254
+ 74
+0
+ 49
+0.0
+ 74
+0
+ 49
+-0.254
+ 74
+0
+  0
+ENDTAB
+  0
+TABLE
+  2
+LAYER
+  5
+1
+330
+0
+100
+AcDbSymbolTable
+ 70
+2
+  0
+LAYER
+  5
+27
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+0
+ 70
+0
+ 62
+7
+  6
+Continuous
+370
+-3
+390
+13
+347
+21
+  0
+LAYER
+  5
+28
+330
+1
+100
+AcDbSymbolTableRecord
+100
+AcDbLayerTableRecord
+  2
+Defpoints
+ 70
+0
+ 62
+7
+  6
+Continuous
+290
+0
+370
+-3
+390
+13
+347
+21
+  0
+ENDTAB
+  0
+TABLE
+  2
+STYLE
+  5
+5
+330
+0
+100
+AcDbSymbolTable
+ 70
+26
+  0
+STYLE
+  5
+29
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+Standard
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+txt
+  4
+
+  0
+STYLE
+  5
+41
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans-Light
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-Light.ttf
+  4
+
+  0
+STYLE
+  5
+42
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans-Light-Italic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-LightItalic.ttf
+  4
+
+  0
+STYLE
+  5
+43
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-Regular.ttf
+  4
+
+  0
+STYLE
+  5
+44
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans-Italic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-Italic.ttf
+  4
+
+  0
+STYLE
+  5
+45
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans-SemiBold
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-SemiBold.ttf
+  4
+
+  0
+STYLE
+  5
+46
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans-SemiBoldItalic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-SemiBoldItalic.ttf
+  4
+
+  0
+STYLE
+  5
+47
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans-Bold
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-Bold.ttf
+  4
+
+  0
+STYLE
+  5
+48
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans-BoldItalic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-BoldItalic.ttf
+  4
+
+  0
+STYLE
+  5
+49
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans-ExtraBold
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-ExtraBold.ttf
+  4
+
+  0
+STYLE
+  5
+4A
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSans-ExtraBoldItalic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSans-ExtraBoldItalic.ttf
+  4
+
+  0
+STYLE
+  5
+4B
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSansCondensed-Bold
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSansCondensed-Bold.ttf
+  4
+
+  0
+STYLE
+  5
+4C
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSansCondensed-Light
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSansCondensed-Light.ttf
+  4
+
+  0
+STYLE
+  5
+4D
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+OpenSansCondensed-Italic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+OpenSansCondensed-LightItalic.ttf
+  4
+
+  0
+STYLE
+  5
+4E
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationSans
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationSans-Regular.ttf
+  4
+
+  0
+STYLE
+  5
+4F
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationSans-Bold
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationSans-Bold.ttf
+  4
+
+  0
+STYLE
+  5
+50
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationSans-BoldItalic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationSans-BoldItalic.ttf
+  4
+
+  0
+STYLE
+  5
+51
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationSans-Italic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationSans-Italic.ttf
+  4
+
+  0
+STYLE
+  5
+52
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationSerif
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationSerif-Regular.ttf
+  4
+
+  0
+STYLE
+  5
+53
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationSerif-Bold
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationSerif-Bold.ttf
+  4
+
+  0
+STYLE
+  5
+54
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationSerif-BoldItalic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationSerif-BoldItalic.ttf
+  4
+
+  0
+STYLE
+  5
+55
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationSerif-Italic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationSerif-Italic.ttf
+  4
+
+  0
+STYLE
+  5
+56
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationMono
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationMono-Regular.ttf
+  4
+
+  0
+STYLE
+  5
+57
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationMono-Bold
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationMono-Bold.ttf
+  4
+
+  0
+STYLE
+  5
+58
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationMono-BoldItalic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationMono-BoldItalic.ttf
+  4
+
+  0
+STYLE
+  5
+59
+330
+5
+100
+AcDbSymbolTableRecord
+100
+AcDbTextStyleTableRecord
+  2
+LiberationMono-Italic
+ 70
+0
+ 40
+0.0
+ 41
+1.0
+ 50
+0.0
+ 71
+0
+ 42
+2.5
+  3
+LiberationMono-Italic.ttf
+  4
+
+  0
+ENDTAB
+  0
+TABLE
+  2
+VIEW
+  5
+7
+330
+0
+100
+AcDbSymbolTable
+ 70
+0
+  0
+ENDTAB
+  0
+TABLE
+  2
+UCS
+  5
+6
+330
+0
+100
+AcDbSymbolTable
+ 70
+0
+  0
+ENDTAB
+  0
+TABLE
+  2
+APPID
+  5
+3
+330
+0
+100
+AcDbSymbolTable
+ 70
+3
+  0
+APPID
+  5
+2A
+330
+3
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+ACAD
+ 70
+0
+  0
+APPID
+  5
+192
+330
+3
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+HATCHBACKGROUNDCOLOR
+ 70
+0
+  0
+APPID
+  5
+193
+330
+3
+100
+AcDbSymbolTableRecord
+100
+AcDbRegAppTableRecord
+  2
+EZDXF
+ 70
+0
+  0
+ENDTAB
+  0
+TABLE
+  2
+DIMSTYLE
+  5
+4
+330
+0
+100
+AcDbSymbolTable
+ 70
+12
+100
+AcDbDimStyleTable
+  0
+DIMSTYLE
+105
+2B
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+Standard
+ 70
+0
+ 40
+1.0
+ 41
+2.5
+ 42
+0.625
+ 43
+3.75
+ 44
+1.25
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+2.5
+141
+2.5
+142
+0.0
+143
+0.03937007874
+144
+1.0
+145
+0.0
+146
+1.0
+147
+0.625
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+8
+ 79
+3
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+44
+279
+0
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+0
+289
+3
+290
+0
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+73
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZDXF
+ 70
+0
+ 40
+1.0
+ 41
+0.175
+ 42
+0.125
+ 43
+3.75
+ 44
+0.375
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.25
+141
+2.5
+142
+0.0
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.1
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+2
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+342
+74
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+7C
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_M_100_H25_CM
+ 70
+0
+ 40
+1.0
+ 41
+0.25
+ 42
+0.125
+ 43
+3.75
+ 44
+0.375
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.25
+141
+2.5
+142
+0.125
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.1
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+2
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+7D
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_M_50_H25_CM
+ 70
+0
+ 40
+1.0
+ 41
+0.125
+ 42
+0.0625
+ 43
+3.75
+ 44
+0.1875
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.125
+141
+2.5
+142
+0.0625
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.05
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+2
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+7E
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_M_25_H25_CM
+ 70
+0
+ 40
+1.0
+ 41
+0.0625
+ 42
+0.03125
+ 43
+3.75
+ 44
+0.09375
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.0625
+141
+2.5
+142
+0.03125
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.025
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+2
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+7F
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_M_20_H25_CM
+ 70
+0
+ 40
+1.0
+ 41
+0.05
+ 42
+0.025
+ 43
+3.75
+ 44
+0.07500000000000001
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.05
+141
+2.5
+142
+0.025
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.020000000000000004
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+2
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+80
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_M_10_H25_CM
+ 70
+0
+ 40
+1.0
+ 41
+0.025
+ 42
+0.0125
+ 43
+3.75
+ 44
+0.037500000000000006
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.025
+141
+2.5
+142
+0.0125
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.010000000000000002
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+2
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+81
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_M_5_H25_CM
+ 70
+0
+ 40
+1.0
+ 41
+0.0125
+ 42
+0.00625
+ 43
+3.75
+ 44
+0.018750000000000003
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.0125
+141
+2.5
+142
+0.00625
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.005000000000000001
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+2
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+82
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_M_1_H25_CM
+ 70
+0
+ 40
+1.0
+ 41
+0.0025
+ 42
+0.00125
+ 43
+3.75
+ 44
+0.00375
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.0025
+141
+2.5
+142
+0.00125
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.001
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+2
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+83
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_RADIUS
+ 70
+0
+ 40
+1.0
+ 41
+0.25
+ 42
+0.125
+ 43
+3.75
+ 44
+0.375
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.25
+141
+0.0
+142
+0.0
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.1
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+0
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+1
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+342
+84
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+88
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_RADIUS_INSIDE
+ 70
+0
+ 40
+1.0
+ 41
+0.25
+ 42
+0.125
+ 43
+3.75
+ 44
+0.375
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.25
+141
+0.0
+142
+0.0
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.1
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+0
+ 78
+12
+ 79
+3
+170
+0
+171
+3
+172
+0
+173
+0
+174
+1
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+0
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+0
+290
+0
+340
+4C
+342
+84
+371
+-2
+372
+-2
+  0
+DIMSTYLE
+105
+89
+330
+4
+100
+AcDbSymbolTableRecord
+100
+AcDbDimStyleTableRecord
+  2
+EZ_CURVED
+ 70
+0
+ 40
+1.0
+ 41
+0.25
+ 42
+0.125
+ 43
+3.75
+ 44
+0.375
+ 45
+0.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+2.5
+140
+0.25
+141
+2.5
+142
+0.0
+143
+0.03937007874
+144
+100.0
+145
+0.0
+146
+0.5
+147
+0.1
+148
+0.0
+ 69
+0
+ 70
+0
+ 71
+0
+ 72
+0
+ 73
+0
+ 74
+0
+ 75
+0
+ 76
+0
+ 77
+1
+ 78
+12
+ 79
+2
+ 90
+2
+170
+0
+171
+3
+172
+1
+173
+0
+174
+0
+175
+0
+176
+0
+177
+0
+178
+0
+179
+2
+271
+2
+272
+2
+273
+2
+274
+3
+275
+0
+276
+0
+277
+2
+278
+46
+279
+2
+280
+0
+281
+0
+282
+0
+283
+0
+284
+8
+285
+0
+286
+0
+288
+1
+289
+3
+290
+0
+340
+4C
+371
+-2
+372
+-2
+  0
+ENDTAB
+  0
+TABLE
+  2
+BLOCK_RECORD
+  5
+9
+330
+0
+100
+AcDbSymbolTable
+ 70
+5
+  0
+BLOCK_RECORD
+  5
+17
+330
+9
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+*Model_Space
+340
+1A
+ 70
+0
+280
+1
+281
+0
+  0
+BLOCK_RECORD
+  5
+1B
+330
+9
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+*Paper_Space
+340
+1E
+ 70
+0
+280
+1
+281
+0
+  0
+BLOCK_RECORD
+  5
+74
+330
+9
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+_ARCHTICK
+340
+0
+ 70
+0
+280
+1
+281
+0
+  0
+BLOCK_RECORD
+  5
+78
+330
+9
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+_CLOSEDFILLED
+340
+0
+ 70
+0
+280
+1
+281
+0
+  0
+BLOCK_RECORD
+  5
+84
+330
+9
+100
+AcDbSymbolTableRecord
+100
+AcDbBlockTableRecord
+  2
+_CLOSEDBLANK
+340
+0
+ 70
+0
+280
+1
+281
+0
+  0
+ENDTAB
+  0
+ENDSEC
+  0
+SECTION
+  2
+BLOCKS
+  0
+BLOCK
+  5
+18
+330
+17
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+*Model_Space
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+*Model_Space
+  1
+
+  0
+ENDBLK
+  5
+19
+330
+17
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+1C
+330
+1B
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+*Paper_Space
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+*Paper_Space
+  1
+
+  0
+ENDBLK
+  5
+1D
+330
+1B
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+75
+330
+74
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+_ARCHTICK
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+_ARCHTICK
+  1
+
+  0
+LWPOLYLINE
+  5
+77
+330
+74
+100
+AcDbEntity
+  8
+0
+  6
+BYBLOCK
+ 62
+0
+100
+AcDbPolyline
+ 90
+2
+ 70
+0
+ 43
+0.15
+ 10
+-0.5
+ 20
+-0.5
+ 10
+0.5
+ 20
+0.5
+  0
+ENDBLK
+  5
+76
+330
+74
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+79
+330
+78
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+_CLOSEDFILLED
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+_CLOSEDFILLED
+  1
+
+  0
+SOLID
+  5
+7B
+330
+78
+100
+AcDbEntity
+  8
+0
+  6
+BYBLOCK
+ 62
+0
+100
+AcDbTrace
+ 10
+-1.0
+ 20
+0.16439898372402537
+ 30
+0.0
+ 11
+0.0
+ 21
+0.0
+ 31
+0.0
+ 12
+-1.0
+ 22
+-0.16439898372402537
+ 32
+0.0
+ 13
+-1.0
+ 23
+-0.16439898372402537
+ 33
+0.0
+  0
+ENDBLK
+  5
+7A
+330
+78
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+BLOCK
+  5
+85
+330
+84
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockBegin
+  2
+_CLOSEDBLANK
+ 70
+0
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+  3
+_CLOSEDBLANK
+  1
+
+  0
+LWPOLYLINE
+  5
+87
+330
+84
+100
+AcDbEntity
+  8
+0
+  6
+BYBLOCK
+ 62
+0
+100
+AcDbPolyline
+ 90
+3
+ 70
+1
+ 10
+-1.0
+ 20
+0.16439898372402537
+ 10
+0.0
+ 20
+0.0
+ 10
+-1.0
+ 20
+-0.16439898372402537
+  0
+ENDBLK
+  5
+86
+330
+84
+100
+AcDbEntity
+  8
+0
+100
+AcDbBlockEnd
+  0
+ENDSEC
+  0
+SECTION
+  2
+ENTITIES
+  0
+3DFACE
+  5
+8A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PISO
+100
+AcDbFace
+ 10
+663442.1823963111
+ 20
+6968649.149801968
+ 30
+547.1
+ 11
+663452.7758186195
+ 21
+6968643.512479572
+ 31
+547.1
+ 12
+663449.0176036889
+ 22
+6968636.450198032
+ 32
+547.1
+ 13
+663438.4241813804
+ 23
+6968642.087520428
+ 33
+547.1
+  0
+3DFACE
+  5
+8B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PISO
+100
+AcDbFace
+ 10
+663438.4241813804
+ 20
+6968642.087520428
+ 30
+547.35
+ 11
+663449.0176036889
+ 21
+6968636.450198032
+ 31
+547.35
+ 12
+663452.7758186195
+ 22
+6968643.512479572
+ 32
+547.35
+ 13
+663442.1823963111
+ 23
+6968649.149801968
+ 33
+547.35
+  0
+3DFACE
+  5
+8C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PISO
+100
+AcDbFace
+ 10
+663442.1823963111
+ 20
+6968649.149801968
+ 30
+547.1
+ 11
+663452.7758186195
+ 21
+6968643.512479572
+ 31
+547.1
+ 12
+663452.7758186195
+ 22
+6968643.512479572
+ 32
+547.35
+ 13
+663442.1823963111
+ 23
+6968649.149801968
+ 33
+547.35
+  0
+3DFACE
+  5
+8D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PISO
+100
+AcDbFace
+ 10
+663452.7758186195
+ 20
+6968643.512479572
+ 30
+547.1
+ 11
+663449.0176036889
+ 21
+6968636.450198032
+ 31
+547.1
+ 12
+663449.0176036889
+ 22
+6968636.450198032
+ 32
+547.35
+ 13
+663452.7758186195
+ 23
+6968643.512479572
+ 33
+547.35
+  0
+3DFACE
+  5
+8E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PISO
+100
+AcDbFace
+ 10
+663449.0176036889
+ 20
+6968636.450198032
+ 30
+547.1
+ 11
+663438.4241813804
+ 21
+6968642.087520428
+ 31
+547.1
+ 12
+663438.4241813804
+ 22
+6968642.087520428
+ 32
+547.35
+ 13
+663449.0176036889
+ 23
+6968636.450198032
+ 33
+547.35
+  0
+3DFACE
+  5
+8F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PISO
+100
+AcDbFace
+ 10
+663438.4241813804
+ 20
+6968642.087520428
+ 30
+547.1
+ 11
+663442.1823963111
+ 21
+6968649.149801968
+ 31
+547.1
+ 12
+663442.1823963111
+ 22
+6968649.149801968
+ 32
+547.35
+ 13
+663438.4241813804
+ 23
+6968642.087520428
+ 33
+547.35
+  0
+3DFACE
+  5
+90
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663442.24434756
+ 20
+6968648.946917659
+ 30
+547.1
+ 11
+663442.5091831177
+ 21
+6968648.805984599
+ 31
+547.1
+ 12
+663442.3682500578
+ 22
+6968648.541149041
+ 32
+547.1
+ 13
+663442.1034145001
+ 23
+6968648.682082101
+ 33
+547.1
+  0
+3DFACE
+  5
+91
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663442.1034145001
+ 20
+6968648.682082101
+ 30
+550.7
+ 11
+663442.3682500578
+ 21
+6968648.541149041
+ 31
+550.7
+ 12
+663442.5091831177
+ 22
+6968648.805984599
+ 32
+550.7
+ 13
+663442.24434756
+ 23
+6968648.946917659
+ 33
+550.7
+  0
+3DFACE
+  5
+92
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663442.24434756
+ 20
+6968648.946917659
+ 30
+547.1
+ 11
+663442.5091831177
+ 21
+6968648.805984599
+ 31
+547.1
+ 12
+663442.5091831177
+ 22
+6968648.805984599
+ 32
+550.7
+ 13
+663442.24434756
+ 23
+6968648.946917659
+ 33
+550.7
+  0
+3DFACE
+  5
+93
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663442.5091831177
+ 20
+6968648.805984599
+ 30
+547.1
+ 11
+663442.3682500578
+ 21
+6968648.541149041
+ 31
+547.1
+ 12
+663442.3682500578
+ 22
+6968648.541149041
+ 32
+550.7
+ 13
+663442.5091831177
+ 23
+6968648.805984599
+ 33
+550.7
+  0
+3DFACE
+  5
+94
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663442.3682500578
+ 20
+6968648.541149041
+ 30
+547.1
+ 11
+663442.1034145001
+ 21
+6968648.682082101
+ 31
+547.1
+ 12
+663442.1034145001
+ 22
+6968648.682082101
+ 32
+550.7
+ 13
+663442.3682500578
+ 23
+6968648.541149041
+ 33
+550.7
+  0
+3DFACE
+  5
+95
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663442.1034145001
+ 20
+6968648.682082101
+ 30
+547.1
+ 11
+663442.24434756
+ 21
+6968648.946917659
+ 31
+547.1
+ 12
+663442.24434756
+ 22
+6968648.946917659
+ 32
+550.7
+ 13
+663442.1034145001
+ 23
+6968648.682082101
+ 33
+550.7
+  0
+3DFACE
+  5
+96
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663447.2762231565
+ 20
+6968646.269189521
+ 30
+547.1
+ 11
+663447.5410587142
+ 21
+6968646.128256461
+ 31
+547.1
+ 12
+663447.4001256543
+ 22
+6968645.863420903
+ 32
+547.1
+ 13
+663447.1352900966
+ 23
+6968646.004353963
+ 33
+547.1
+  0
+3DFACE
+  5
+97
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663447.1352900966
+ 20
+6968646.004353963
+ 30
+550.7
+ 11
+663447.4001256543
+ 21
+6968645.863420903
+ 31
+550.7
+ 12
+663447.5410587142
+ 22
+6968646.128256461
+ 32
+550.7
+ 13
+663447.2762231565
+ 23
+6968646.269189521
+ 33
+550.7
+  0
+3DFACE
+  5
+98
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663447.2762231565
+ 20
+6968646.269189521
+ 30
+547.1
+ 11
+663447.5410587142
+ 21
+6968646.128256461
+ 31
+547.1
+ 12
+663447.5410587142
+ 22
+6968646.128256461
+ 32
+550.7
+ 13
+663447.2762231565
+ 23
+6968646.269189521
+ 33
+550.7
+  0
+3DFACE
+  5
+99
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663447.5410587142
+ 20
+6968646.128256461
+ 30
+547.1
+ 11
+663447.4001256543
+ 21
+6968645.863420903
+ 31
+547.1
+ 12
+663447.4001256543
+ 22
+6968645.863420903
+ 32
+550.7
+ 13
+663447.5410587142
+ 23
+6968646.128256461
+ 33
+550.7
+  0
+3DFACE
+  5
+9A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663447.4001256543
+ 20
+6968645.863420903
+ 30
+547.1
+ 11
+663447.1352900966
+ 21
+6968646.004353963
+ 31
+547.1
+ 12
+663447.1352900966
+ 22
+6968646.004353963
+ 32
+550.7
+ 13
+663447.4001256543
+ 23
+6968645.863420903
+ 33
+550.7
+  0
+3DFACE
+  5
+9B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663447.1352900966
+ 20
+6968646.004353963
+ 30
+547.1
+ 11
+663447.2762231565
+ 21
+6968646.269189521
+ 31
+547.1
+ 12
+663447.2762231565
+ 22
+6968646.269189521
+ 32
+550.7
+ 13
+663447.1352900966
+ 23
+6968646.004353963
+ 33
+550.7
+  0
+3DFACE
+  5
+9C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663452.308098753
+ 20
+6968643.591461383
+ 30
+547.1
+ 11
+663452.5729343107
+ 21
+6968643.450528323
+ 31
+547.1
+ 12
+663452.4320012508
+ 22
+6968643.185692765
+ 32
+547.1
+ 13
+663452.1671656931
+ 23
+6968643.326625825
+ 33
+547.1
+  0
+3DFACE
+  5
+9D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663452.1671656931
+ 20
+6968643.326625825
+ 30
+550.7
+ 11
+663452.4320012508
+ 21
+6968643.185692765
+ 31
+550.7
+ 12
+663452.5729343107
+ 22
+6968643.450528323
+ 32
+550.7
+ 13
+663452.308098753
+ 23
+6968643.591461383
+ 33
+550.7
+  0
+3DFACE
+  5
+9E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663452.308098753
+ 20
+6968643.591461383
+ 30
+547.1
+ 11
+663452.5729343107
+ 21
+6968643.450528323
+ 31
+547.1
+ 12
+663452.5729343107
+ 22
+6968643.450528323
+ 32
+550.7
+ 13
+663452.308098753
+ 23
+6968643.591461383
+ 33
+550.7
+  0
+3DFACE
+  5
+9F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663452.5729343107
+ 20
+6968643.450528323
+ 30
+547.1
+ 11
+663452.4320012508
+ 21
+6968643.185692765
+ 31
+547.1
+ 12
+663452.4320012508
+ 22
+6968643.185692765
+ 32
+550.7
+ 13
+663452.5729343107
+ 23
+6968643.450528323
+ 33
+550.7
+  0
+3DFACE
+  5
+A0
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663452.4320012508
+ 20
+6968643.185692765
+ 30
+547.1
+ 11
+663452.1671656931
+ 21
+6968643.326625825
+ 31
+547.1
+ 12
+663452.1671656931
+ 22
+6968643.326625825
+ 32
+550.7
+ 13
+663452.4320012508
+ 23
+6968643.185692765
+ 33
+550.7
+  0
+3DFACE
+  5
+A1
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663452.1671656931
+ 20
+6968643.326625825
+ 30
+547.1
+ 11
+663452.308098753
+ 21
+6968643.591461383
+ 31
+547.1
+ 12
+663452.308098753
+ 22
+6968643.591461383
+ 32
+550.7
+ 13
+663452.1671656931
+ 23
+6968643.326625825
+ 33
+550.7
+  0
+3DFACE
+  5
+A2
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663438.7679987492
+ 20
+6968642.414307235
+ 30
+547.1
+ 11
+663439.0328343068
+ 21
+6968642.273374175
+ 31
+547.1
+ 12
+663438.891901247
+ 22
+6968642.008538617
+ 32
+547.1
+ 13
+663438.6270656893
+ 23
+6968642.149471677
+ 33
+547.1
+  0
+3DFACE
+  5
+A3
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663438.6270656893
+ 20
+6968642.149471677
+ 30
+550.7
+ 11
+663438.891901247
+ 21
+6968642.008538617
+ 31
+550.7
+ 12
+663439.0328343068
+ 22
+6968642.273374175
+ 32
+550.7
+ 13
+663438.7679987492
+ 23
+6968642.414307235
+ 33
+550.7
+  0
+3DFACE
+  5
+A4
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663438.7679987492
+ 20
+6968642.414307235
+ 30
+547.1
+ 11
+663439.0328343068
+ 21
+6968642.273374175
+ 31
+547.1
+ 12
+663439.0328343068
+ 22
+6968642.273374175
+ 32
+550.7
+ 13
+663438.7679987492
+ 23
+6968642.414307235
+ 33
+550.7
+  0
+3DFACE
+  5
+A5
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663439.0328343068
+ 20
+6968642.273374175
+ 30
+547.1
+ 11
+663438.891901247
+ 21
+6968642.008538617
+ 31
+547.1
+ 12
+663438.891901247
+ 22
+6968642.008538617
+ 32
+550.7
+ 13
+663439.0328343068
+ 23
+6968642.273374175
+ 33
+550.7
+  0
+3DFACE
+  5
+A6
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663438.891901247
+ 20
+6968642.008538617
+ 30
+547.1
+ 11
+663438.6270656893
+ 21
+6968642.149471677
+ 31
+547.1
+ 12
+663438.6270656893
+ 22
+6968642.149471677
+ 32
+550.7
+ 13
+663438.891901247
+ 23
+6968642.008538617
+ 33
+550.7
+  0
+3DFACE
+  5
+A7
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663438.6270656893
+ 20
+6968642.149471677
+ 30
+547.1
+ 11
+663438.7679987492
+ 21
+6968642.414307235
+ 31
+547.1
+ 12
+663438.7679987492
+ 22
+6968642.414307235
+ 32
+550.7
+ 13
+663438.6270656893
+ 23
+6968642.149471677
+ 33
+550.7
+  0
+3DFACE
+  5
+A8
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663443.7998743457
+ 20
+6968639.736579097
+ 30
+547.1
+ 11
+663444.0647099033
+ 21
+6968639.595646037
+ 31
+547.1
+ 12
+663443.9237768435
+ 22
+6968639.330810479
+ 32
+547.1
+ 13
+663443.6589412858
+ 23
+6968639.471743539
+ 33
+547.1
+  0
+3DFACE
+  5
+A9
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663443.6589412858
+ 20
+6968639.471743539
+ 30
+550.7
+ 11
+663443.9237768435
+ 21
+6968639.330810479
+ 31
+550.7
+ 12
+663444.0647099033
+ 22
+6968639.595646037
+ 32
+550.7
+ 13
+663443.7998743457
+ 23
+6968639.736579097
+ 33
+550.7
+  0
+3DFACE
+  5
+AA
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663443.7998743457
+ 20
+6968639.736579097
+ 30
+547.1
+ 11
+663444.0647099033
+ 21
+6968639.595646037
+ 31
+547.1
+ 12
+663444.0647099033
+ 22
+6968639.595646037
+ 32
+550.7
+ 13
+663443.7998743457
+ 23
+6968639.736579097
+ 33
+550.7
+  0
+3DFACE
+  5
+AB
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663444.0647099033
+ 20
+6968639.595646037
+ 30
+547.1
+ 11
+663443.9237768435
+ 21
+6968639.330810479
+ 31
+547.1
+ 12
+663443.9237768435
+ 22
+6968639.330810479
+ 32
+550.7
+ 13
+663444.0647099033
+ 23
+6968639.595646037
+ 33
+550.7
+  0
+3DFACE
+  5
+AC
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663443.9237768435
+ 20
+6968639.330810479
+ 30
+547.1
+ 11
+663443.6589412858
+ 21
+6968639.471743539
+ 31
+547.1
+ 12
+663443.6589412858
+ 22
+6968639.471743539
+ 32
+550.7
+ 13
+663443.9237768435
+ 23
+6968639.330810479
+ 33
+550.7
+  0
+3DFACE
+  5
+AD
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663443.6589412858
+ 20
+6968639.471743539
+ 30
+547.1
+ 11
+663443.7998743457
+ 21
+6968639.736579097
+ 31
+547.1
+ 12
+663443.7998743457
+ 22
+6968639.736579097
+ 32
+550.7
+ 13
+663443.6589412858
+ 23
+6968639.471743539
+ 33
+550.7
+  0
+3DFACE
+  5
+AE
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663448.8317499422
+ 20
+6968637.058850959
+ 30
+547.1
+ 11
+663449.0965854998
+ 21
+6968636.917917899
+ 31
+547.1
+ 12
+663448.95565244
+ 22
+6968636.653082341
+ 32
+547.1
+ 13
+663448.6908168823
+ 23
+6968636.794015401
+ 33
+547.1
+  0
+3DFACE
+  5
+AF
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663448.6908168823
+ 20
+6968636.794015401
+ 30
+550.7
+ 11
+663448.95565244
+ 21
+6968636.653082341
+ 31
+550.7
+ 12
+663449.0965854998
+ 22
+6968636.917917899
+ 32
+550.7
+ 13
+663448.8317499422
+ 23
+6968637.058850959
+ 33
+550.7
+  0
+3DFACE
+  5
+B0
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663448.8317499422
+ 20
+6968637.058850959
+ 30
+547.1
+ 11
+663449.0965854998
+ 21
+6968636.917917899
+ 31
+547.1
+ 12
+663449.0965854998
+ 22
+6968636.917917899
+ 32
+550.7
+ 13
+663448.8317499422
+ 23
+6968637.058850959
+ 33
+550.7
+  0
+3DFACE
+  5
+B1
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663449.0965854998
+ 20
+6968636.917917899
+ 30
+547.1
+ 11
+663448.95565244
+ 21
+6968636.653082341
+ 31
+547.1
+ 12
+663448.95565244
+ 22
+6968636.653082341
+ 32
+550.7
+ 13
+663449.0965854998
+ 23
+6968636.917917899
+ 33
+550.7
+  0
+3DFACE
+  5
+B2
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663448.95565244
+ 20
+6968636.653082341
+ 30
+547.1
+ 11
+663448.6908168823
+ 21
+6968636.794015401
+ 31
+547.1
+ 12
+663448.6908168823
+ 22
+6968636.794015401
+ 32
+550.7
+ 13
+663448.95565244
+ 23
+6968636.653082341
+ 33
+550.7
+  0
+3DFACE
+  5
+B3
+330
+17
+100
+AcDbEntity
+  8
+SALAO_PILARES
+100
+AcDbFace
+ 10
+663448.6908168823
+ 20
+6968636.794015401
+ 30
+547.1
+ 11
+663448.8317499422
+ 21
+6968637.058850959
+ 31
+547.1
+ 12
+663448.8317499422
+ 22
+6968637.058850959
+ 32
+550.7
+ 13
+663448.6908168823
+ 23
+6968636.794015401
+ 33
+550.7
+  0
+POLYLINE
+  5
+B4
+330
+17
+100
+AcDbEntity
+  8
+SALAO_CUMEEIRA
+100
+AcDb3dPolyline
+ 66
+1
+ 10
+0.0
+ 20
+0.0
+ 30
+0.0
+ 70
+8
+  0
+VERTEX
+  5
+B6
+330
+17
+100
+AcDbEntity
+  8
+SALAO_CUMEEIRA
+100
+AcDbVertex
+100
+AcDb3dPolylineVertex
+ 10
+663439.9501747688
+ 20
+6968645.806571945
+ 30
+552.15
+ 70
+32
+  0
+VERTEX
+  5
+B7
+330
+17
+100
+AcDbEntity
+  8
+SALAO_CUMEEIRA
+100
+AcDbVertex
+100
+AcDb3dPolylineVertex
+ 10
+663451.2498252311
+ 20
+6968639.793428055
+ 30
+552.15
+ 70
+32
+  0
+SEQEND
+  5
+B5
+330
+B4
+100
+AcDbEntity
+  8
+SALAO_CUMEEIRA
+  0
+3DFACE
+  5
+B8
+330
+17
+100
+AcDbEntity
+  8
+SALAO_TELHADO_SUL
+100
+AcDbFace
+ 10
+663439.9501747688
+ 20
+6968645.806571945
+ 30
+552.15
+ 11
+663451.2498252311
+ 21
+6968639.793428055
+ 31
+552.15
+ 12
+663449.2062958627
+ 22
+6968635.953312469
+ 32
+550.75
+ 13
+663437.9066454003
+ 23
+6968641.966456357
+ 33
+550.75
+  0
+3DFACE
+  5
+B9
+330
+17
+100
+AcDbEntity
+  8
+SALAO_TELHADO_NORTE
+100
+AcDbFace
+ 10
+663441.9937041373
+ 20
+6968649.646687531
+ 30
+550.75
+ 11
+663453.2933545996
+ 21
+6968643.633543642
+ 31
+550.75
+ 12
+663451.2498252311
+ 22
+6968639.793428055
+ 32
+552.15
+ 13
+663439.9501747688
+ 23
+6968645.806571945
+ 33
+552.15
+  0
+3DFACE
+  5
+BA
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.5385342066
+ 20
+6968645.351877352
+ 30
+551.8959770114943
+ 11
+663441.5396126147
+ 21
+6968644.819150386
+ 31
+551.8959770114943
+ 12
+663440.6235477254
+ 22
+6968643.097719261
+ 32
+551.8959770114943
+ 13
+663439.6224693173
+ 23
+6968643.630446227
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+BB
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663439.6224693173
+ 20
+6968643.630446227
+ 30
+551.9359770114943
+ 11
+663440.6235477254
+ 21
+6968643.097719261
+ 31
+551.9359770114943
+ 12
+663441.5396126147
+ 22
+6968644.819150386
+ 32
+551.9359770114943
+ 13
+663440.5385342066
+ 23
+6968645.351877352
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+BC
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.5385342066
+ 20
+6968645.351877352
+ 30
+551.8959770114943
+ 11
+663441.5396126147
+ 21
+6968644.819150386
+ 31
+551.8959770114943
+ 12
+663441.5396126147
+ 22
+6968644.819150386
+ 32
+551.9359770114943
+ 13
+663440.5385342066
+ 23
+6968645.351877352
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+BD
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.5396126147
+ 20
+6968644.819150386
+ 30
+551.8959770114943
+ 11
+663440.6235477254
+ 21
+6968643.097719261
+ 31
+551.8959770114943
+ 12
+663440.6235477254
+ 22
+6968643.097719261
+ 32
+551.9359770114943
+ 13
+663441.5396126147
+ 23
+6968644.819150386
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+BE
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.6235477254
+ 20
+6968643.097719261
+ 30
+551.8959770114943
+ 11
+663439.6224693173
+ 21
+6968643.630446227
+ 31
+551.8959770114943
+ 12
+663439.6224693173
+ 22
+6968643.630446227
+ 32
+551.9359770114943
+ 13
+663440.6235477254
+ 23
+6968643.097719261
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+BF
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663439.6224693173
+ 20
+6968643.630446227
+ 30
+551.8959770114943
+ 11
+663440.5385342066
+ 21
+6968645.351877352
+ 31
+551.8959770114943
+ 12
+663440.5385342066
+ 22
+6968645.351877352
+ 32
+551.9359770114943
+ 13
+663439.6224693173
+ 23
+6968643.630446227
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+C0
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.5625650297
+ 20
+6968644.806936187
+ 30
+551.8959770114943
+ 11
+663442.5636434378
+ 21
+6968644.274209221
+ 31
+551.8959770114943
+ 12
+663441.6475785485
+ 22
+6968642.552778096
+ 32
+551.8959770114943
+ 13
+663440.6465001404
+ 23
+6968643.085505062
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+C1
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.6465001404
+ 20
+6968643.085505062
+ 30
+551.9359770114943
+ 11
+663441.6475785485
+ 21
+6968642.552778096
+ 31
+551.9359770114943
+ 12
+663442.5636434378
+ 22
+6968644.274209221
+ 32
+551.9359770114943
+ 13
+663441.5625650297
+ 23
+6968644.806936187
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+C2
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.5625650297
+ 20
+6968644.806936187
+ 30
+551.8959770114943
+ 11
+663442.5636434378
+ 21
+6968644.274209221
+ 31
+551.8959770114943
+ 12
+663442.5636434378
+ 22
+6968644.274209221
+ 32
+551.9359770114943
+ 13
+663441.5625650297
+ 23
+6968644.806936187
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+C3
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.5636434378
+ 20
+6968644.274209221
+ 30
+551.8959770114943
+ 11
+663441.6475785485
+ 21
+6968642.552778096
+ 31
+551.8959770114943
+ 12
+663441.6475785485
+ 22
+6968642.552778096
+ 32
+551.9359770114943
+ 13
+663442.5636434378
+ 23
+6968644.274209221
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+C4
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.6475785485
+ 20
+6968642.552778096
+ 30
+551.8959770114943
+ 11
+663440.6465001404
+ 21
+6968643.085505062
+ 31
+551.8959770114943
+ 12
+663440.6465001404
+ 22
+6968643.085505062
+ 32
+551.9359770114943
+ 13
+663441.6475785485
+ 23
+6968642.552778096
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+C5
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.6465001404
+ 20
+6968643.085505062
+ 30
+551.8959770114943
+ 11
+663441.5625650297
+ 21
+6968644.806936187
+ 31
+551.8959770114943
+ 12
+663441.5625650297
+ 22
+6968644.806936187
+ 32
+551.9359770114943
+ 13
+663440.6465001404
+ 23
+6968643.085505062
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+C6
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.5865958529
+ 20
+6968644.261995022
+ 30
+551.8959770114943
+ 11
+663443.587674261
+ 21
+6968643.729268056
+ 31
+551.8959770114943
+ 12
+663442.6716093717
+ 22
+6968642.007836931
+ 32
+551.8959770114943
+ 13
+663441.6705309636
+ 23
+6968642.540563897
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+C7
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.6705309636
+ 20
+6968642.540563897
+ 30
+551.9359770114943
+ 11
+663442.6716093717
+ 21
+6968642.007836931
+ 31
+551.9359770114943
+ 12
+663443.587674261
+ 22
+6968643.729268056
+ 32
+551.9359770114943
+ 13
+663442.5865958529
+ 23
+6968644.261995022
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+C8
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.5865958529
+ 20
+6968644.261995022
+ 30
+551.8959770114943
+ 11
+663443.587674261
+ 21
+6968643.729268056
+ 31
+551.8959770114943
+ 12
+663443.587674261
+ 22
+6968643.729268056
+ 32
+551.9359770114943
+ 13
+663442.5865958529
+ 23
+6968644.261995022
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+C9
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.587674261
+ 20
+6968643.729268056
+ 30
+551.8959770114943
+ 11
+663442.6716093717
+ 21
+6968642.007836931
+ 31
+551.8959770114943
+ 12
+663442.6716093717
+ 22
+6968642.007836931
+ 32
+551.9359770114943
+ 13
+663443.587674261
+ 23
+6968643.729268056
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+CA
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.6716093717
+ 20
+6968642.007836931
+ 30
+551.8959770114943
+ 11
+663441.6705309636
+ 21
+6968642.540563897
+ 31
+551.8959770114943
+ 12
+663441.6705309636
+ 22
+6968642.540563897
+ 32
+551.9359770114943
+ 13
+663442.6716093717
+ 23
+6968642.007836931
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+CB
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.6705309636
+ 20
+6968642.540563897
+ 30
+551.8959770114943
+ 11
+663442.5865958529
+ 21
+6968644.261995022
+ 31
+551.8959770114943
+ 12
+663442.5865958529
+ 22
+6968644.261995022
+ 32
+551.9359770114943
+ 13
+663441.6705309636
+ 23
+6968642.540563897
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+CC
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.610626676
+ 20
+6968643.717053857
+ 30
+551.8959770114943
+ 11
+663444.6117050841
+ 21
+6968643.184326891
+ 31
+551.8959770114943
+ 12
+663443.6956401948
+ 22
+6968641.462895766
+ 32
+551.8959770114943
+ 13
+663442.6945617867
+ 23
+6968641.995622732
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+CD
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.6945617867
+ 20
+6968641.995622732
+ 30
+551.9359770114943
+ 11
+663443.6956401948
+ 21
+6968641.462895766
+ 31
+551.9359770114943
+ 12
+663444.6117050841
+ 22
+6968643.184326891
+ 32
+551.9359770114943
+ 13
+663443.610626676
+ 23
+6968643.717053857
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+CE
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.610626676
+ 20
+6968643.717053857
+ 30
+551.8959770114943
+ 11
+663444.6117050841
+ 21
+6968643.184326891
+ 31
+551.8959770114943
+ 12
+663444.6117050841
+ 22
+6968643.184326891
+ 32
+551.9359770114943
+ 13
+663443.610626676
+ 23
+6968643.717053857
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+CF
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.6117050841
+ 20
+6968643.184326891
+ 30
+551.8959770114943
+ 11
+663443.6956401948
+ 21
+6968641.462895766
+ 31
+551.8959770114943
+ 12
+663443.6956401948
+ 22
+6968641.462895766
+ 32
+551.9359770114943
+ 13
+663444.6117050841
+ 23
+6968643.184326891
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+D0
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.6956401948
+ 20
+6968641.462895766
+ 30
+551.8959770114943
+ 11
+663442.6945617867
+ 21
+6968641.995622732
+ 31
+551.8959770114943
+ 12
+663442.6945617867
+ 22
+6968641.995622732
+ 32
+551.9359770114943
+ 13
+663443.6956401948
+ 23
+6968641.462895766
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+D1
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.6945617867
+ 20
+6968641.995622732
+ 30
+551.8959770114943
+ 11
+663443.610626676
+ 21
+6968643.717053857
+ 31
+551.8959770114943
+ 12
+663443.610626676
+ 22
+6968643.717053857
+ 32
+551.9359770114943
+ 13
+663442.6945617867
+ 23
+6968641.995622732
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+D2
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.6346574991
+ 20
+6968643.172112692
+ 30
+551.8959770114943
+ 11
+663445.6357359072
+ 21
+6968642.639385726
+ 31
+551.8959770114943
+ 12
+663444.719671018
+ 22
+6968640.917954601
+ 32
+551.8959770114943
+ 13
+663443.7185926099
+ 23
+6968641.450681567
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+D3
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.7185926099
+ 20
+6968641.450681567
+ 30
+551.9359770114943
+ 11
+663444.719671018
+ 21
+6968640.917954601
+ 31
+551.9359770114943
+ 12
+663445.6357359072
+ 22
+6968642.639385726
+ 32
+551.9359770114943
+ 13
+663444.6346574991
+ 23
+6968643.172112692
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+D4
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.6346574991
+ 20
+6968643.172112692
+ 30
+551.8959770114943
+ 11
+663445.6357359072
+ 21
+6968642.639385726
+ 31
+551.8959770114943
+ 12
+663445.6357359072
+ 22
+6968642.639385726
+ 32
+551.9359770114943
+ 13
+663444.6346574991
+ 23
+6968643.172112692
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+D5
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.6357359072
+ 20
+6968642.639385726
+ 30
+551.8959770114943
+ 11
+663444.719671018
+ 21
+6968640.917954601
+ 31
+551.8959770114943
+ 12
+663444.719671018
+ 22
+6968640.917954601
+ 32
+551.9359770114943
+ 13
+663445.6357359072
+ 23
+6968642.639385726
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+D6
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.719671018
+ 20
+6968640.917954601
+ 30
+551.8959770114943
+ 11
+663443.7185926099
+ 21
+6968641.450681567
+ 31
+551.8959770114943
+ 12
+663443.7185926099
+ 22
+6968641.450681567
+ 32
+551.9359770114943
+ 13
+663444.719671018
+ 23
+6968640.917954601
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+D7
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.7185926099
+ 20
+6968641.450681567
+ 30
+551.8959770114943
+ 11
+663444.6346574991
+ 21
+6968643.172112692
+ 31
+551.8959770114943
+ 12
+663444.6346574991
+ 22
+6968643.172112692
+ 32
+551.9359770114943
+ 13
+663443.7185926099
+ 23
+6968641.450681567
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+D8
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.6586883223
+ 20
+6968642.627171528
+ 30
+551.8959770114943
+ 11
+663446.6597667304
+ 21
+6968642.094444562
+ 31
+551.8959770114943
+ 12
+663445.7437018411
+ 22
+6968640.373013437
+ 32
+551.8959770114943
+ 13
+663444.742623433
+ 23
+6968640.905740403
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+D9
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.742623433
+ 20
+6968640.905740403
+ 30
+551.9359770114943
+ 11
+663445.7437018411
+ 21
+6968640.373013437
+ 31
+551.9359770114943
+ 12
+663446.6597667304
+ 22
+6968642.094444562
+ 32
+551.9359770114943
+ 13
+663445.6586883223
+ 23
+6968642.627171528
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+DA
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.6586883223
+ 20
+6968642.627171528
+ 30
+551.8959770114943
+ 11
+663446.6597667304
+ 21
+6968642.094444562
+ 31
+551.8959770114943
+ 12
+663446.6597667304
+ 22
+6968642.094444562
+ 32
+551.9359770114943
+ 13
+663445.6586883223
+ 23
+6968642.627171528
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+DB
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.6597667304
+ 20
+6968642.094444562
+ 30
+551.8959770114943
+ 11
+663445.7437018411
+ 21
+6968640.373013437
+ 31
+551.8959770114943
+ 12
+663445.7437018411
+ 22
+6968640.373013437
+ 32
+551.9359770114943
+ 13
+663446.6597667304
+ 23
+6968642.094444562
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+DC
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.7437018411
+ 20
+6968640.373013437
+ 30
+551.8959770114943
+ 11
+663444.742623433
+ 21
+6968640.905740403
+ 31
+551.8959770114943
+ 12
+663444.742623433
+ 22
+6968640.905740403
+ 32
+551.9359770114943
+ 13
+663445.7437018411
+ 23
+6968640.373013437
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+DD
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.742623433
+ 20
+6968640.905740403
+ 30
+551.8959770114943
+ 11
+663445.6586883223
+ 21
+6968642.627171528
+ 31
+551.8959770114943
+ 12
+663445.6586883223
+ 22
+6968642.627171528
+ 32
+551.9359770114943
+ 13
+663444.742623433
+ 23
+6968640.905740403
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+DE
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.6827191454
+ 20
+6968642.082230362
+ 30
+551.8959770114943
+ 11
+663447.6837975535
+ 21
+6968641.549503396
+ 31
+551.8959770114943
+ 12
+663446.7677326642
+ 22
+6968639.828072271
+ 32
+551.8959770114943
+ 13
+663445.7666542561
+ 23
+6968640.360799237
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+DF
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.7666542561
+ 20
+6968640.360799237
+ 30
+551.9359770114943
+ 11
+663446.7677326642
+ 21
+6968639.828072271
+ 31
+551.9359770114943
+ 12
+663447.6837975535
+ 22
+6968641.549503396
+ 32
+551.9359770114943
+ 13
+663446.6827191454
+ 23
+6968642.082230362
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+E0
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.6827191454
+ 20
+6968642.082230362
+ 30
+551.8959770114943
+ 11
+663447.6837975535
+ 21
+6968641.549503396
+ 31
+551.8959770114943
+ 12
+663447.6837975535
+ 22
+6968641.549503396
+ 32
+551.9359770114943
+ 13
+663446.6827191454
+ 23
+6968642.082230362
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+E1
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.6837975535
+ 20
+6968641.549503396
+ 30
+551.8959770114943
+ 11
+663446.7677326642
+ 21
+6968639.828072271
+ 31
+551.8959770114943
+ 12
+663446.7677326642
+ 22
+6968639.828072271
+ 32
+551.9359770114943
+ 13
+663447.6837975535
+ 23
+6968641.549503396
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+E2
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.7677326642
+ 20
+6968639.828072271
+ 30
+551.8959770114943
+ 11
+663445.7666542561
+ 21
+6968640.360799237
+ 31
+551.8959770114943
+ 12
+663445.7666542561
+ 22
+6968640.360799237
+ 32
+551.9359770114943
+ 13
+663446.7677326642
+ 23
+6968639.828072271
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+E3
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.7666542561
+ 20
+6968640.360799237
+ 30
+551.8959770114943
+ 11
+663446.6827191454
+ 21
+6968642.082230362
+ 31
+551.8959770114943
+ 12
+663446.6827191454
+ 22
+6968642.082230362
+ 32
+551.9359770114943
+ 13
+663445.7666542561
+ 23
+6968640.360799237
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+E4
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.7067499686
+ 20
+6968641.537289198
+ 30
+551.8959770114943
+ 11
+663448.7078283767
+ 21
+6968641.004562232
+ 31
+551.8959770114943
+ 12
+663447.7917634874
+ 22
+6968639.283131107
+ 32
+551.8959770114943
+ 13
+663446.7906850793
+ 23
+6968639.815858073
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+E5
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.7906850793
+ 20
+6968639.815858073
+ 30
+551.9359770114943
+ 11
+663447.7917634874
+ 21
+6968639.283131107
+ 31
+551.9359770114943
+ 12
+663448.7078283767
+ 22
+6968641.004562232
+ 32
+551.9359770114943
+ 13
+663447.7067499686
+ 23
+6968641.537289198
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+E6
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.7067499686
+ 20
+6968641.537289198
+ 30
+551.8959770114943
+ 11
+663448.7078283767
+ 21
+6968641.004562232
+ 31
+551.8959770114943
+ 12
+663448.7078283767
+ 22
+6968641.004562232
+ 32
+551.9359770114943
+ 13
+663447.7067499686
+ 23
+6968641.537289198
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+E7
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663448.7078283767
+ 20
+6968641.004562232
+ 30
+551.8959770114943
+ 11
+663447.7917634874
+ 21
+6968639.283131107
+ 31
+551.8959770114943
+ 12
+663447.7917634874
+ 22
+6968639.283131107
+ 32
+551.9359770114943
+ 13
+663448.7078283767
+ 23
+6968641.004562232
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+E8
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.7917634874
+ 20
+6968639.283131107
+ 30
+551.8959770114943
+ 11
+663446.7906850793
+ 21
+6968639.815858073
+ 31
+551.8959770114943
+ 12
+663446.7906850793
+ 22
+6968639.815858073
+ 32
+551.9359770114943
+ 13
+663447.7917634874
+ 23
+6968639.283131107
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+E9
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.7906850793
+ 20
+6968639.815858073
+ 30
+551.8959770114943
+ 11
+663447.7067499686
+ 21
+6968641.537289198
+ 31
+551.8959770114943
+ 12
+663447.7067499686
+ 22
+6968641.537289198
+ 32
+551.9359770114943
+ 13
+663446.7906850793
+ 23
+6968639.815858073
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+EA
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663448.7307807917
+ 20
+6968640.992348032
+ 30
+551.8959770114943
+ 11
+663449.7318591998
+ 21
+6968640.459621066
+ 31
+551.8959770114943
+ 12
+663448.8157943105
+ 22
+6968638.738189941
+ 32
+551.8959770114943
+ 13
+663447.8147159024
+ 23
+6968639.270916907
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+EB
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.8147159024
+ 20
+6968639.270916907
+ 30
+551.9359770114943
+ 11
+663448.8157943105
+ 21
+6968638.738189941
+ 31
+551.9359770114943
+ 12
+663449.7318591998
+ 22
+6968640.459621066
+ 32
+551.9359770114943
+ 13
+663448.7307807917
+ 23
+6968640.992348032
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+EC
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663448.7307807917
+ 20
+6968640.992348032
+ 30
+551.8959770114943
+ 11
+663449.7318591998
+ 21
+6968640.459621066
+ 31
+551.8959770114943
+ 12
+663449.7318591998
+ 22
+6968640.459621066
+ 32
+551.9359770114943
+ 13
+663448.7307807917
+ 23
+6968640.992348032
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+ED
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663449.7318591998
+ 20
+6968640.459621066
+ 30
+551.8959770114943
+ 11
+663448.8157943105
+ 21
+6968638.738189941
+ 31
+551.8959770114943
+ 12
+663448.8157943105
+ 22
+6968638.738189941
+ 32
+551.9359770114943
+ 13
+663449.7318591998
+ 23
+6968640.459621066
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+EE
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663448.8157943105
+ 20
+6968638.738189941
+ 30
+551.8959770114943
+ 11
+663447.8147159024
+ 21
+6968639.270916907
+ 31
+551.8959770114943
+ 12
+663447.8147159024
+ 22
+6968639.270916907
+ 32
+551.9359770114943
+ 13
+663448.8157943105
+ 23
+6968638.738189941
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+EF
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.8147159024
+ 20
+6968639.270916907
+ 30
+551.8959770114943
+ 11
+663448.7307807917
+ 21
+6968640.992348032
+ 31
+551.8959770114943
+ 12
+663448.7307807917
+ 22
+6968640.992348032
+ 32
+551.9359770114943
+ 13
+663447.8147159024
+ 23
+6968639.270916907
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+F0
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663439.5989804739
+ 20
+6968643.586306967
+ 30
+551.2522988505748
+ 11
+663440.600058882
+ 21
+6968643.053580001
+ 31
+551.2522988505748
+ 12
+663439.6839939927
+ 22
+6968641.332148876
+ 32
+551.2522988505748
+ 13
+663438.6829155846
+ 23
+6968641.864875842
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+F1
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663438.6829155846
+ 20
+6968641.864875842
+ 30
+551.2922988505748
+ 11
+663439.6839939927
+ 21
+6968641.332148876
+ 31
+551.2922988505748
+ 12
+663440.600058882
+ 22
+6968643.053580001
+ 32
+551.2922988505748
+ 13
+663439.5989804739
+ 23
+6968643.586306967
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+F2
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663439.5989804739
+ 20
+6968643.586306967
+ 30
+551.2522988505748
+ 11
+663440.600058882
+ 21
+6968643.053580001
+ 31
+551.2522988505748
+ 12
+663440.600058882
+ 22
+6968643.053580001
+ 32
+551.2922988505748
+ 13
+663439.5989804739
+ 23
+6968643.586306967
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+F3
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.600058882
+ 20
+6968643.053580001
+ 30
+551.2522988505748
+ 11
+663439.6839939927
+ 21
+6968641.332148876
+ 31
+551.2522988505748
+ 12
+663439.6839939927
+ 22
+6968641.332148876
+ 32
+551.2922988505748
+ 13
+663440.600058882
+ 23
+6968643.053580001
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+F4
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663439.6839939927
+ 20
+6968641.332148876
+ 30
+551.2522988505748
+ 11
+663438.6829155846
+ 21
+6968641.864875842
+ 31
+551.2522988505748
+ 12
+663438.6829155846
+ 22
+6968641.864875842
+ 32
+551.2922988505748
+ 13
+663439.6839939927
+ 23
+6968641.332148876
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+F5
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663438.6829155846
+ 20
+6968641.864875842
+ 30
+551.2522988505748
+ 11
+663439.5989804739
+ 21
+6968643.586306967
+ 31
+551.2522988505748
+ 12
+663439.5989804739
+ 22
+6968643.586306967
+ 32
+551.2922988505748
+ 13
+663438.6829155846
+ 23
+6968641.864875842
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+F6
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.6230112971
+ 20
+6968643.041365802
+ 30
+551.2522988505748
+ 11
+663441.6240897052
+ 21
+6968642.508638836
+ 31
+551.2522988505748
+ 12
+663440.7080248159
+ 22
+6968640.7872077115
+ 32
+551.2522988505748
+ 13
+663439.7069464078
+ 23
+6968641.319934677
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+F7
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663439.7069464078
+ 20
+6968641.319934677
+ 30
+551.2922988505748
+ 11
+663440.7080248159
+ 21
+6968640.7872077115
+ 31
+551.2922988505748
+ 12
+663441.6240897052
+ 22
+6968642.508638836
+ 32
+551.2922988505748
+ 13
+663440.6230112971
+ 23
+6968643.041365802
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+F8
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.6230112971
+ 20
+6968643.041365802
+ 30
+551.2522988505748
+ 11
+663441.6240897052
+ 21
+6968642.508638836
+ 31
+551.2522988505748
+ 12
+663441.6240897052
+ 22
+6968642.508638836
+ 32
+551.2922988505748
+ 13
+663440.6230112971
+ 23
+6968643.041365802
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+F9
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.6240897052
+ 20
+6968642.508638836
+ 30
+551.2522988505748
+ 11
+663440.7080248159
+ 21
+6968640.7872077115
+ 31
+551.2522988505748
+ 12
+663440.7080248159
+ 22
+6968640.7872077115
+ 32
+551.2922988505748
+ 13
+663441.6240897052
+ 23
+6968642.508638836
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+FA
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.7080248159
+ 20
+6968640.7872077115
+ 30
+551.2522988505748
+ 11
+663439.7069464078
+ 21
+6968641.319934677
+ 31
+551.2522988505748
+ 12
+663439.7069464078
+ 22
+6968641.319934677
+ 32
+551.2922988505748
+ 13
+663440.7080248159
+ 23
+6968640.7872077115
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+FB
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663439.7069464078
+ 20
+6968641.319934677
+ 30
+551.2522988505748
+ 11
+663440.6230112971
+ 21
+6968643.041365802
+ 31
+551.2522988505748
+ 12
+663440.6230112971
+ 22
+6968643.041365802
+ 32
+551.2922988505748
+ 13
+663439.7069464078
+ 23
+6968641.319934677
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+FC
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.6470421202
+ 20
+6968642.496424637
+ 30
+551.2522988505748
+ 11
+663442.6481205283
+ 21
+6968641.963697671
+ 31
+551.2522988505748
+ 12
+663441.732055639
+ 22
+6968640.242266546
+ 32
+551.2522988505748
+ 13
+663440.7309772309
+ 23
+6968640.774993512
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+FD
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.7309772309
+ 20
+6968640.774993512
+ 30
+551.2922988505748
+ 11
+663441.732055639
+ 21
+6968640.242266546
+ 31
+551.2922988505748
+ 12
+663442.6481205283
+ 22
+6968641.963697671
+ 32
+551.2922988505748
+ 13
+663441.6470421202
+ 23
+6968642.496424637
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+FE
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.6470421202
+ 20
+6968642.496424637
+ 30
+551.2522988505748
+ 11
+663442.6481205283
+ 21
+6968641.963697671
+ 31
+551.2522988505748
+ 12
+663442.6481205283
+ 22
+6968641.963697671
+ 32
+551.2922988505748
+ 13
+663441.6470421202
+ 23
+6968642.496424637
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+FF
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.6481205283
+ 20
+6968641.963697671
+ 30
+551.2522988505748
+ 11
+663441.732055639
+ 21
+6968640.242266546
+ 31
+551.2522988505748
+ 12
+663441.732055639
+ 22
+6968640.242266546
+ 32
+551.2922988505748
+ 13
+663442.6481205283
+ 23
+6968641.963697671
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+100
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.732055639
+ 20
+6968640.242266546
+ 30
+551.2522988505748
+ 11
+663440.7309772309
+ 21
+6968640.774993512
+ 31
+551.2522988505748
+ 12
+663440.7309772309
+ 22
+6968640.774993512
+ 32
+551.2922988505748
+ 13
+663441.732055639
+ 23
+6968640.242266546
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+101
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663440.7309772309
+ 20
+6968640.774993512
+ 30
+551.2522988505748
+ 11
+663441.6470421202
+ 21
+6968642.496424637
+ 31
+551.2522988505748
+ 12
+663441.6470421202
+ 22
+6968642.496424637
+ 32
+551.2922988505748
+ 13
+663440.7309772309
+ 23
+6968640.774993512
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+102
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.6710729434
+ 20
+6968641.951483472
+ 30
+551.2522988505748
+ 11
+663443.6721513515
+ 21
+6968641.418756506
+ 31
+551.2522988505748
+ 12
+663442.7560864622
+ 22
+6968639.697325381
+ 32
+551.2522988505748
+ 13
+663441.7550080541
+ 23
+6968640.230052347
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+103
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.7550080541
+ 20
+6968640.230052347
+ 30
+551.2922988505748
+ 11
+663442.7560864622
+ 21
+6968639.697325381
+ 31
+551.2922988505748
+ 12
+663443.6721513515
+ 22
+6968641.418756506
+ 32
+551.2922988505748
+ 13
+663442.6710729434
+ 23
+6968641.951483472
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+104
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.6710729434
+ 20
+6968641.951483472
+ 30
+551.2522988505748
+ 11
+663443.6721513515
+ 21
+6968641.418756506
+ 31
+551.2522988505748
+ 12
+663443.6721513515
+ 22
+6968641.418756506
+ 32
+551.2922988505748
+ 13
+663442.6710729434
+ 23
+6968641.951483472
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+105
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.6721513515
+ 20
+6968641.418756506
+ 30
+551.2522988505748
+ 11
+663442.7560864622
+ 21
+6968639.697325381
+ 31
+551.2522988505748
+ 12
+663442.7560864622
+ 22
+6968639.697325381
+ 32
+551.2922988505748
+ 13
+663443.6721513515
+ 23
+6968641.418756506
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+106
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.7560864622
+ 20
+6968639.697325381
+ 30
+551.2522988505748
+ 11
+663441.7550080541
+ 21
+6968640.230052347
+ 31
+551.2522988505748
+ 12
+663441.7550080541
+ 22
+6968640.230052347
+ 32
+551.2922988505748
+ 13
+663442.7560864622
+ 23
+6968639.697325381
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+107
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663441.7550080541
+ 20
+6968640.230052347
+ 30
+551.2522988505748
+ 11
+663442.6710729434
+ 21
+6968641.951483472
+ 31
+551.2522988505748
+ 12
+663442.6710729434
+ 22
+6968641.951483472
+ 32
+551.2922988505748
+ 13
+663441.7550080541
+ 23
+6968640.230052347
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+108
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.6951037665
+ 20
+6968641.406542308
+ 30
+551.2522988505748
+ 11
+663444.6961821746
+ 21
+6968640.873815342
+ 31
+551.2522988505748
+ 12
+663443.7801172853
+ 22
+6968639.152384217
+ 32
+551.2522988505748
+ 13
+663442.7790388772
+ 23
+6968639.685111183
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+109
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.7790388772
+ 20
+6968639.685111183
+ 30
+551.2922988505748
+ 11
+663443.7801172853
+ 21
+6968639.152384217
+ 31
+551.2922988505748
+ 12
+663444.6961821746
+ 22
+6968640.873815342
+ 32
+551.2922988505748
+ 13
+663443.6951037665
+ 23
+6968641.406542308
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+10A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.6951037665
+ 20
+6968641.406542308
+ 30
+551.2522988505748
+ 11
+663444.6961821746
+ 21
+6968640.873815342
+ 31
+551.2522988505748
+ 12
+663444.6961821746
+ 22
+6968640.873815342
+ 32
+551.2922988505748
+ 13
+663443.6951037665
+ 23
+6968641.406542308
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+10B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.6961821746
+ 20
+6968640.873815342
+ 30
+551.2522988505748
+ 11
+663443.7801172853
+ 21
+6968639.152384217
+ 31
+551.2522988505748
+ 12
+663443.7801172853
+ 22
+6968639.152384217
+ 32
+551.2922988505748
+ 13
+663444.6961821746
+ 23
+6968640.873815342
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+10C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.7801172853
+ 20
+6968639.152384217
+ 30
+551.2522988505748
+ 11
+663442.7790388772
+ 21
+6968639.685111183
+ 31
+551.2522988505748
+ 12
+663442.7790388772
+ 22
+6968639.685111183
+ 32
+551.2922988505748
+ 13
+663443.7801172853
+ 23
+6968639.152384217
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+10D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663442.7790388772
+ 20
+6968639.685111183
+ 30
+551.2522988505748
+ 11
+663443.6951037665
+ 21
+6968641.406542308
+ 31
+551.2522988505748
+ 12
+663443.6951037665
+ 22
+6968641.406542308
+ 32
+551.2922988505748
+ 13
+663442.7790388772
+ 23
+6968639.685111183
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+10E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.7191345897
+ 20
+6968640.861601142
+ 30
+551.2522988505748
+ 11
+663445.7202129978
+ 21
+6968640.328874176
+ 31
+551.2522988505748
+ 12
+663444.8041481085
+ 22
+6968638.607443051
+ 32
+551.2522988505748
+ 13
+663443.8030697004
+ 23
+6968639.140170017
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+10F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.8030697004
+ 20
+6968639.140170017
+ 30
+551.2922988505748
+ 11
+663444.8041481085
+ 21
+6968638.607443051
+ 31
+551.2922988505748
+ 12
+663445.7202129978
+ 22
+6968640.328874176
+ 32
+551.2922988505748
+ 13
+663444.7191345897
+ 23
+6968640.861601142
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+110
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.7191345897
+ 20
+6968640.861601142
+ 30
+551.2522988505748
+ 11
+663445.7202129978
+ 21
+6968640.328874176
+ 31
+551.2522988505748
+ 12
+663445.7202129978
+ 22
+6968640.328874176
+ 32
+551.2922988505748
+ 13
+663444.7191345897
+ 23
+6968640.861601142
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+111
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.7202129978
+ 20
+6968640.328874176
+ 30
+551.2522988505748
+ 11
+663444.8041481085
+ 21
+6968638.607443051
+ 31
+551.2522988505748
+ 12
+663444.8041481085
+ 22
+6968638.607443051
+ 32
+551.2922988505748
+ 13
+663445.7202129978
+ 23
+6968640.328874176
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+112
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.8041481085
+ 20
+6968638.607443051
+ 30
+551.2522988505748
+ 11
+663443.8030697004
+ 21
+6968639.140170017
+ 31
+551.2522988505748
+ 12
+663443.8030697004
+ 22
+6968639.140170017
+ 32
+551.2922988505748
+ 13
+663444.8041481085
+ 23
+6968638.607443051
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+113
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663443.8030697004
+ 20
+6968639.140170017
+ 30
+551.2522988505748
+ 11
+663444.7191345897
+ 21
+6968640.861601142
+ 31
+551.2522988505748
+ 12
+663444.7191345897
+ 22
+6968640.861601142
+ 32
+551.2922988505748
+ 13
+663443.8030697004
+ 23
+6968639.140170017
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+114
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.7431654128
+ 20
+6968640.316659978
+ 30
+551.2522988505748
+ 11
+663446.7442438209
+ 21
+6968639.783933012
+ 31
+551.2522988505748
+ 12
+663445.8281789316
+ 22
+6968638.062501887
+ 32
+551.2522988505748
+ 13
+663444.8271005235
+ 23
+6968638.595228853
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+115
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.8271005235
+ 20
+6968638.595228853
+ 30
+551.2922988505748
+ 11
+663445.8281789316
+ 21
+6968638.062501887
+ 31
+551.2922988505748
+ 12
+663446.7442438209
+ 22
+6968639.783933012
+ 32
+551.2922988505748
+ 13
+663445.7431654128
+ 23
+6968640.316659978
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+116
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.7431654128
+ 20
+6968640.316659978
+ 30
+551.2522988505748
+ 11
+663446.7442438209
+ 21
+6968639.783933012
+ 31
+551.2522988505748
+ 12
+663446.7442438209
+ 22
+6968639.783933012
+ 32
+551.2922988505748
+ 13
+663445.7431654128
+ 23
+6968640.316659978
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+117
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.7442438209
+ 20
+6968639.783933012
+ 30
+551.2522988505748
+ 11
+663445.8281789316
+ 21
+6968638.062501887
+ 31
+551.2522988505748
+ 12
+663445.8281789316
+ 22
+6968638.062501887
+ 32
+551.2922988505748
+ 13
+663446.7442438209
+ 23
+6968639.783933012
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+118
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.8281789316
+ 20
+6968638.062501887
+ 30
+551.2522988505748
+ 11
+663444.8271005235
+ 21
+6968638.595228853
+ 31
+551.2522988505748
+ 12
+663444.8271005235
+ 22
+6968638.595228853
+ 32
+551.2922988505748
+ 13
+663445.8281789316
+ 23
+6968638.062501887
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+119
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663444.8271005235
+ 20
+6968638.595228853
+ 30
+551.2522988505748
+ 11
+663445.7431654128
+ 21
+6968640.316659978
+ 31
+551.2522988505748
+ 12
+663445.7431654128
+ 22
+6968640.316659978
+ 32
+551.2922988505748
+ 13
+663444.8271005235
+ 23
+6968638.595228853
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+11A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.767196236
+ 20
+6968639.771718812
+ 30
+551.2522988505748
+ 11
+663447.768274644
+ 21
+6968639.238991846
+ 31
+551.2522988505748
+ 12
+663446.8522097548
+ 22
+6968637.517560721
+ 32
+551.2522988505748
+ 13
+663445.8511313467
+ 23
+6968638.050287687
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+11B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.8511313467
+ 20
+6968638.050287687
+ 30
+551.2922988505748
+ 11
+663446.8522097548
+ 21
+6968637.517560721
+ 31
+551.2922988505748
+ 12
+663447.768274644
+ 22
+6968639.238991846
+ 32
+551.2922988505748
+ 13
+663446.767196236
+ 23
+6968639.771718812
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+11C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.767196236
+ 20
+6968639.771718812
+ 30
+551.2522988505748
+ 11
+663447.768274644
+ 21
+6968639.238991846
+ 31
+551.2522988505748
+ 12
+663447.768274644
+ 22
+6968639.238991846
+ 32
+551.2922988505748
+ 13
+663446.767196236
+ 23
+6968639.771718812
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+11D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.768274644
+ 20
+6968639.238991846
+ 30
+551.2522988505748
+ 11
+663446.8522097548
+ 21
+6968637.517560721
+ 31
+551.2522988505748
+ 12
+663446.8522097548
+ 22
+6968637.517560721
+ 32
+551.2922988505748
+ 13
+663447.768274644
+ 23
+6968639.238991846
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+11E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.8522097548
+ 20
+6968637.517560721
+ 30
+551.2522988505748
+ 11
+663445.8511313467
+ 21
+6968638.050287687
+ 31
+551.2522988505748
+ 12
+663445.8511313467
+ 22
+6968638.050287687
+ 32
+551.2922988505748
+ 13
+663446.8522097548
+ 23
+6968637.517560721
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+11F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663445.8511313467
+ 20
+6968638.050287687
+ 30
+551.2522988505748
+ 11
+663446.767196236
+ 21
+6968639.771718812
+ 31
+551.2522988505748
+ 12
+663446.767196236
+ 22
+6968639.771718812
+ 32
+551.2922988505748
+ 13
+663445.8511313467
+ 23
+6968638.050287687
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+120
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.7912270591
+ 20
+6968639.226777648
+ 30
+551.2522988505748
+ 11
+663448.7923054672
+ 21
+6968638.694050682
+ 31
+551.2522988505748
+ 12
+663447.8762405779
+ 22
+6968636.972619557
+ 32
+551.2522988505748
+ 13
+663446.8751621698
+ 23
+6968637.505346523
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+121
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.8751621698
+ 20
+6968637.505346523
+ 30
+551.2922988505748
+ 11
+663447.8762405779
+ 21
+6968636.972619557
+ 31
+551.2922988505748
+ 12
+663448.7923054672
+ 22
+6968638.694050682
+ 32
+551.2922988505748
+ 13
+663447.7912270591
+ 23
+6968639.226777648
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+122
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.7912270591
+ 20
+6968639.226777648
+ 30
+551.2522988505748
+ 11
+663448.7923054672
+ 21
+6968638.694050682
+ 31
+551.2522988505748
+ 12
+663448.7923054672
+ 22
+6968638.694050682
+ 32
+551.2922988505748
+ 13
+663447.7912270591
+ 23
+6968639.226777648
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+123
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663448.7923054672
+ 20
+6968638.694050682
+ 30
+551.2522988505748
+ 11
+663447.8762405779
+ 21
+6968636.972619557
+ 31
+551.2522988505748
+ 12
+663447.8762405779
+ 22
+6968636.972619557
+ 32
+551.2922988505748
+ 13
+663448.7923054672
+ 23
+6968638.694050682
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+124
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663447.8762405779
+ 20
+6968636.972619557
+ 30
+551.2522988505748
+ 11
+663446.8751621698
+ 21
+6968637.505346523
+ 31
+551.2522988505748
+ 12
+663446.8751621698
+ 22
+6968637.505346523
+ 32
+551.2922988505748
+ 13
+663447.8762405779
+ 23
+6968636.972619557
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+125
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_SUL
+100
+AcDbFace
+ 10
+663446.8751621698
+ 20
+6968637.505346523
+ 30
+551.2522988505748
+ 11
+663447.7912270591
+ 21
+6968639.226777648
+ 31
+551.2522988505748
+ 12
+663447.7912270591
+ 22
+6968639.226777648
+ 32
+551.2922988505748
+ 13
+663446.8751621698
+ 23
+6968637.505346523
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+126
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663441.5720433125
+ 20
+6968647.294004775
+ 30
+551.8959770114943
+ 11
+663442.5731217206
+ 21
+6968646.761277809
+ 31
+551.8959770114943
+ 12
+663441.6570568313
+ 22
+6968645.039846684
+ 32
+551.8959770114943
+ 13
+663440.6559784232
+ 23
+6968645.57257365
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+127
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663440.6559784232
+ 20
+6968645.57257365
+ 30
+551.9359770114943
+ 11
+663441.6570568313
+ 21
+6968645.039846684
+ 31
+551.9359770114943
+ 12
+663442.5731217206
+ 22
+6968646.761277809
+ 32
+551.9359770114943
+ 13
+663441.5720433125
+ 23
+6968647.294004775
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+128
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663441.5720433125
+ 20
+6968647.294004775
+ 30
+551.8959770114943
+ 11
+663442.5731217206
+ 21
+6968646.761277809
+ 31
+551.8959770114943
+ 12
+663442.5731217206
+ 22
+6968646.761277809
+ 32
+551.9359770114943
+ 13
+663441.5720433125
+ 23
+6968647.294004775
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+129
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.5731217206
+ 20
+6968646.761277809
+ 30
+551.8959770114943
+ 11
+663441.6570568313
+ 21
+6968645.039846684
+ 31
+551.8959770114943
+ 12
+663441.6570568313
+ 22
+6968645.039846684
+ 32
+551.9359770114943
+ 13
+663442.5731217206
+ 23
+6968646.761277809
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+12A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663441.6570568313
+ 20
+6968645.039846684
+ 30
+551.8959770114943
+ 11
+663440.6559784232
+ 21
+6968645.57257365
+ 31
+551.8959770114943
+ 12
+663440.6559784232
+ 22
+6968645.57257365
+ 32
+551.9359770114943
+ 13
+663441.6570568313
+ 23
+6968645.039846684
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+12B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663440.6559784232
+ 20
+6968645.57257365
+ 30
+551.8959770114943
+ 11
+663441.5720433125
+ 21
+6968647.294004775
+ 31
+551.8959770114943
+ 12
+663441.5720433125
+ 22
+6968647.294004775
+ 32
+551.9359770114943
+ 13
+663440.6559784232
+ 23
+6968645.57257365
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+12C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.5960741356
+ 20
+6968646.74906361
+ 30
+551.8959770114943
+ 11
+663443.5971525437
+ 21
+6968646.216336644
+ 31
+551.8959770114943
+ 12
+663442.6810876544
+ 22
+6968644.494905519
+ 32
+551.8959770114943
+ 13
+663441.6800092463
+ 23
+6968645.027632485
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+12D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663441.6800092463
+ 20
+6968645.027632485
+ 30
+551.9359770114943
+ 11
+663442.6810876544
+ 21
+6968644.494905519
+ 31
+551.9359770114943
+ 12
+663443.5971525437
+ 22
+6968646.216336644
+ 32
+551.9359770114943
+ 13
+663442.5960741356
+ 23
+6968646.74906361
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+12E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.5960741356
+ 20
+6968646.74906361
+ 30
+551.8959770114943
+ 11
+663443.5971525437
+ 21
+6968646.216336644
+ 31
+551.8959770114943
+ 12
+663443.5971525437
+ 22
+6968646.216336644
+ 32
+551.9359770114943
+ 13
+663442.5960741356
+ 23
+6968646.74906361
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+12F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.5971525437
+ 20
+6968646.216336644
+ 30
+551.8959770114943
+ 11
+663442.6810876544
+ 21
+6968644.494905519
+ 31
+551.8959770114943
+ 12
+663442.6810876544
+ 22
+6968644.494905519
+ 32
+551.9359770114943
+ 13
+663443.5971525437
+ 23
+6968646.216336644
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+130
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.6810876544
+ 20
+6968644.494905519
+ 30
+551.8959770114943
+ 11
+663441.6800092463
+ 21
+6968645.027632485
+ 31
+551.8959770114943
+ 12
+663441.6800092463
+ 22
+6968645.027632485
+ 32
+551.9359770114943
+ 13
+663442.6810876544
+ 23
+6968644.494905519
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+131
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663441.6800092463
+ 20
+6968645.027632485
+ 30
+551.8959770114943
+ 11
+663442.5960741356
+ 21
+6968646.74906361
+ 31
+551.8959770114943
+ 12
+663442.5960741356
+ 22
+6968646.74906361
+ 32
+551.9359770114943
+ 13
+663441.6800092463
+ 23
+6968645.027632485
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+132
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.6201049588
+ 20
+6968646.204122446
+ 30
+551.8959770114943
+ 11
+663444.6211833669
+ 21
+6968645.67139548
+ 31
+551.8959770114943
+ 12
+663443.7051184776
+ 22
+6968643.949964355
+ 32
+551.8959770114943
+ 13
+663442.7040400695
+ 23
+6968644.482691321
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+133
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.7040400695
+ 20
+6968644.482691321
+ 30
+551.9359770114943
+ 11
+663443.7051184776
+ 21
+6968643.949964355
+ 31
+551.9359770114943
+ 12
+663444.6211833669
+ 22
+6968645.67139548
+ 32
+551.9359770114943
+ 13
+663443.6201049588
+ 23
+6968646.204122446
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+134
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.6201049588
+ 20
+6968646.204122446
+ 30
+551.8959770114943
+ 11
+663444.6211833669
+ 21
+6968645.67139548
+ 31
+551.8959770114943
+ 12
+663444.6211833669
+ 22
+6968645.67139548
+ 32
+551.9359770114943
+ 13
+663443.6201049588
+ 23
+6968646.204122446
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+135
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.6211833669
+ 20
+6968645.67139548
+ 30
+551.8959770114943
+ 11
+663443.7051184776
+ 21
+6968643.949964355
+ 31
+551.8959770114943
+ 12
+663443.7051184776
+ 22
+6968643.949964355
+ 32
+551.9359770114943
+ 13
+663444.6211833669
+ 23
+6968645.67139548
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+136
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.7051184776
+ 20
+6968643.949964355
+ 30
+551.8959770114943
+ 11
+663442.7040400695
+ 21
+6968644.482691321
+ 31
+551.8959770114943
+ 12
+663442.7040400695
+ 22
+6968644.482691321
+ 32
+551.9359770114943
+ 13
+663443.7051184776
+ 23
+6968643.949964355
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+137
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.7040400695
+ 20
+6968644.482691321
+ 30
+551.8959770114943
+ 11
+663443.6201049588
+ 21
+6968646.204122446
+ 31
+551.8959770114943
+ 12
+663443.6201049588
+ 22
+6968646.204122446
+ 32
+551.9359770114943
+ 13
+663442.7040400695
+ 23
+6968644.482691321
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+138
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.6441357819
+ 20
+6968645.65918128
+ 30
+551.8959770114943
+ 11
+663445.64521419
+ 21
+6968645.126454314
+ 31
+551.8959770114943
+ 12
+663444.7291493007
+ 22
+6968643.405023189
+ 32
+551.8959770114943
+ 13
+663443.7280708926
+ 23
+6968643.937750155
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+139
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.7280708926
+ 20
+6968643.937750155
+ 30
+551.9359770114943
+ 11
+663444.7291493007
+ 21
+6968643.405023189
+ 31
+551.9359770114943
+ 12
+663445.64521419
+ 22
+6968645.126454314
+ 32
+551.9359770114943
+ 13
+663444.6441357819
+ 23
+6968645.65918128
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+13A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.6441357819
+ 20
+6968645.65918128
+ 30
+551.8959770114943
+ 11
+663445.64521419
+ 21
+6968645.126454314
+ 31
+551.8959770114943
+ 12
+663445.64521419
+ 22
+6968645.126454314
+ 32
+551.9359770114943
+ 13
+663444.6441357819
+ 23
+6968645.65918128
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+13B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.64521419
+ 20
+6968645.126454314
+ 30
+551.8959770114943
+ 11
+663444.7291493007
+ 21
+6968643.405023189
+ 31
+551.8959770114943
+ 12
+663444.7291493007
+ 22
+6968643.405023189
+ 32
+551.9359770114943
+ 13
+663445.64521419
+ 23
+6968645.126454314
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+13C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.7291493007
+ 20
+6968643.405023189
+ 30
+551.8959770114943
+ 11
+663443.7280708926
+ 21
+6968643.937750155
+ 31
+551.8959770114943
+ 12
+663443.7280708926
+ 22
+6968643.937750155
+ 32
+551.9359770114943
+ 13
+663444.7291493007
+ 23
+6968643.405023189
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+13D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.7280708926
+ 20
+6968643.937750155
+ 30
+551.8959770114943
+ 11
+663444.6441357819
+ 21
+6968645.65918128
+ 31
+551.8959770114943
+ 12
+663444.6441357819
+ 22
+6968645.65918128
+ 32
+551.9359770114943
+ 13
+663443.7280708926
+ 23
+6968643.937750155
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+13E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.668166605
+ 20
+6968645.1142401155
+ 30
+551.8959770114943
+ 11
+663446.6692450132
+ 21
+6968644.58151315
+ 31
+551.8959770114943
+ 12
+663445.7531801239
+ 22
+6968642.860082025
+ 32
+551.8959770114943
+ 13
+663444.7521017158
+ 23
+6968643.392808991
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+13F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.7521017158
+ 20
+6968643.392808991
+ 30
+551.9359770114943
+ 11
+663445.7531801239
+ 21
+6968642.860082025
+ 31
+551.9359770114943
+ 12
+663446.6692450132
+ 22
+6968644.58151315
+ 32
+551.9359770114943
+ 13
+663445.668166605
+ 23
+6968645.1142401155
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+140
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.668166605
+ 20
+6968645.1142401155
+ 30
+551.8959770114943
+ 11
+663446.6692450132
+ 21
+6968644.58151315
+ 31
+551.8959770114943
+ 12
+663446.6692450132
+ 22
+6968644.58151315
+ 32
+551.9359770114943
+ 13
+663445.668166605
+ 23
+6968645.1142401155
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+141
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.6692450132
+ 20
+6968644.58151315
+ 30
+551.8959770114943
+ 11
+663445.7531801239
+ 21
+6968642.860082025
+ 31
+551.8959770114943
+ 12
+663445.7531801239
+ 22
+6968642.860082025
+ 32
+551.9359770114943
+ 13
+663446.6692450132
+ 23
+6968644.58151315
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+142
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.7531801239
+ 20
+6968642.860082025
+ 30
+551.8959770114943
+ 11
+663444.7521017158
+ 21
+6968643.392808991
+ 31
+551.8959770114943
+ 12
+663444.7521017158
+ 22
+6968643.392808991
+ 32
+551.9359770114943
+ 13
+663445.7531801239
+ 23
+6968642.860082025
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+143
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.7521017158
+ 20
+6968643.392808991
+ 30
+551.8959770114943
+ 11
+663445.668166605
+ 21
+6968645.1142401155
+ 31
+551.8959770114943
+ 12
+663445.668166605
+ 22
+6968645.1142401155
+ 32
+551.9359770114943
+ 13
+663444.7521017158
+ 23
+6968643.392808991
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+144
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.6921974282
+ 20
+6968644.56929895
+ 30
+551.8959770114943
+ 11
+663447.6932758363
+ 21
+6968644.036571984
+ 31
+551.8959770114943
+ 12
+663446.777210947
+ 22
+6968642.315140859
+ 32
+551.8959770114943
+ 13
+663445.7761325389
+ 23
+6968642.847867825
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+145
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.7761325389
+ 20
+6968642.847867825
+ 30
+551.9359770114943
+ 11
+663446.777210947
+ 21
+6968642.315140859
+ 31
+551.9359770114943
+ 12
+663447.6932758363
+ 22
+6968644.036571984
+ 32
+551.9359770114943
+ 13
+663446.6921974282
+ 23
+6968644.56929895
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+146
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.6921974282
+ 20
+6968644.56929895
+ 30
+551.8959770114943
+ 11
+663447.6932758363
+ 21
+6968644.036571984
+ 31
+551.8959770114943
+ 12
+663447.6932758363
+ 22
+6968644.036571984
+ 32
+551.9359770114943
+ 13
+663446.6921974282
+ 23
+6968644.56929895
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+147
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.6932758363
+ 20
+6968644.036571984
+ 30
+551.8959770114943
+ 11
+663446.777210947
+ 21
+6968642.315140859
+ 31
+551.8959770114943
+ 12
+663446.777210947
+ 22
+6968642.315140859
+ 32
+551.9359770114943
+ 13
+663447.6932758363
+ 23
+6968644.036571984
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+148
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.777210947
+ 20
+6968642.315140859
+ 30
+551.8959770114943
+ 11
+663445.7761325389
+ 21
+6968642.847867825
+ 31
+551.8959770114943
+ 12
+663445.7761325389
+ 22
+6968642.847867825
+ 32
+551.9359770114943
+ 13
+663446.777210947
+ 23
+6968642.315140859
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+149
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.7761325389
+ 20
+6968642.847867825
+ 30
+551.8959770114943
+ 11
+663446.6921974282
+ 21
+6968644.56929895
+ 31
+551.8959770114943
+ 12
+663446.6921974282
+ 22
+6968644.56929895
+ 32
+551.9359770114943
+ 13
+663445.7761325389
+ 23
+6968642.847867825
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+14A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.7162282513
+ 20
+6968644.0243577855
+ 30
+551.8959770114943
+ 11
+663448.7173066594
+ 21
+6968643.49163082
+ 31
+551.8959770114943
+ 12
+663447.8012417702
+ 22
+6968641.770199695
+ 32
+551.8959770114943
+ 13
+663446.8001633621
+ 23
+6968642.3029266605
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+14B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.8001633621
+ 20
+6968642.3029266605
+ 30
+551.9359770114943
+ 11
+663447.8012417702
+ 21
+6968641.770199695
+ 31
+551.9359770114943
+ 12
+663448.7173066594
+ 22
+6968643.49163082
+ 32
+551.9359770114943
+ 13
+663447.7162282513
+ 23
+6968644.0243577855
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+14C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.7162282513
+ 20
+6968644.0243577855
+ 30
+551.8959770114943
+ 11
+663448.7173066594
+ 21
+6968643.49163082
+ 31
+551.8959770114943
+ 12
+663448.7173066594
+ 22
+6968643.49163082
+ 32
+551.9359770114943
+ 13
+663447.7162282513
+ 23
+6968644.0243577855
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+14D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.7173066594
+ 20
+6968643.49163082
+ 30
+551.8959770114943
+ 11
+663447.8012417702
+ 21
+6968641.770199695
+ 31
+551.8959770114943
+ 12
+663447.8012417702
+ 22
+6968641.770199695
+ 32
+551.9359770114943
+ 13
+663448.7173066594
+ 23
+6968643.49163082
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+14E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.8012417702
+ 20
+6968641.770199695
+ 30
+551.8959770114943
+ 11
+663446.8001633621
+ 21
+6968642.3029266605
+ 31
+551.8959770114943
+ 12
+663446.8001633621
+ 22
+6968642.3029266605
+ 32
+551.9359770114943
+ 13
+663447.8012417702
+ 23
+6968641.770199695
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+14F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.8001633621
+ 20
+6968642.3029266605
+ 30
+551.8959770114943
+ 11
+663447.7162282513
+ 21
+6968644.0243577855
+ 31
+551.8959770114943
+ 12
+663447.7162282513
+ 22
+6968644.0243577855
+ 32
+551.9359770114943
+ 13
+663446.8001633621
+ 23
+6968642.3029266605
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+150
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.7402590745
+ 20
+6968643.479416621
+ 30
+551.8959770114943
+ 11
+663449.7413374826
+ 21
+6968642.946689655
+ 31
+551.8959770114943
+ 12
+663448.8252725933
+ 22
+6968641.22525853
+ 32
+551.8959770114943
+ 13
+663447.8241941852
+ 23
+6968641.757985496
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+151
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.8241941852
+ 20
+6968641.757985496
+ 30
+551.9359770114943
+ 11
+663448.8252725933
+ 21
+6968641.22525853
+ 31
+551.9359770114943
+ 12
+663449.7413374826
+ 22
+6968642.946689655
+ 32
+551.9359770114943
+ 13
+663448.7402590745
+ 23
+6968643.479416621
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+152
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.7402590745
+ 20
+6968643.479416621
+ 30
+551.8959770114943
+ 11
+663449.7413374826
+ 21
+6968642.946689655
+ 31
+551.8959770114943
+ 12
+663449.7413374826
+ 22
+6968642.946689655
+ 32
+551.9359770114943
+ 13
+663448.7402590745
+ 23
+6968643.479416621
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+153
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.7413374826
+ 20
+6968642.946689655
+ 30
+551.8959770114943
+ 11
+663448.8252725933
+ 21
+6968641.22525853
+ 31
+551.8959770114943
+ 12
+663448.8252725933
+ 22
+6968641.22525853
+ 32
+551.9359770114943
+ 13
+663449.7413374826
+ 23
+6968642.946689655
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+154
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.8252725933
+ 20
+6968641.22525853
+ 30
+551.8959770114943
+ 11
+663447.8241941852
+ 21
+6968641.757985496
+ 31
+551.8959770114943
+ 12
+663447.8241941852
+ 22
+6968641.757985496
+ 32
+551.9359770114943
+ 13
+663448.8252725933
+ 23
+6968641.22525853
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+155
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.8241941852
+ 20
+6968641.757985496
+ 30
+551.8959770114943
+ 11
+663448.7402590745
+ 21
+6968643.479416621
+ 31
+551.8959770114943
+ 12
+663448.7402590745
+ 22
+6968643.479416621
+ 32
+551.9359770114943
+ 13
+663447.8241941852
+ 23
+6968641.757985496
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+156
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.7642898976
+ 20
+6968642.934475455
+ 30
+551.8959770114943
+ 11
+663450.7653683057
+ 21
+6968642.40174849
+ 31
+551.8959770114943
+ 12
+663449.8493034164
+ 22
+6968640.680317365
+ 32
+551.8959770114943
+ 13
+663448.8482250083
+ 23
+6968641.2130443305
+ 33
+551.8959770114943
+  0
+3DFACE
+  5
+157
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.8482250083
+ 20
+6968641.2130443305
+ 30
+551.9359770114943
+ 11
+663449.8493034164
+ 21
+6968640.680317365
+ 31
+551.9359770114943
+ 12
+663450.7653683057
+ 22
+6968642.40174849
+ 32
+551.9359770114943
+ 13
+663449.7642898976
+ 23
+6968642.934475455
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+158
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.7642898976
+ 20
+6968642.934475455
+ 30
+551.8959770114943
+ 11
+663450.7653683057
+ 21
+6968642.40174849
+ 31
+551.8959770114943
+ 12
+663450.7653683057
+ 22
+6968642.40174849
+ 32
+551.9359770114943
+ 13
+663449.7642898976
+ 23
+6968642.934475455
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+159
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663450.7653683057
+ 20
+6968642.40174849
+ 30
+551.8959770114943
+ 11
+663449.8493034164
+ 21
+6968640.680317365
+ 31
+551.8959770114943
+ 12
+663449.8493034164
+ 22
+6968640.680317365
+ 32
+551.9359770114943
+ 13
+663450.7653683057
+ 23
+6968642.40174849
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+15A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.8493034164
+ 20
+6968640.680317365
+ 30
+551.8959770114943
+ 11
+663448.8482250083
+ 21
+6968641.2130443305
+ 31
+551.8959770114943
+ 12
+663448.8482250083
+ 22
+6968641.2130443305
+ 32
+551.9359770114943
+ 13
+663449.8493034164
+ 23
+6968640.680317365
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+15B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.8482250083
+ 20
+6968641.2130443305
+ 30
+551.8959770114943
+ 11
+663449.7642898976
+ 21
+6968642.934475455
+ 31
+551.8959770114943
+ 12
+663449.7642898976
+ 22
+6968642.934475455
+ 32
+551.9359770114943
+ 13
+663448.8482250083
+ 23
+6968641.2130443305
+ 33
+551.9359770114943
+  0
+3DFACE
+  5
+15C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.5115970451
+ 20
+6968649.05957516
+ 30
+551.2522988505748
+ 11
+663443.5126754532
+ 21
+6968648.526848194
+ 31
+551.2522988505748
+ 12
+663442.5966105639
+ 22
+6968646.805417069
+ 32
+551.2522988505748
+ 13
+663441.5955321558
+ 23
+6968647.338144035
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+15D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663441.5955321558
+ 20
+6968647.338144035
+ 30
+551.2922988505748
+ 11
+663442.5966105639
+ 21
+6968646.805417069
+ 31
+551.2922988505748
+ 12
+663443.5126754532
+ 22
+6968648.526848194
+ 32
+551.2922988505748
+ 13
+663442.5115970451
+ 23
+6968649.05957516
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+15E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.5115970451
+ 20
+6968649.05957516
+ 30
+551.2522988505748
+ 11
+663443.5126754532
+ 21
+6968648.526848194
+ 31
+551.2522988505748
+ 12
+663443.5126754532
+ 22
+6968648.526848194
+ 32
+551.2922988505748
+ 13
+663442.5115970451
+ 23
+6968649.05957516
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+15F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.5126754532
+ 20
+6968648.526848194
+ 30
+551.2522988505748
+ 11
+663442.5966105639
+ 21
+6968646.805417069
+ 31
+551.2522988505748
+ 12
+663442.5966105639
+ 22
+6968646.805417069
+ 32
+551.2922988505748
+ 13
+663443.5126754532
+ 23
+6968648.526848194
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+160
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.5966105639
+ 20
+6968646.805417069
+ 30
+551.2522988505748
+ 11
+663441.5955321558
+ 21
+6968647.338144035
+ 31
+551.2522988505748
+ 12
+663441.5955321558
+ 22
+6968647.338144035
+ 32
+551.2922988505748
+ 13
+663442.5966105639
+ 23
+6968646.805417069
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+161
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663441.5955321558
+ 20
+6968647.338144035
+ 30
+551.2522988505748
+ 11
+663442.5115970451
+ 21
+6968649.05957516
+ 31
+551.2522988505748
+ 12
+663442.5115970451
+ 22
+6968649.05957516
+ 32
+551.2922988505748
+ 13
+663441.5955321558
+ 23
+6968647.338144035
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+162
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.5356278683
+ 20
+6968648.514633995
+ 30
+551.2522988505748
+ 11
+663444.5367062764
+ 21
+6968647.981907029
+ 31
+551.2522988505748
+ 12
+663443.6206413871
+ 22
+6968646.260475904
+ 32
+551.2522988505748
+ 13
+663442.619562979
+ 23
+6968646.79320287
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+163
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.619562979
+ 20
+6968646.79320287
+ 30
+551.2922988505748
+ 11
+663443.6206413871
+ 21
+6968646.260475904
+ 31
+551.2922988505748
+ 12
+663444.5367062764
+ 22
+6968647.981907029
+ 32
+551.2922988505748
+ 13
+663443.5356278683
+ 23
+6968648.514633995
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+164
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.5356278683
+ 20
+6968648.514633995
+ 30
+551.2522988505748
+ 11
+663444.5367062764
+ 21
+6968647.981907029
+ 31
+551.2522988505748
+ 12
+663444.5367062764
+ 22
+6968647.981907029
+ 32
+551.2922988505748
+ 13
+663443.5356278683
+ 23
+6968648.514633995
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+165
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.5367062764
+ 20
+6968647.981907029
+ 30
+551.2522988505748
+ 11
+663443.6206413871
+ 21
+6968646.260475904
+ 31
+551.2522988505748
+ 12
+663443.6206413871
+ 22
+6968646.260475904
+ 32
+551.2922988505748
+ 13
+663444.5367062764
+ 23
+6968647.981907029
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+166
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.6206413871
+ 20
+6968646.260475904
+ 30
+551.2522988505748
+ 11
+663442.619562979
+ 21
+6968646.79320287
+ 31
+551.2522988505748
+ 12
+663442.619562979
+ 22
+6968646.79320287
+ 32
+551.2922988505748
+ 13
+663443.6206413871
+ 23
+6968646.260475904
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+167
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663442.619562979
+ 20
+6968646.79320287
+ 30
+551.2522988505748
+ 11
+663443.5356278683
+ 21
+6968648.514633995
+ 31
+551.2522988505748
+ 12
+663443.5356278683
+ 22
+6968648.514633995
+ 32
+551.2922988505748
+ 13
+663442.619562979
+ 23
+6968646.79320287
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+168
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.5596586914
+ 20
+6968647.96969283
+ 30
+551.2522988505748
+ 11
+663445.5607370995
+ 21
+6968647.436965864
+ 31
+551.2522988505748
+ 12
+663444.6446722102
+ 22
+6968645.715534739
+ 32
+551.2522988505748
+ 13
+663443.6435938021
+ 23
+6968646.248261705
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+169
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.6435938021
+ 20
+6968646.248261705
+ 30
+551.2922988505748
+ 11
+663444.6446722102
+ 21
+6968645.715534739
+ 31
+551.2922988505748
+ 12
+663445.5607370995
+ 22
+6968647.436965864
+ 32
+551.2922988505748
+ 13
+663444.5596586914
+ 23
+6968647.96969283
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+16A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.5596586914
+ 20
+6968647.96969283
+ 30
+551.2522988505748
+ 11
+663445.5607370995
+ 21
+6968647.436965864
+ 31
+551.2522988505748
+ 12
+663445.5607370995
+ 22
+6968647.436965864
+ 32
+551.2922988505748
+ 13
+663444.5596586914
+ 23
+6968647.96969283
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+16B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.5607370995
+ 20
+6968647.436965864
+ 30
+551.2522988505748
+ 11
+663444.6446722102
+ 21
+6968645.715534739
+ 31
+551.2522988505748
+ 12
+663444.6446722102
+ 22
+6968645.715534739
+ 32
+551.2922988505748
+ 13
+663445.5607370995
+ 23
+6968647.436965864
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+16C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.6446722102
+ 20
+6968645.715534739
+ 30
+551.2522988505748
+ 11
+663443.6435938021
+ 21
+6968646.248261705
+ 31
+551.2522988505748
+ 12
+663443.6435938021
+ 22
+6968646.248261705
+ 32
+551.2922988505748
+ 13
+663444.6446722102
+ 23
+6968645.715534739
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+16D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663443.6435938021
+ 20
+6968646.248261705
+ 30
+551.2522988505748
+ 11
+663444.5596586914
+ 21
+6968647.96969283
+ 31
+551.2522988505748
+ 12
+663444.5596586914
+ 22
+6968647.96969283
+ 32
+551.2922988505748
+ 13
+663443.6435938021
+ 23
+6968646.248261705
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+16E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.5836895145
+ 20
+6968647.424751665
+ 30
+551.2522988505748
+ 11
+663446.5847679226
+ 21
+6968646.8920247
+ 31
+551.2522988505748
+ 12
+663445.6687030334
+ 22
+6968645.170593575
+ 32
+551.2522988505748
+ 13
+663444.6676246253
+ 23
+6968645.7033205405
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+16F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.6676246253
+ 20
+6968645.7033205405
+ 30
+551.2922988505748
+ 11
+663445.6687030334
+ 21
+6968645.170593575
+ 31
+551.2922988505748
+ 12
+663446.5847679226
+ 22
+6968646.8920247
+ 32
+551.2922988505748
+ 13
+663445.5836895145
+ 23
+6968647.424751665
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+170
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.5836895145
+ 20
+6968647.424751665
+ 30
+551.2522988505748
+ 11
+663446.5847679226
+ 21
+6968646.8920247
+ 31
+551.2522988505748
+ 12
+663446.5847679226
+ 22
+6968646.8920247
+ 32
+551.2922988505748
+ 13
+663445.5836895145
+ 23
+6968647.424751665
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+171
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.5847679226
+ 20
+6968646.8920247
+ 30
+551.2522988505748
+ 11
+663445.6687030334
+ 21
+6968645.170593575
+ 31
+551.2522988505748
+ 12
+663445.6687030334
+ 22
+6968645.170593575
+ 32
+551.2922988505748
+ 13
+663446.5847679226
+ 23
+6968646.8920247
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+172
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.6687030334
+ 20
+6968645.170593575
+ 30
+551.2522988505748
+ 11
+663444.6676246253
+ 21
+6968645.7033205405
+ 31
+551.2522988505748
+ 12
+663444.6676246253
+ 22
+6968645.7033205405
+ 32
+551.2922988505748
+ 13
+663445.6687030334
+ 23
+6968645.170593575
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+173
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663444.6676246253
+ 20
+6968645.7033205405
+ 30
+551.2522988505748
+ 11
+663445.5836895145
+ 21
+6968647.424751665
+ 31
+551.2522988505748
+ 12
+663445.5836895145
+ 22
+6968647.424751665
+ 32
+551.2922988505748
+ 13
+663444.6676246253
+ 23
+6968645.7033205405
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+174
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.6077203377
+ 20
+6968646.8798105
+ 30
+551.2522988505748
+ 11
+663447.6087987458
+ 21
+6968646.347083534
+ 31
+551.2522988505748
+ 12
+663446.6927338565
+ 22
+6968644.625652409
+ 32
+551.2522988505748
+ 13
+663445.6916554484
+ 23
+6968645.158379375
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+175
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.6916554484
+ 20
+6968645.158379375
+ 30
+551.2922988505748
+ 11
+663446.6927338565
+ 21
+6968644.625652409
+ 31
+551.2922988505748
+ 12
+663447.6087987458
+ 22
+6968646.347083534
+ 32
+551.2922988505748
+ 13
+663446.6077203377
+ 23
+6968646.8798105
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+176
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.6077203377
+ 20
+6968646.8798105
+ 30
+551.2522988505748
+ 11
+663447.6087987458
+ 21
+6968646.347083534
+ 31
+551.2522988505748
+ 12
+663447.6087987458
+ 22
+6968646.347083534
+ 32
+551.2922988505748
+ 13
+663446.6077203377
+ 23
+6968646.8798105
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+177
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.6087987458
+ 20
+6968646.347083534
+ 30
+551.2522988505748
+ 11
+663446.6927338565
+ 21
+6968644.625652409
+ 31
+551.2522988505748
+ 12
+663446.6927338565
+ 22
+6968644.625652409
+ 32
+551.2922988505748
+ 13
+663447.6087987458
+ 23
+6968646.347083534
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+178
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.6927338565
+ 20
+6968644.625652409
+ 30
+551.2522988505748
+ 11
+663445.6916554484
+ 21
+6968645.158379375
+ 31
+551.2522988505748
+ 12
+663445.6916554484
+ 22
+6968645.158379375
+ 32
+551.2922988505748
+ 13
+663446.6927338565
+ 23
+6968644.625652409
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+179
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663445.6916554484
+ 20
+6968645.158379375
+ 30
+551.2522988505748
+ 11
+663446.6077203377
+ 21
+6968646.8798105
+ 31
+551.2522988505748
+ 12
+663446.6077203377
+ 22
+6968646.8798105
+ 32
+551.2922988505748
+ 13
+663445.6916554484
+ 23
+6968645.158379375
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+17A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.6317511608
+ 20
+6968646.334869335
+ 30
+551.2522988505748
+ 11
+663448.6328295689
+ 21
+6968645.80214237
+ 31
+551.2522988505748
+ 12
+663447.7167646796
+ 22
+6968644.080711245
+ 32
+551.2522988505748
+ 13
+663446.7156862715
+ 23
+6968644.61343821
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+17B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.7156862715
+ 20
+6968644.61343821
+ 30
+551.2922988505748
+ 11
+663447.7167646796
+ 21
+6968644.080711245
+ 31
+551.2922988505748
+ 12
+663448.6328295689
+ 22
+6968645.80214237
+ 32
+551.2922988505748
+ 13
+663447.6317511608
+ 23
+6968646.334869335
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+17C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.6317511608
+ 20
+6968646.334869335
+ 30
+551.2522988505748
+ 11
+663448.6328295689
+ 21
+6968645.80214237
+ 31
+551.2522988505748
+ 12
+663448.6328295689
+ 22
+6968645.80214237
+ 32
+551.2922988505748
+ 13
+663447.6317511608
+ 23
+6968646.334869335
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+17D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.6328295689
+ 20
+6968645.80214237
+ 30
+551.2522988505748
+ 11
+663447.7167646796
+ 21
+6968644.080711245
+ 31
+551.2522988505748
+ 12
+663447.7167646796
+ 22
+6968644.080711245
+ 32
+551.2922988505748
+ 13
+663448.6328295689
+ 23
+6968645.80214237
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+17E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.7167646796
+ 20
+6968644.080711245
+ 30
+551.2522988505748
+ 11
+663446.7156862715
+ 21
+6968644.61343821
+ 31
+551.2522988505748
+ 12
+663446.7156862715
+ 22
+6968644.61343821
+ 32
+551.2922988505748
+ 13
+663447.7167646796
+ 23
+6968644.080711245
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+17F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663446.7156862715
+ 20
+6968644.61343821
+ 30
+551.2522988505748
+ 11
+663447.6317511608
+ 21
+6968646.334869335
+ 31
+551.2522988505748
+ 12
+663447.6317511608
+ 22
+6968646.334869335
+ 32
+551.2922988505748
+ 13
+663446.7156862715
+ 23
+6968644.61343821
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+180
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.655781984
+ 20
+6968645.78992817
+ 30
+551.2522988505748
+ 11
+663449.6568603921
+ 21
+6968645.257201204
+ 31
+551.2522988505748
+ 12
+663448.7407955028
+ 22
+6968643.535770079
+ 32
+551.2522988505748
+ 13
+663447.7397170947
+ 23
+6968644.068497045
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+181
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.7397170947
+ 20
+6968644.068497045
+ 30
+551.2922988505748
+ 11
+663448.7407955028
+ 21
+6968643.535770079
+ 31
+551.2922988505748
+ 12
+663449.6568603921
+ 22
+6968645.257201204
+ 32
+551.2922988505748
+ 13
+663448.655781984
+ 23
+6968645.78992817
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+182
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.655781984
+ 20
+6968645.78992817
+ 30
+551.2522988505748
+ 11
+663449.6568603921
+ 21
+6968645.257201204
+ 31
+551.2522988505748
+ 12
+663449.6568603921
+ 22
+6968645.257201204
+ 32
+551.2922988505748
+ 13
+663448.655781984
+ 23
+6968645.78992817
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+183
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.6568603921
+ 20
+6968645.257201204
+ 30
+551.2522988505748
+ 11
+663448.7407955028
+ 21
+6968643.535770079
+ 31
+551.2522988505748
+ 12
+663448.7407955028
+ 22
+6968643.535770079
+ 32
+551.2922988505748
+ 13
+663449.6568603921
+ 23
+6968645.257201204
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+184
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.7407955028
+ 20
+6968643.535770079
+ 30
+551.2522988505748
+ 11
+663447.7397170947
+ 21
+6968644.068497045
+ 31
+551.2522988505748
+ 12
+663447.7397170947
+ 22
+6968644.068497045
+ 32
+551.2922988505748
+ 13
+663448.7407955028
+ 23
+6968643.535770079
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+185
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663447.7397170947
+ 20
+6968644.068497045
+ 30
+551.2522988505748
+ 11
+663448.655781984
+ 21
+6968645.78992817
+ 31
+551.2522988505748
+ 12
+663448.655781984
+ 22
+6968645.78992817
+ 32
+551.2922988505748
+ 13
+663447.7397170947
+ 23
+6968644.068497045
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+186
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.6798128071
+ 20
+6968645.244987005
+ 30
+551.2522988505748
+ 11
+663450.6808912152
+ 21
+6968644.7122600395
+ 31
+551.2522988505748
+ 12
+663449.7648263259
+ 22
+6968642.990828915
+ 32
+551.2522988505748
+ 13
+663448.7637479178
+ 23
+6968643.52355588
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+187
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.7637479178
+ 20
+6968643.52355588
+ 30
+551.2922988505748
+ 11
+663449.7648263259
+ 21
+6968642.990828915
+ 31
+551.2922988505748
+ 12
+663450.6808912152
+ 22
+6968644.7122600395
+ 32
+551.2922988505748
+ 13
+663449.6798128071
+ 23
+6968645.244987005
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+188
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.6798128071
+ 20
+6968645.244987005
+ 30
+551.2522988505748
+ 11
+663450.6808912152
+ 21
+6968644.7122600395
+ 31
+551.2522988505748
+ 12
+663450.6808912152
+ 22
+6968644.7122600395
+ 32
+551.2922988505748
+ 13
+663449.6798128071
+ 23
+6968645.244987005
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+189
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663450.6808912152
+ 20
+6968644.7122600395
+ 30
+551.2522988505748
+ 11
+663449.7648263259
+ 21
+6968642.990828915
+ 31
+551.2522988505748
+ 12
+663449.7648263259
+ 22
+6968642.990828915
+ 32
+551.2922988505748
+ 13
+663450.6808912152
+ 23
+6968644.7122600395
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+18A
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.7648263259
+ 20
+6968642.990828915
+ 30
+551.2522988505748
+ 11
+663448.7637479178
+ 21
+6968643.52355588
+ 31
+551.2522988505748
+ 12
+663448.7637479178
+ 22
+6968643.52355588
+ 32
+551.2922988505748
+ 13
+663449.7648263259
+ 23
+6968642.990828915
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+18B
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663448.7637479178
+ 20
+6968643.52355588
+ 30
+551.2522988505748
+ 11
+663449.6798128071
+ 21
+6968645.244987005
+ 31
+551.2522988505748
+ 12
+663449.6798128071
+ 22
+6968645.244987005
+ 32
+551.2922988505748
+ 13
+663448.7637479178
+ 23
+6968643.52355588
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+18C
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663450.7038436303
+ 20
+6968644.70004584
+ 30
+551.2522988505748
+ 11
+663451.7049220384
+ 21
+6968644.167318874
+ 31
+551.2522988505748
+ 12
+663450.7888571491
+ 22
+6968642.445887749
+ 32
+551.2522988505748
+ 13
+663449.787778741
+ 23
+6968642.978614715
+ 33
+551.2522988505748
+  0
+3DFACE
+  5
+18D
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.787778741
+ 20
+6968642.978614715
+ 30
+551.2922988505748
+ 11
+663450.7888571491
+ 21
+6968642.445887749
+ 31
+551.2922988505748
+ 12
+663451.7049220384
+ 22
+6968644.167318874
+ 32
+551.2922988505748
+ 13
+663450.7038436303
+ 23
+6968644.70004584
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+18E
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663450.7038436303
+ 20
+6968644.70004584
+ 30
+551.2522988505748
+ 11
+663451.7049220384
+ 21
+6968644.167318874
+ 31
+551.2522988505748
+ 12
+663451.7049220384
+ 22
+6968644.167318874
+ 32
+551.2922988505748
+ 13
+663450.7038436303
+ 23
+6968644.70004584
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+18F
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663451.7049220384
+ 20
+6968644.167318874
+ 30
+551.2522988505748
+ 11
+663450.7888571491
+ 21
+6968642.445887749
+ 31
+551.2522988505748
+ 12
+663450.7888571491
+ 22
+6968642.445887749
+ 32
+551.2922988505748
+ 13
+663451.7049220384
+ 23
+6968644.167318874
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+190
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663450.7888571491
+ 20
+6968642.445887749
+ 30
+551.2522988505748
+ 11
+663449.787778741
+ 21
+6968642.978614715
+ 31
+551.2522988505748
+ 12
+663449.787778741
+ 22
+6968642.978614715
+ 32
+551.2922988505748
+ 13
+663450.7888571491
+ 23
+6968642.445887749
+ 33
+551.2922988505748
+  0
+3DFACE
+  5
+191
+330
+17
+100
+AcDbEntity
+  8
+SALAO_SOLAR_NORTE
+100
+AcDbFace
+ 10
+663449.787778741
+ 20
+6968642.978614715
+ 30
+551.2522988505748
+ 11
+663450.7038436303
+ 21
+6968644.70004584
+ 31
+551.2522988505748
+ 12
+663450.7038436303
+ 22
+6968644.70004584
+ 32
+551.2922988505748
+ 13
+663449.787778741
+ 23
+6968642.978614715
+ 33
+551.2922988505748
+  0
+ENDSEC
+  0
+SECTION
+  2
+OBJECTS
+  0
+DICTIONARY
+  5
+A
+330
+0
+100
+AcDbDictionary
+281
+1
+  3
+ACAD_COLOR
+350
+B
+  3
+ACAD_GROUP
+350
+C
+  3
+ACAD_LAYOUT
+350
+D
+  3
+ACAD_MATERIAL
+350
+E
+  3
+ACAD_MLEADERSTYLE
+350
+F
+  3
+ACAD_MLINESTYLE
+350
+10
+  3
+ACAD_PLOTSETTINGS
+350
+11
+  3
+ACAD_PLOTSTYLENAME
+350
+12
+  3
+ACAD_SCALELIST
+350
+14
+  3
+ACAD_TABLESTYLE
+350
+15
+  3
+ACAD_VISUALSTYLE
+350
+16
+  3
+EZDXF_META
+350
+2D
+  0
+DICTIONARY
+  5
+B
+330
+A
+100
+AcDbDictionary
+281
+1
+  0
+DICTIONARY
+  5
+C
+330
+A
+100
+AcDbDictionary
+281
+1
+  0
+DICTIONARY
+  5
+D
+330
+A
+100
+AcDbDictionary
+281
+1
+  3
+Model
+350
+1A
+  3
+Layout1
+350
+1E
+  0
+DICTIONARY
+  5
+E
+330
+A
+100
+AcDbDictionary
+281
+1
+  3
+ByBlock
+350
+1F
+  3
+ByLayer
+350
+20
+  3
+Global
+350
+21
+  0
+DICTIONARY
+  5
+F
+330
+A
+100
+AcDbDictionary
+281
+1
+  3
+Standard
+350
+2C
+  0
+DICTIONARY
+  5
+10
+330
+A
+100
+AcDbDictionary
+281
+1
+  3
+Standard
+350
+22
+  0
+DICTIONARY
+  5
+11
+330
+A
+100
+AcDbDictionary
+281
+1
+  0
+ACDBDICTIONARYWDFLT
+  5
+12
+330
+A
+100
+AcDbDictionary
+281
+1
+  3
+Normal
+350
+13
+100
+AcDbDictionaryWithDefault
+340
+13
+  0
+ACDBPLACEHOLDER
+  5
+13
+330
+12
+  0
+DICTIONARY
+  5
+14
+330
+A
+100
+AcDbDictionary
+281
+1
+  0
+DICTIONARY
+  5
+15
+330
+A
+100
+AcDbDictionary
+281
+1
+  0
+DICTIONARY
+  5
+16
+330
+A
+100
+AcDbDictionary
+281
+1
+  3
+2dWireframe
+350
+5A
+  3
+Basic
+350
+5B
+  3
+Brighten
+350
+5C
+  3
+ColorChange
+350
+5D
+  3
+Conceptual
+350
+5E
+  3
+Dim
+350
+5F
+  3
+EdgeColorOff
+350
+60
+  3
+Facepattern
+350
+61
+  3
+Flat
+350
+62
+  3
+FlatWithEdges
+350
+63
+  3
+Gouraud
+350
+64
+  3
+GouraudWithEdges
+350
+65
+  3
+Hidden
+350
+66
+  3
+JitterOff
+350
+67
+  3
+Linepattern
+350
+68
+  3
+Modeling
+350
+69
+  3
+OverhangOff
+350
+6A
+  3
+Realistic
+350
+6B
+  3
+Shaded
+350
+6C
+  3
+Shaded with edges
+350
+6D
+  3
+Shades of Gray
+350
+6E
+  3
+Sketchy
+350
+6F
+  3
+Thicken
+350
+70
+  3
+Wireframe
+350
+71
+  3
+X-Ray
+350
+72
+  0
+LAYOUT
+  5
+1A
+330
+D
+100
+AcDbPlotSettings
+  1
+
+  4
+A3
+  6
+
+ 40
+7.5
+ 41
+20.0
+ 42
+7.5
+ 43
+20.0
+ 44
+420.0
+ 45
+297.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+0.0
+140
+0.0
+141
+0.0
+142
+1.0
+143
+1.0
+ 70
+1024
+ 72
+1
+ 73
+0
+ 74
+5
+  7
+
+ 75
+16
+ 76
+0
+ 77
+2
+ 78
+300
+147
+1.0
+148
+0.0
+149
+0.0
+100
+AcDbLayout
+  1
+Model
+ 70
+1
+ 71
+0
+ 10
+0.0
+ 20
+0.0
+ 11
+420.0
+ 21
+297.0
+ 12
+0.0
+ 22
+0.0
+ 32
+0.0
+ 14
+1e+20
+ 24
+1e+20
+ 34
+1e+20
+ 15
+-1e+20
+ 25
+-1e+20
+ 35
+-1e+20
+146
+0.0
+ 13
+0.0
+ 23
+0.0
+ 33
+0.0
+ 16
+1.0
+ 26
+0.0
+ 36
+0.0
+ 17
+0.0
+ 27
+1.0
+ 37
+0.0
+ 76
+1
+330
+17
+  0
+LAYOUT
+  5
+1E
+330
+D
+100
+AcDbPlotSettings
+  1
+
+  4
+A3
+  6
+
+ 40
+7.5
+ 41
+20.0
+ 42
+7.5
+ 43
+20.0
+ 44
+420.0
+ 45
+297.0
+ 46
+0.0
+ 47
+0.0
+ 48
+0.0
+ 49
+0.0
+140
+0.0
+141
+0.0
+142
+1.0
+143
+1.0
+ 70
+0
+ 72
+1
+ 73
+0
+ 74
+5
+  7
+
+ 75
+16
+ 76
+0
+ 77
+2
+ 78
+300
+147
+1.0
+148
+0.0
+149
+0.0
+100
+AcDbLayout
+  1
+Layout1
+ 70
+1
+ 71
+1
+ 10
+0.0
+ 20
+0.0
+ 11
+420.0
+ 21
+297.0
+ 12
+0.0
+ 22
+0.0
+ 32
+0.0
+ 14
+1e+20
+ 24
+1e+20
+ 34
+1e+20
+ 15
+-1e+20
+ 25
+-1e+20
+ 35
+-1e+20
+146
+0.0
+ 13
+0.0
+ 23
+0.0
+ 33
+0.0
+ 16
+1.0
+ 26
+0.0
+ 36
+0.0
+ 17
+0.0
+ 27
+1.0
+ 37
+0.0
+ 76
+1
+330
+1B
+  0
+MATERIAL
+  5
+1F
+102
+{ACAD_REACTORS
+330
+E
+102
+}
+330
+E
+100
+AcDbMaterial
+  1
+ByBlock
+  2
+
+ 70
+0
+ 40
+1.0
+ 71
+1
+ 41
+1.0
+ 91
+-1023410177
+ 42
+1.0
+ 72
+1
+  3
+
+ 73
+1
+ 74
+1
+ 75
+1
+ 44
+0.5
+ 73
+0
+ 45
+1.0
+ 46
+1.0
+ 77
+1
+  4
+
+ 78
+1
+ 79
+1
+170
+1
+ 48
+1.0
+171
+1
+  6
+
+172
+1
+173
+1
+174
+1
+140
+1.0
+141
+1.0
+175
+1
+  7
+
+176
+1
+177
+1
+178
+1
+143
+1.0
+179
+1
+  8
+
+270
+1
+271
+1
+272
+1
+145
+1.0
+146
+1.0
+273
+1
+  9
+
+274
+1
+275
+1
+276
+1
+ 42
+1.0
+ 72
+1
+  3
+
+ 73
+1
+ 74
+1
+ 75
+1
+ 94
+63
+  0
+MATERIAL
+  5
+20
+102
+{ACAD_REACTORS
+330
+E
+102
+}
+330
+E
+100
+AcDbMaterial
+  1
+ByLayer
+  2
+
+ 70
+0
+ 40
+1.0
+ 71
+1
+ 41
+1.0
+ 91
+-1023410177
+ 42
+1.0
+ 72
+1
+  3
+
+ 73
+1
+ 74
+1
+ 75
+1
+ 44
+0.5
+ 73
+0
+ 45
+1.0
+ 46
+1.0
+ 77
+1
+  4
+
+ 78
+1
+ 79
+1
+170
+1
+ 48
+1.0
+171
+1
+  6
+
+172
+1
+173
+1
+174
+1
+140
+1.0
+141
+1.0
+175
+1
+  7
+
+176
+1
+177
+1
+178
+1
+143
+1.0
+179
+1
+  8
+
+270
+1
+271
+1
+272
+1
+145
+1.0
+146
+1.0
+273
+1
+  9
+
+274
+1
+275
+1
+276
+1
+ 42
+1.0
+ 72
+1
+  3
+
+ 73
+1
+ 74
+1
+ 75
+1
+ 94
+63
+  0
+MATERIAL
+  5
+21
+102
+{ACAD_REACTORS
+330
+E
+102
+}
+330
+E
+100
+AcDbMaterial
+  1
+Global
+  2
+
+ 70
+0
+ 40
+1.0
+ 71
+1
+ 41
+1.0
+ 91
+-1023410177
+ 42
+1.0
+ 72
+1
+  3
+
+ 73
+1
+ 74
+1
+ 75
+1
+ 44
+0.5
+ 73
+0
+ 45
+1.0
+ 46
+1.0
+ 77
+1
+  4
+
+ 78
+1
+ 79
+1
+170
+1
+ 48
+1.0
+171
+1
+  6
+
+172
+1
+173
+1
+174
+1
+140
+1.0
+141
+1.0
+175
+1
+  7
+
+176
+1
+177
+1
+178
+1
+143
+1.0
+179
+1
+  8
+
+270
+1
+271
+1
+272
+1
+145
+1.0
+146
+1.0
+273
+1
+  9
+
+274
+1
+275
+1
+276
+1
+ 42
+1.0
+ 72
+1
+  3
+
+ 73
+1
+ 74
+1
+ 75
+1
+ 94
+63
+  0
+MLINESTYLE
+  5
+22
+102
+{ACAD_REACTORS
+330
+10
+102
+}
+330
+10
+100
+AcDbMlineStyle
+  2
+Standard
+ 70
+0
+  3
+
+ 62
+256
+ 51
+90.0
+ 52
+90.0
+ 71
+2
+ 49
+0.5
+ 62
+256
+  6
+BYLAYER
+ 49
+-0.5
+ 62
+256
+  6
+BYLAYER
+  0
+MLEADERSTYLE
+  5
+2C
+102
+{ACAD_REACTORS
+330
+F
+102
+}
+330
+F
+100
+AcDbMLeaderStyle
+179
+2
+170
+2
+171
+1
+172
+0
+ 90
+2
+ 40
+0.0
+ 41
+0.0
+173
+1
+ 91
+-1056964608
+ 92
+-2
+290
+1
+ 42
+2.0
+291
+1
+ 43
+8.0
+  3
+Standard
+ 44
+4.0
+300
+
+342
+29
+174
+1
+175
+1
+176
+0
+178
+1
+ 93
+-1056964608
+ 45
+4.0
+292
+0
+297
+0
+ 46
+4.0
+ 94
+-1056964608
+ 47
+1.0
+ 49
+1.0
+140
+1.0
+294
+1
+141
+0.0
+177
+0
+142
+1.0
+295
+0
+296
+0
+143
+3.75
+271
+0
+272
+9
+273
+9
+  0
+DICTIONARY
+  5
+2D
+330
+A
+100
+AcDbDictionary
+280
+1
+281
+1
+  3
+CREATED_BY_EZDXF
+350
+2E
+  3
+WRITTEN_BY_EZDXF
+350
+194
+  0
+DICTIONARYVAR
+  5
+2E
+330
+2D
+100
+DictionaryVariables
+280
+0
+  1
+1.4.4 @ 2026-10-12T22:34:45.379651+00:00
+  0
+VISUALSTYLE
+  5
+5A
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+2dWireframe
+ 70
+4
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+5B
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Basic
+ 70
+7
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+5C
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Brighten
+ 70
+12
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+5D
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+ColorChange
+ 70
+16
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+5E
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Conceptual
+ 70
+9
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+3
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+5F
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Dim
+ 70
+11
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+60
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+EdgeColorOff
+ 70
+22
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+61
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Facepattern
+ 70
+15
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+62
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Flat
+ 70
+0
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+63
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+FlatWithEdges
+ 70
+1
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+64
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Gouraud
+ 70
+2
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+65
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+GouraudWithEdges
+ 70
+3
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+66
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Hidden
+ 70
+6
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+67
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+JitterOff
+ 70
+20
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+68
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Linepattern
+ 70
+14
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+69
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Modeling
+ 70
+10
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+6A
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+OverhangOff
+ 70
+21
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+6B
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Realistic
+ 70
+8
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+6C
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Shaded
+ 70
+27
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+6D
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Shaded with edges
+ 70
+26
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+6E
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Shades of Gray
+ 70
+23
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+6F
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Sketchy
+ 70
+24
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+70
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Thicken
+ 70
+13
+177
+3
+291
+1
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+71
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+Wireframe
+ 70
+5
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+ 40
+0.6
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+VISUALSTYLE
+  5
+72
+102
+{ACAD_REACTORS
+330
+16
+102
+}
+330
+16
+100
+AcDbVisualStyle
+  2
+X-Ray
+ 70
+25
+177
+3
+291
+0
+ 70
+58
+ 90
+2
+176
+1
+ 90
+2
+176
+1
+ 90
+0
+176
+1
+ 90
+2
+176
+1
+ 40
+0.5
+176
+1
+ 40
+30.0
+176
+1
+ 62
+7
+420
+16777215
+176
+1
+ 90
+1
+176
+1
+ 90
+4
+176
+1
+ 62
+7
+176
+1
+ 62
+257
+176
+1
+ 90
+1
+176
+1
+ 90
+1
+176
+1
+ 40
+1.0
+176
+1
+ 90
+8
+176
+1
+ 62
+7
+176
+1
+ 40
+1.0
+176
+1
+ 90
+1
+176
+1
+ 90
+6
+176
+1
+ 90
+2
+176
+1
+ 62
+7
+176
+1
+ 90
+5
+176
+1
+ 90
+0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+ 90
+1
+176
+1
+ 40
+0.0
+176
+1
+ 90
+0
+176
+1
+290
+0
+176
+1
+290
+1
+176
+1
+290
+1
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 40
+0.0
+176
+1
+ 40
+1.0
+176
+1
+ 90
+0
+176
+1
+ 62
+18
+420
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+3
+176
+1
+ 62
+5
+420
+255
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+ 90
+50
+176
+1
+290
+0
+176
+1
+ 90
+50
+176
+1
+ 62
+256
+176
+0
+ 40
+1.0
+176
+0
+ 90
+2
+176
+1
+  1
+strokes_ogs.tif
+176
+1
+290
+0
+176
+1
+ 40
+1.0
+176
+1
+ 40
+1.0
+176
+1
+  0
+DICTIONARYVAR
+  5
+194
+330
+2D
+100
+DictionaryVariables
+280
+0
+  1
+1.4.4 @ 2026-10-12T22:34:45.392555+00:00
+  0
+ENDSEC
+  0
+EOF

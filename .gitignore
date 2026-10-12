@@ -8,6 +8,11 @@ __pycache__/
 *.tif
 *.tiff
 *.kmz
+!Projeto_Completo_Sitio_Edificacoes.kmz
+!casa_do_sitio.kmz
+!salao_de_festas_12x8m.kmz
+!quadra_de_areia_22x12m.kmz
+!chales_1_a_5.kmz
 *.zip
 *.gpkg
 
