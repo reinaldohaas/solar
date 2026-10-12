@@ -104,7 +104,7 @@ def apply_earthwork_cut(elev_grid, half_w, half_h, rows, cols, salao_x, salao_z,
     sin_c = 0.2668
     lx_c = dx_c * cos_c + dz_c * sin_c
     lz_c = -dx_c * sin_c + dz_c * cos_c
-    cota_cut_casa = 540.95
+    cota_cut_casa = 540.90
 
     in_c_core = (lx_c >= -5.2) & (lx_c <= 8.2) & (np.abs(lz_c) <= 7.0)
     in_c_ramp = (~in_c_core) & (lx_c >= -8.5) & (lx_c <= 11.5) & (np.abs(lz_c) <= 10.2)
@@ -123,7 +123,7 @@ def apply_earthwork_cut(elev_grid, half_w, half_h, rows, cols, salao_x, salao_z,
 
 
 def main():
-    print("=== GERANDO VISUALIZADOR 3D DO COMPLEXO — ESCALA REAL 1:1 (1m HORIZONTAL = 1m VERTICAL) ===")
+    print("=== GERANDO VISUALIZADOR 3D DO COMPLEXO — RELEVO 1,0m OFICIAL + 4 ÁRVORES DE ESCALA 1:1 ===")
 
     cx_complex = 663397.5
     cy_complex = 6968625.0
@@ -134,42 +134,13 @@ def main():
     box_bottom = cy_complex - half_h
     box_top = cy_complex + half_h
 
-    # Grade de 0,50 m por vértice (472 x 328 = 154.816 vértices)
-    res_grid = 0.50
-    cols_m = int(round((box_right - box_left) / res_grid))
-    rows_m = int(round((box_top - box_bottom) / res_grid))
-    print(f"1. Extraindo Relevo 1:1 de 0,50m ({cols_m}x{rows_m} = {cols_m*rows_m:,} vértices) de ODM DSM 7,4cm...")
-
-    with rasterio.open(ODM_DSM_TIF) as src_d:
-        win_d = from_bounds(box_left, box_bottom, box_right, box_top, src_d.transform)
-        dsm_raw = src_d.read(1, window=win_d, out_shape=(rows_m, cols_m), resampling=Resampling.nearest).astype(np.float32)
-
-    with rasterio.open(ODM_ORTO_TIF) as src_o:
-        win_o = from_bounds(box_left, box_bottom, box_right, box_top, src_o.transform)
-        orto24_grid = src_o.read([1, 2, 3, 4], window=win_o, out_shape=(4, rows_m, cols_m), resampling=Resampling.average)
-
-    valid_dsm = (dsm_raw > 350.0) & (dsm_raw < 650.0) & (orto24_grid[3] > 200)
-    valid_dsm = binary_erosion(valid_dsm, iterations=3)
-    ind = distance_transform_edt(~valid_dsm, return_distances=False, return_indices=True)
-
-    # Translação vertical pura (+76.35m) sem inclinação artificial: 1,000m horizontal = 1,000m vertical!
-    dsm_1to1 = median_filter(dsm_raw[tuple(ind)], size=3) + 76.35
-
-    # 2. Envoltória Inferior Bare-Earth 1:1 (janela de 27,5m = 55px para atravessar bosques sem criar morros de copa!)
-    min_35m = minimum_filter(dsm_1to1, size=55)
-    low_env = gaussian_filter(percentile_filter(min_35m, percentile=35, size=35), sigma=7.0)
-    res_ground = np.clip(dsm_1to1 - low_env, 0.0, 2.2)
-    ground_local = low_env + gaussian_filter(percentile_filter(res_ground, percentile=25, size=25), sigma=3.0)
-
-    # CHM 1:1 calibrado por proeminência individual da copa (evita somar platôs de mata densa)
-    chm_raw = np.where(valid_dsm, np.clip(dsm_1to1 - ground_local, 0.0, 12.0), 0.0)
-    chm_local_base = gaussian_filter(minimum_filter(chm_raw, size=15), sigma=2.5)
-    chm = np.where(valid_dsm, np.clip(0.55 * (chm_raw - chm_local_base * 0.5) + 0.45 * chm_raw, 0.0, 6.8), 0.0)
-
-    fine_ground = np.where(chm_raw < 0.9, dsm_1to1 - ground_local, 0.0)
-    dtm_2024_nat = (ground_local + gaussian_filter(fine_ground, sigma=1.2)).astype(np.float32)
-
-    gy, gx = np.mgrid[0:rows_m, 0:cols_m]
+    # 1. Leitura MDT SIGSC Oficial de 1,0 m (idêntico ao relevo bom do visualizador_3d_sitio.html!)
+    print("1. Extraindo MDT LiDAR Oficial do SIGSC (1,0 m nativo — igual ao visualizador_3d_sitio.html)...")
+    with rasterio.open(SIGSC_MDT_TIF) as src_s:
+        win_s = from_bounds(box_left, box_bottom, box_right, box_top, src_s.transform)
+        sigsc_raw = src_s.read(1, window=win_s)
+        dtm_2024_nat = np.array(sigsc_raw, dtype=np.float32).copy()
+        rows_m, cols_m = dtm_2024_nat.shape
 
     salao_3d_x = round(663449.59 - cx_complex, 2)   # 52.09
     salao_3d_z = round(-(6968652.91 - cy_complex), 2) # -27.91
@@ -178,131 +149,47 @@ def main():
     casa_3d_x = round(663415.50 - cx_complex, 2)    # 18.00
     casa_3d_z = round(-(6968636.50 - cy_complex), 2)  # -11.50
 
-    # Cotas 1:1 reais do solo sob as edificações (Casa=541.00m, Salão=547.10m, Quadra=546.50m)
+    # Cotas oficiais de 1,0 m idênticas ao visualizador_3d_sitio.html
     cota_salao = 547.10
     cota_cut = 547.05
-    cota_quadra = 546.50
-    cota_cut_quadra = 546.45
-    cota_casa = 541.00
+    cota_quadra = 547.30
+    cota_cut_quadra = 547.25
+    cota_casa = 540.95
 
-    print("2. Aplicando Terraplanagem 1:1 (Platôs da Casa 540,95m, Salão 547,05m e Campo 546,45m)...")
+    print("2. Aplicando Corte e Nivelamento no Barranco, Quadra de Areia e Casa do Sítio (Malha 1,0m)...")
     dtm_2024_cut = apply_earthwork_cut(
         dtm_2024_nat, half_w, half_h, rows_m, cols_m,
         salao_3d_x, salao_3d_z, campo_3d_x, campo_3d_z,
         cota_cut, cota_cut_quadra
     )
+    dsm_surface_2024 = dtm_2024_nat.copy()
 
-    # Superfície DSM 2024 completa 1:1 (com relevo fotogramétrico das copas e telhados)
-    dsm_surface_2024 = (dtm_2024_nat + chm_raw).astype(np.float32)
-
-    z_min_global = float(min(dtm_2024_cut.min(), dtm_2024_nat.min(), dsm_surface_2024.min()))
-    z_max_global = float(max(dtm_2024_cut.max(), dtm_2024_nat.max(), dsm_surface_2024.max()))
+    z_min_global = float(min(dtm_2024_cut.min(), dtm_2024_nat.min()))
+    z_max_global = float(max(dtm_2024_cut.max(), dtm_2024_nat.max()))
     z_range_global = float(z_max_global - z_min_global)
 
     u16_cut = ((dtm_2024_cut - z_min_global) / z_range_global * 65535.0).clip(0, 65535).astype(np.uint16)
     u16_nat = ((dtm_2024_nat - z_min_global) / z_range_global * 65535.0).clip(0, 65535).astype(np.uint16)
-    u16_dsm = ((dsm_surface_2024 - z_min_global) / z_range_global * 65535.0).clip(0, 65535).astype(np.uint16)
+    u16_dsm = u16_nat.copy()
 
     b64_cut = base64.b64encode(u16_cut.tobytes()).decode('utf-8')
     b64_nat = base64.b64encode(u16_nat.tobytes()).decode('utf-8')
     b64_dsm = base64.b64encode(u16_dsm.tobytes()).decode('utf-8')
 
-    # 3. Extração das Árvores 3D Reais em Escala 1:1 (1m Horizontal = 1m Vertical)
-    print("3. Extraindo Árvores 3D em Escala Métrica 1:1 (1m Horizontal = 1m Vertical)...")
-    orto26_grid = np.zeros((4, rows_m, cols_m), dtype=np.uint8)
-    dst_trans_grid = rasterio.transform.from_bounds(box_left, box_bottom, box_right, box_top, cols_m, rows_m)
-    with rasterio.open(DRONE_ORTO_2026_TIF) as src_26:
-        for b_idx in range(1, 5):
-            reproject(
-                source=rasterio.band(src_26, b_idx),
-                destination=orto26_grid[b_idx-1],
-                src_transform=src_26.transform,
-                src_crs=src_26.crs,
-                dst_transform=dst_trans_grid,
-                dst_crs="EPSG:31982",
-                resampling=Resampling.average
-            )
-
-    grid_e = box_left + (gx / (cols_m - 1)) * (box_right - box_left)
-    grid_n = box_top - (gy / (rows_m - 1)) * (box_top - box_bottom)
-
-    r24, g24, b24 = orto24_grid[0].astype(float), orto24_grid[1].astype(float), orto24_grid[2].astype(float)
-    exg24 = 2.0 * g24 - r24 - b24
-    bright24 = (r24 + g24 + b24) / 3.0
-
-    r26, g26, b26, a26 = orto26_grid[0].astype(float), orto26_grid[1].astype(float), orto26_grid[2].astype(float), orto26_grid[3]
-    exg26 = 2.0 * g26 - r26 - b26
-
-    in_construction_zone = (grid_e >= 663430.0) & (grid_e <= 663500.0) & (grid_n >= 6968618.0) & (grid_n <= 6968672.0)
-    cleared_26 = in_construction_zone & (a26 > 120) & ((r26 > g26) | (exg26 < 12.0))
-    not_foliage_24 = (r24 > g24 + 5) | (exg24 < 3.0) | (bright24 < 16.0) | (bright24 > 215.0)
-
-    in_casa_roof = (grid_e >= 663405.5) & (grid_e <= 663425.5) & (grid_n >= 6968628.5) & (grid_n <= 6968645.0)
-    in_casa_yard = (grid_e >= 663406.0) & (grid_e <= 663417.5) & (grid_n >= 6968615.0) & (grid_n <= 6968629.0)
-    in_shed_south = (grid_e >= 663410.0) & (grid_e <= 663421.0) & (grid_n >= 6968600.0) & (grid_n <= 6968615.0)
-
-    cos_a = np.cos(np.radians(31.02))
-    sin_a = np.sin(np.radians(31.02))
-    dxs = grid_e - 663449.59
-    dzs = -(grid_n - 6968652.91)
-    lxs = dxs * cos_a + dzs * sin_a
-    lzs = -dxs * sin_a + dzs * cos_a
-    in_salao_pad = (np.abs(lxs) <= 8.8) & (np.abs(lzs) <= 6.8)
-
-    dxq = grid_e - 663468.93
-    dzq = -(grid_n - 6968640.32)
-    lxq = dxq * cos_a + dzq * sin_a
-    lzq = -dxq * sin_a + dzq * cos_a
-    in_campo_pad = (np.abs(lxq) <= 13.8) & (np.abs(lzq) <= 8.8)
-
-    excl = (~valid_dsm) | cleared_26 | not_foliage_24 | in_casa_roof | in_casa_yard | in_shed_south | in_salao_pad | in_campo_pad
-    is_canopy = (~excl) & (chm >= 2.0)
-
-    chm_s = gaussian_filter(chm, sigma=0.8)
-    prominence = chm_s - gaussian_filter(chm_s, sigma=3.0)
-    score = np.where(is_canopy, chm_s + 2.5 * prominence, -999.0)
-
-    cand_r, cand_c = np.where(is_canopy)
-    order = np.argsort(-score[cand_r, cand_c])
-
-    occupied = np.zeros((rows_m, cols_m), dtype=bool)
+    # 3. Manter APENAS as 4 árvores com placa (Árvore 1:1) mostradas na imagem do usuário
+    print("3. Posicionando exclusivamente as 4 árvores de referência (Árvore 1:1) sobre o relevo de 1,0m...")
+    ref_trees_specs = [
+        (76.91, -22.32, 6.40, 3.20, 6647381),
+        (38.33,  -9.28, 6.11, 3.06, 9741432),
+        (26.31, -22.32, 6.40, 3.20, 6191704),
+        (59.38, -22.32, 6.40, 3.20, 7961941),
+    ]
     trees_list = []
-
-    for idx in order:
-        r_i = int(cand_r[idx])
-        c_i = int(cand_c[idx])
-        if occupied[r_i, c_i]:
-            continue
-        h_raw = float(chm_s[r_i, c_i])
-        if h_raw < 2.0:
-            continue
-
-        # Escala 1:1 estrita entre horizontal (diâmetro D = 2*R) e vertical (altura H):
-        # Cada 1 metro horizontal equivale exatamente a 1 metro vertical (D_horiz = H_vert = h_val)
-        h_val = float(np.clip(h_raw, 2.50, 6.40))
-        crown_rad_m = 0.50 * h_val
-        diam_horiz_m = 2.0 * crown_rad_m
-
-        spacing_px = max(3, int(round((crown_rad_m * 1.18) / res_grid)))
-        r0 = max(0, r_i - spacing_px)
-        r1 = min(rows_m, r_i + spacing_px + 1)
-        c0 = max(0, c_i - spacing_px)
-        c1 = min(cols_m, c_i + spacing_px + 1)
-        yy_sub, xx_sub = np.ogrid[r0-r_i:r1-r_i, c0-c_i:c1-c_i]
-        occupied[r0:r1, c0:c1] |= ((yy_sub**2 + xx_sub**2) <= (spacing_px**2))
-
-        wx_t = -half_w + c_i * (2.0 * half_w / (cols_m - 1))
-        wz_t = -half_h + r_i * (2.0 * half_h / (rows_m - 1))
+    for wx_t, wz_t, h_val, crown_rad_m, hex_col in ref_trees_specs:
+        c_i = int(np.clip(round((wx_t + half_w) / (2.0 * half_w) * (cols_m - 1)), 0, cols_m - 1))
+        r_i = int(np.clip(round((wz_t + half_h) / (2.0 * half_h) * (rows_m - 1)), 0, rows_m - 1))
         y_cut_t = float(dtm_2024_cut[r_i, c_i] - z_min_global)
         y_nat_t = float(dtm_2024_nat[r_i, c_i] - z_min_global)
-
-        # Cor foliar amostrada da ortofoto 2024
-        cr = int(np.clip(r24[r_i, c_i] * 1.05, 28, 165))
-        cg = int(np.clip(g24[r_i, c_i] * 1.12, 55, 210))
-        cb = int(np.clip(b24[r_i, c_i] * 0.88, 18, 120))
-        hex_col = (cr << 16) | (cg << 8) | cb
-
-        # Compact array entry: [x, z, yCut, yNat, height_1to1, crownRadius_1to1, hexColor]
         trees_list.append([
             round(wx_t, 2),
             round(wz_t, 2),
@@ -313,11 +200,11 @@ def main():
             hex_col
         ])
 
-    print(f"   Extraídas {len(trees_list)} árvores 3D em escala 1:1 (1m H = 1m V) para o Complexo!")
+    print(f"   Mantidas exclusivamente as {len(trees_list)} árvores com placa (Árvore 1:1)!")
     trees_json = json.dumps(trees_list, separators=(',', ':'))
 
     # 4. Geração das Texturas HD (2200 px de largura = ~10,7 cm/px!)
-    print("4. Processando Texturas HD (Ortofoto ODM 2024 7,4cm + Drone 2026 5cm + Hipsometria CHM/DSM)...")
+    print("4. Processando Texturas HD (Ortofoto ODM 2024 7,4cm + Drone 2026 5cm + Hipsometria)...")
     target_w = 2200
     target_h = int(round(target_w * (rows_m / cols_m)))
     dst_transform = rasterio.transform.from_bounds(box_left, box_bottom, box_right, box_top, target_w, target_h)
@@ -379,14 +266,12 @@ def main():
     Image.fromarray(orto24_comp).save(buf_24, format='JPEG', quality=88)
     b64_orto24_tex = base64.b64encode(buf_24.getvalue()).decode('utf-8')
 
-    # D) Mapa Hipsométrico DSM 2024 + Altura das Copas (CHM) de 7,4 cm/px
-    chm_hi = np.array(Image.fromarray(chm.astype(np.float32)).resize((target_w, target_h), Image.BILINEAR))
-    dsm_hi = np.array(Image.fromarray(dsm_surface_2024).resize((target_w, target_h), Image.BILINEAR))
+    # D) Mapa Hipsométrico do Relevo 1,0 m
+    dsm_hi = np.array(Image.fromarray(dtm_2024_cut).resize((target_w, target_h), Image.BILINEAR))
     dsm_norm = np.clip((dsm_hi - z_min_global) / z_range_global, 0.0, 1.0)
-    # Paleta hipsométrica combinada com sombreamento da ortofoto
     hypso_rgb = np.zeros((target_h, target_w, 3), dtype=np.uint8)
-    hypso_rgb[:, :, 0] = np.clip(40 + 210 * np.clip((dsm_norm - 0.35) * 1.8, 0, 1) + (chm_hi > 4.0) * 35, 0, 255).astype(np.uint8)
-    hypso_rgb[:, :, 1] = np.clip(90 + 150 * np.sin(dsm_norm * np.pi) + np.clip(chm_hi * 8.0, 0, 70), 0, 255).astype(np.uint8)
+    hypso_rgb[:, :, 0] = np.clip(40 + 210 * np.clip((dsm_norm - 0.35) * 1.8, 0, 1), 0, 255).astype(np.uint8)
+    hypso_rgb[:, :, 1] = np.clip(90 + 150 * np.sin(dsm_norm * np.pi), 0, 255).astype(np.uint8)
     hypso_rgb[:, :, 2] = np.clip(180 * (1.0 - dsm_norm), 0, 255).astype(np.uint8)
     comp_dsm_vis = np.clip(orto24_comp.astype(float) * 0.45 + hypso_rgb.astype(float) * 0.55, 0, 255).astype(np.uint8)
 
@@ -423,7 +308,7 @@ def main():
     campo_json = json.dumps(campo_data)
     casa_json = json.dumps(casa_data)
 
-    print("5. Construindo Aplicação WebGL com Terreno 0,50m e Árvores 3D Reais...")
+    print("5. Construindo Aplicação WebGL com Relevo 1,0m Oficial e 4 Árvores 1:1...")
     html = f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -1694,26 +1579,10 @@ def main():
     campoGroup.add(campoScale1to1);
     scale1to1Rulers.push(campoScale1to1);
 
-    // 4. Escalas 1:1 em Árvores 3D de Referência (comprovando Diâmetro Horizontal x Altura Vertical 1:1)
+    // 4. Escalas 1:1 nas 4 Árvores 3D de Referência (comprovando Diâmetro Horizontal x Altura Vertical 1:1)
     const refTreeIndices = [];
-    // Escolher 4 árvores representativas próximas à Casa e ao Salão
     for (let i = 0; i < treesData.length; i++) {{
-      const tx = treesData[i][0], tz = treesData[i][1], th = treesData[i][4];
-      const dCasa = Math.hypot(tx - casaData.x, tz - casaData.z);
-      const dSalao = Math.hypot(tx - salaoData.x, tz - salaoData.z);
-      if ((dCasa < 28 || dSalao < 32) && th >= 4.0 && th <= 9.5) {{
-        let tooClose = false;
-        for (const prevIdx of refTreeIndices) {{
-          if (Math.hypot(tx - treesData[prevIdx][0], tz - treesData[prevIdx][1]) < 14.0) {{
-            tooClose = true;
-            break;
-          }}
-        }}
-        if (!tooClose) {{
-          refTreeIndices.push(i);
-          if (refTreeIndices.length >= 4) break;
-        }}
-      }}
+      refTreeIndices.push(i);
     }}
 
     const refTreeFrames = [];
