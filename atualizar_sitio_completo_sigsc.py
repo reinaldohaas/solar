@@ -1,101 +1,105 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Atualiza visualizador_3d_sitio.html (e index.html) para exibir TODA a divisória do terreno usando o SIGSC:
-1. Relevo ESTENDIDO cobrindo 100% da divisa do sítio (18,60 ha) com o MDT LiDAR 1,0 m SIGSC
-2. Textura Oficial SIGSC 0,39 m cobrindo toda a área (1250 m x 1350 m = 168 ha)
-3. Tubo 3D perimetral da divisa completo (1635 vértices contínuos sobre o relevo, sem cortes)
-4. Preserva 100% do Simulador Solar Astronômico (estações do ano, hora solar, telemetria, zênite, azimute)
-5. Reflete com fidelidade matemática todas as construções de visualizador_casa_arredores.html:
-   - Casa do Sítio (200 m², alinhada aos KMZs telhado1 e telhado2, cota natural 540,95m sem montículo)
-   - Salão de Festas (12×8m = 96 m², 100% aberto, sem estacas, usina 36 módulos em ambos os lados, 3 opções)
-   - Quadra de Areia (22×12m, 10 postes H=6m, telas Sul, Leste e Norte H=6m, lado Oeste aberto, rede oficial)
-   - Chalés 1 a 5 (22 m² cada, sobre pilotis no relevo, e Chalés 4 e 5 girados na direção da Casa do Sítio)
-6. visualizador_casa_arredores.html permanece 100% intocado.
+Script: atualizar_sitio_completo_sigsc.py
+Objetivo:
+1. Gerar visualizador_3d_sitio.html e espelhar em index.html com a malha estendida 100% SIGSC oficial
+   (1.250 m x 1.350 m = 168,7 ha) contendo toda a divisa do sítio (18,60 ha) contínua e sem cortes.
+2. Incorporar as edificações EXATAS de visualizador_casa_arredores.html com as posições originais:
+   - Casa do Sítio: 200 m², alinhada com KMZ telhado1 e telhado2, cota 540,95m no terreno natural.
+   - Salão de Festas: 12x8m, 100% aberto, sem estacas perfurando o telhado, 36 módulos solares (ambas as águas).
+   - Quadra de Areia: 22x12m, mourões de madeira, telas H=6m nos lados Sul, Norte e Leste; lado Oeste aberto para a casa; SEM postes pretos.
+   - Posição do Salão (lx=49.59, lz=-22.91) e Quadra (lx=68.93, lz=-10.32) 100% separadas (23,08 m de distância) sem sobreposição!
+   - Chalés 1 a 5: 22 m² cada sobre pilotis de eucalipto, chalés 4 e 5 rotacionados voltados para a Casa do Sítio.
+3. Preservar 100% do Simulador Solar Astronômico (sliders, órbita solar, azimute/elevação, telemetria e sombras).
+4. NÃO ALTERAR visualizador_casa_arredores.html.
 """
 
 import os
-import io
 import json
 import base64
-import shutil
-import rasterio
-from rasterio.enums import Resampling
 import numpy as np
-from PIL import Image
+import rasterio
 import geopandas as gpd
+from shapely.geometry import Point, LineString, Polygon
+from PIL import Image
 
 SOLAR_DIR = r"C:\Users\haas\github\solar"
-MDT_TIF = os.path.join(SOLAR_DIR, "MDT_SIGSC_Area_Drone_Estendida.tif")
-ORTO_TIF = os.path.join(SOLAR_DIR, "Ortofoto_SIGSC_Area_Estendida.tif")
+MDT_PATH = os.path.join(SOLAR_DIR, "MDT_SIGSC_Area_Drone_Estendida.tif")
+ORTO_PATH = os.path.join(SOLAR_DIR, "Ortofoto_SIGSC_Area_Estendida.tif")
 GPKG_PATH = os.path.join(SOLAR_DIR, "Projeto_Solar_SIGSC_Nativo.gpkg")
-
-HTML_OUT = os.path.join(SOLAR_DIR, "visualizador_3d_sitio.html")
-INDEX_OUT = os.path.join(SOLAR_DIR, "index.html")
+CASA_HTML_PATH = os.path.join(SOLAR_DIR, "visualizador_casa_arredores.html")
+OUTPUT_HTML = os.path.join(SOLAR_DIR, "visualizador_3d_sitio.html")
+INDEX_HTML = os.path.join(SOLAR_DIR, "index.html")
 
 def main():
-    print("================================================================================")
+    print("=" * 80)
     print("GERANDO VISUALIZADOR 3D COM TODA A DIVISÓRIA USANDO SIGSC OFICIAL")
-    print("================================================================================")
+    print("=" * 80)
 
-    # 1. Leitura do MDT LiDAR SIGSC Estendido
+    # 1. Leitura do MDT SIGSC
     print("1. Lendo MDT LiDAR 1,0 m SIGSC da área estendida...")
-    with rasterio.open(MDT_TIF) as src_m:
-        elev = src_m.read(1)
-        b = src_m.bounds
-        left, bottom, right, top = float(b.left), float(b.bottom), float(b.right), float(b.top)
-        rows, cols = elev.shape
+    with rasterio.open(MDT_PATH) as src_m:
+        elev_raw = src_m.read(1)
+        bounds = src_m.bounds
+        res = src_m.res
+        meta = src_m.meta
 
-    width_m = right - left
-    depth_m = top - bottom
-    cx = (left + right) / 2.0
-    cy = (bottom + top) / 2.0
-
-    z_min = float(np.nanmin(elev))
-    z_max = float(np.nanmax(elev))
+    elev_clean = np.where((elev_raw < -100) | (elev_raw > 2000) | np.isnan(elev_raw), 500.0, elev_raw)
+    z_min = float(np.min(elev_clean))
+    z_max = float(np.max(elev_clean))
     z_range = z_max - z_min
+
+    width_m = float(bounds.right - bounds.left)
+    depth_m = float(bounds.top - bounds.bottom)
+    cx = float((bounds.left + bounds.right) / 2.0)
+    cy = float((bounds.bottom + bounds.top) / 2.0)
+    rows, cols = elev_clean.shape
+
+    step = 2
+    sub_elev = elev_clean[::step, ::step]
+    sub_rows, sub_cols = sub_elev.shape
+
+    norm_h = np.clip((sub_elev - z_min) / z_range, 0.0, 1.0)
+    u16_h = (norm_h * 65535.0).astype(np.uint16)
+    b64_heights = base64.b64encode(u16_h.tobytes()).decode('ascii')
+
     print(f"   Dimensões do Terreno: {width_m:.1f} m x {depth_m:.1f} m (Grade nativa: {cols} x {rows})")
     print(f"   Centro do Modelo 3D: E {cx:.2f}, N {cy:.2f}")
     print(f"   Cotas SIGSC: Mínima = {z_min:.2f} m | Máxima = {z_max:.2f} m | Desnível = {z_range:.2f} m")
+    print(f"   Malha WebGL: {sub_cols} x {sub_rows} = {sub_cols * sub_rows:,} vértices")
 
-    elev_clean = np.where(np.isnan(elev), z_min, elev)
-
-    # Grade WebGL otimizada a 625 x 675 vértices (passo de 2,0m) para renderização ultra-fluida
-    step_grid = 2
-    elev_sub = elev_clean[::step_grid, ::step_grid]
-    sub_rows, sub_cols = elev_sub.shape
-    print(f"   Malha WebGL: {sub_cols} x {sub_rows} = {sub_cols*sub_rows:,} vértices")
-
-    uint16_arr = np.round(((elev_sub - z_min) / z_range) * 65535).astype(np.uint16)
-    b64_heights = base64.b64encode(uint16_arr.tobytes()).decode('ascii')
-
-    # 2. Leitura da Ortofoto Oficial SIGSC 0,39 m
+    # 2. Codificação da Ortofoto SIGSC
     print("2. Codificando textura Ortofoto SIGSC 0,39 m em alta definição...")
-    tex_w = 2500
-    tex_h = int(round(tex_w * depth_m / width_m))
-    with rasterio.open(ORTO_TIF) as src_o:
-        rgb = src_o.read([1, 2, 3], out_shape=(3, tex_h, tex_w), resampling=Resampling.bilinear)
+    with rasterio.open(ORTO_PATH) as src_o:
+        r = src_o.read(1)
+        g = src_o.read(2)
+        b = src_o.read(3)
 
-    img = Image.fromarray(np.transpose(rgb, (1, 2, 0)))
-    buf = io.BytesIO()
-    img.save(buf, format='JPEG', quality=85)
-    b64_tex = base64.b64encode(buf.getvalue()).decode('ascii')
-    print(f"   Textura SIGSC: {tex_w}x{tex_h} px ({len(b64_tex)/1024/1024:.2f} MB em Base64)")
+    rgb = np.stack([r, g, b], axis=-1)
+    img_pil = Image.fromarray(rgb)
+    img_resized = img_pil.resize((2500, 2700), Image.Resampling.LANCZOS)
+    img_byte_arr = os.path.join(SOLAR_DIR, "_tmp_orto_sigsc.jpg")
+    img_resized.save(img_byte_arr, format='JPEG', quality=86, optimize=True)
 
-    # 3. Amostragem da Divisa Completa do Sítio (18,60 ha) sobre o MDT SIGSC
+    with open(img_byte_arr, "rb") as f_img:
+        b64_orto = base64.b64encode(f_img.read()).decode('ascii')
+    if os.path.exists(img_byte_arr):
+        os.remove(img_byte_arr)
+    print(f"   Textura SIGSC: 2500x2700 px ({len(b64_orto) / 1024 / 1024:.2f} MB em Base64)")
+
+    # 3. Divisória Completa do Sítio
     print("3. Amostrando divisa completa do sítio (18,60 ha) sobre o relevo...")
-    res_x = width_m / cols
-    res_y = depth_m / rows
-
-    def sample_poly_3d(poly, step=1.5, dz=0.75):
+    def sample_poly_3d(poly, step=1.5, dz=0.85):
         ext = poly.exterior
         total_len = ext.length
-        num_pts = max(int(total_len / step), len(ext.coords))
+        num_pts = max(10, int(total_len / step))
         pts = []
-        for d in np.linspace(0, total_len, num_pts):
-            pt = ext.interpolate(d)
-            col = int((pt.x - left) / res_x)
-            row = int((top - pt.y) / res_y)
+        for i in range(num_pts):
+            dist = i * step
+            pt = ext.interpolate(dist)
+            col = int((pt.x - bounds.left) / res[0])
+            row = int((bounds.top - pt.y) / res[1])
             col = max(0, min(cols - 1, col))
             row = max(0, min(rows - 1, row))
             h = float(elev_clean[row, col]) - z_min + dz
@@ -112,7 +116,7 @@ def main():
         poly_s = gdf_s.union_all().convex_hull.buffer(3.5)
         setores_coords[s] = sample_poly_3d(poly_s, step=2.0, dz=0.60)
 
-    # 4. Mesas Fotovoltaicas de Solo (233 mesas)
+    # 4. Mesas Fotovoltaicas de Solo
     print("4. Carregando mesas fotovoltaicas de solo...")
     tables_data = []
     for setor in ['p1', 'p2', 'p3']:
@@ -128,64 +132,38 @@ def main():
                 'cota': float(r['cota_terreno_m'])
             })
 
-    # 5. Coordenadas Locais das Edificações no Relevo SIGSC Estendido
-    rot_rad = -0.489038 # -28.02°
+    # 5. Extração Fiel das Edificações de visualizador_casa_arredores.html
+    print("5. Extraindo edificações e dados originais de visualizador_casa_arredores.html...")
+    with open(CASA_HTML_PATH, "r", encoding="utf-8") as f_ref:
+        ref_lines = f_ref.read().split('\n')
 
-    casa_utm = (663415.50, 6968636.50)
-    cota_casa = 540.95
-    casa_data = {
-        'utm': casa_utm,
-        'cota': cota_casa,
-        'x': round(casa_utm[0] - cx, 2),
-        'z': round(-(casa_utm[1] - cy), 2),
-        'y': round(cota_casa - z_min, 2),
-        'cx_utm': casa_utm[0],
-        'cy_utm': casa_utm[1]
-    }
+    block_data = '\n'.join(ref_lines[185:212])
+    block_textures = '\n'.join(ref_lines[318:380])
+    block_buildings = '\n'.join(ref_lines[380:1022])
 
-    salao_utm = (663445.60, 6968642.80)
-    cota_salao = 547.10
-    salao_data = {
-        'utm': salao_utm,
-        'cota': cota_salao,
-        'x': round(salao_utm[0] - cx, 2),
-        'z': round(-(salao_utm[1] - cy), 2),
-        'y': round(cota_salao - z_min, 2),
-        'rot_rad': rot_rad
-    }
+    full_building_js = f"""
+    // =========================================================================
+    // DADOS E CONSTRUÇÕES EXTRAÍDAS DIRETAMENTE DE visualizador_casa_arredores.html
+    // =========================================================================
+    const edifGroup = new THREE.Group();
+    // Offset geodésico milimétrico para ancorar perfeitamente as edificações no SIGSC estendido:
+    // CX_UTM = 663400.00, CY_UTM = 6968630.00, Z_MIN_DRONE = 446.2713
+    // cx = {cx:.2f}, cy = {cy:.2f}, z_min = {z_min:.2f}
+    const EDIF_OFFSET_X = {663400.00 - cx:.2f};      // -125.00 m
+    const EDIF_OFFSET_Y = {446.2713 - z_min:.4f};    // +67.9013 m
+    const EDIF_OFFSET_Z = {-(6968630.00 - cy):.2f};   // -5.00 m
+    edifGroup.position.set(EDIF_OFFSET_X, EDIF_OFFSET_Y, EDIF_OFFSET_Z);
+    scene.add(edifGroup);
 
-    quadra_utm = (663456.88, 6968636.85)
-    cota_quadra = 547.25
-    quadra_data = {
-        'utm': quadra_utm,
-        'cota': cota_quadra,
-        'x': round(quadra_utm[0] - cx, 2),
-        'z': round(-(quadra_utm[1] - cy), 2),
-        'y': round(cota_quadra - z_min, 2),
-        'rot_rad': rot_rad
-    }
+{block_data}
 
-    chales_raw = [
-        {"id": 1, "utm": [663457.29, 6968674.96], "cota": 551.91},
-        {"id": 2, "utm": [663448.54, 6968667.08], "cota": 549.73},
-        {"id": 3, "utm": [663438.93, 6968659.26], "cota": 547.07},
-        {"id": 4, "utm": [663466.65, 6968618.00], "cota": 549.02},
-        {"id": 5, "utm": [663469.69, 6968600.54], "cota": 549.40}
-    ]
-    chales_data = []
-    for c in chales_raw:
-        e, n = c["utm"]
-        chales_data.append({
-            'id': c['id'],
-            'utm': c['utm'],
-            'cota': c['cota'],
-            'x': round(e - cx, 2),
-            'z': round(-(n - cy), 2),
-            'y': round(c['cota'] - z_min, 2)
-        })
+{block_textures}
+
+{block_buildings}
+"""
 
     # 6. Montagem do HTML completo com Three.js e Simulador Solar Astronômico
-    print("5. Gerando HTML unificado com toda a divisória SIGSC e simulador solar...")
+    print("6. Gerando HTML unificado com toda a divisória SIGSC e simulador solar...")
     html_code = f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -248,15 +226,24 @@ def main():
       border: 3px solid rgba(56, 189, 248, 0.2); border-top-color: #38bdf8;
       border-radius: 50%; animation: spin 0.8s linear infinite;
     }}
-    @keyframes spin {{ to {{ transform: rotate(360deg); }} }}
+    @keyframes spin {{ 0% {{ transform: rotate(0deg); }} 100% {{ transform: rotate(360deg); }} }}
+
+    #compass-rose {{
+      position: absolute; bottom: 20px; right: 20px; width: 68px; height: 68px;
+      background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 13px; color: #ef4444; pointer-events: none;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    }}
   </style>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 </head>
 <body>
   <div id="loading">
     <div class="spinner"></div>
-    Carregando Terreno Completo SIGSC & Divisória 18,60 ha...<br>
+    Carregando Terreno 3D SIGSC Estendido...<br>
     <span style="font-size: 11px; color: #94a3b8;">MDT LiDAR 1,0 m e Ortofoto SIGSC 0,39 m</span>
   </div>
 
@@ -344,7 +331,8 @@ def main():
       <button class="btn btn-secondary btn-toggle-active" id="btnSectors" onclick="toggleSectors()">🔷 Setores Solares (P1, P2, P3)</button>
       <button class="btn btn-secondary btn-toggle-active" id="btnSolar" onclick="toggleSolarPanels()" style="background: #1e3a8a; border-color: #3b82f6;">☀️ Ocultar Painéis Solares Solo</button>
       <button class="btn btn-secondary" onclick="focusOn('casa')">🏠 Focar na Casa do Sítio (200 m²)</button>
-      <button class="btn btn-secondary" onclick="focusOn('salao')">🏛️ Focar no Salão & Quadra</button>
+      <button class="btn btn-secondary" onclick="focusOn('salao')">🏛️ Focar no Salão de Festas (12×8 m)</button>
+      <button class="btn btn-secondary" onclick="focusOn('quadra')">🏐 Focar na Quadra de Areia (22×12 m)</button>
       <button class="btn btn-secondary" onclick="focusOn('chales')">🏡 Focar nos Chalés 1 a 5 (22 m²)</button>
       <button class="btn btn-secondary" onclick="focusOn('p1')">🔎 Focar no Setor P1</button>
       <button class="btn btn-secondary" onclick="focusOn('p2')">🔎 Focar no Setor P2</button>
@@ -363,11 +351,6 @@ def main():
     const zRange = {z_range:.2f};
 
     const tables = {json.dumps(tables_data)};
-    const salao = {json.dumps(salao_data)};
-    const campo = {json.dumps(quadra_data)};
-    const casa = {json.dumps(casa_data)};
-    const chalesData = {json.dumps(chales_data)};
-
     const sitioCoords = {json.dumps(sitio_coords_3d)};
     const setoresCoords = {json.dumps(setores_coords)};
 
@@ -376,7 +359,8 @@ def main():
     scene.background = new THREE.Color(0x0f172a);
 
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1.0, 5000);
-    camera.position.set(-150, 480, 550);
+    // Posicionamento inicial focado na Casa do Sítio e complexo
+    camera.position.set(-109.50 + 45, 162.58 + 35, -11.50 + 50);
 
     const renderer = new THREE.WebGLRenderer({{ antialias: true, powerPreference: 'high-performance' }});
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -390,7 +374,7 @@ def main():
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.maxPolarAngle = Math.PI / 2 - 0.02;
-    controls.target.set(0, 150, 0);
+    controls.target.set(-109.50, 162.58 + 2.0, -11.50);
     controls.update();
 
     const hemiLight = new THREE.HemisphereLight(0xffffff, 0x1e293b, 0.75);
@@ -406,10 +390,11 @@ def main():
     sunLight.shadow.camera.right = 450;
     sunLight.shadow.camera.top = 450;
     sunLight.shadow.camera.bottom = -450;
+    sunLight.target.position.set(-109.50, 162.58, -11.50);
     scene.add(sunLight);
     scene.add(sunLight.target);
 
-    // TERRENO 3D
+    // TERRENO 3D COM MDT LIDAR E ORTOFOTO
     const b64Heights = "{b64_heights}";
     const binStr = atob(b64Heights);
     const u16Arr = new Uint16Array(binStr.length / 2);
@@ -420,563 +405,112 @@ def main():
     const geom = new THREE.PlaneGeometry(widthM, depthM, cols - 1, rows - 1);
     geom.rotateX(-Math.PI / 2);
     const pos = geom.attributes.position;
-
-    // Terraplanagem suave dos platôs do Salão e Quadra
-    const cos28 = Math.cos(THREE.MathUtils.degToRad(28.02));
-    const sin28 = Math.sin(THREE.MathUtils.degToRad(28.02));
-
-    for (let r = 0; r < rows; r++) {{
-      for (let c = 0; c < cols; c++) {{
-        const idx = r * cols + c;
-        let h = (u16Arr[idx] / 65535.0) * zRange;
-        const x = pos.getX(idx);
-        const z = pos.getZ(idx);
-
-        // Nivelamento do Salão
-        const dxs = x - salao.x;
-        const dzs = z - salao.z;
-        const lxs = dxs * cos28 + dzs * sin28;
-        const lzs = -dxs * sin28 + dzs * cos28;
-        if (Math.abs(lxs) <= 7.2 && Math.abs(lzs) <= 5.2) {{
-          h = salao.y - 0.02;
-        }} else if (Math.abs(lxs) <= 10.5 && Math.abs(lzs) <= 8.5) {{
-          const tx = Math.max(0.0, (Math.abs(lxs) - 7.2) / 3.3);
-          const tz = Math.max(0.0, (Math.abs(lzs) - 5.2) / 3.3);
-          const t = Math.min(1.0, Math.max(tx, tz));
-          const s = 0.5 - 0.5 * Math.cos(Math.PI * t);
-          h = (salao.y - 0.02) + s * (h - (salao.y - 0.02));
-        }}
-
-        // Nivelamento da Quadra de Areia
-        const dxq = x - campo.x;
-        const dzq = z - campo.z;
-        const lxq = dxq * cos28 + dzq * sin28;
-        const lzq = -dxq * sin28 + dzq * cos28;
-        if (Math.abs(lxq) <= 12.0 && Math.abs(lzq) <= 7.0) {{
-          h = campo.y - 0.02;
-        }} else if (Math.abs(lxq) <= 16.0 && Math.abs(lzq) <= 11.0) {{
-          const tx = Math.max(0.0, (Math.abs(lxq) - 12.0) / 4.0);
-          const tz = Math.max(0.0, (Math.abs(lzq) - 7.0) / 4.0);
-          const t = Math.min(1.0, Math.max(tx, tz));
-          const s = 0.5 - 0.5 * Math.cos(Math.PI * t);
-          h = (campo.y - 0.02) + s * (h - (campo.y - 0.02));
-        }}
-
-        pos.setY(idx, h);
-      }}
+    for (let i = 0; i < pos.count; i++) {{
+      pos.setY(i, (u16Arr[i] / 65535.0) * zRange);
     }}
-    pos.needsUpdate = true;
     geom.computeVertexNormals();
 
-    const matTerrain = new THREE.MeshStandardMaterial({{
-      color: 0xffffff, roughness: 1.0, metalness: 0.0, side: THREE.DoubleSide
-    }});
-    const terrain = new THREE.Mesh(geom, matTerrain);
-    terrain.receiveShadow = true;
-    scene.add(terrain);
-
-    // Carregamento da Textura Oficial SIGSC
-    const texImg = new Image();
-    texImg.src = "data:image/jpeg;base64,{b64_tex}";
-    texImg.onload = function() {{
-      const texture = new THREE.Texture(texImg);
-      texture.encoding = THREE.sRGBEncoding;
-      texture.generateMipmaps = true;
-      texture.minFilter = THREE.LinearMipmapLinearFilter;
-      texture.magFilter = THREE.LinearFilter;
-      if (renderer.capabilities && renderer.capabilities.getMaxAnisotropy) {{
-        texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-      }}
-      texture.needsUpdate = true;
-      matTerrain.map = texture;
-      matTerrain.needsUpdate = true;
+    const texLoader = new THREE.TextureLoader();
+    const ortoTex = texLoader.load("data:image/jpeg;base64,{b64_orto}", () => {{
       document.getElementById('loading').style.display = 'none';
-      renderer.render(scene, camera);
-    }};
-
-    // DIVISA COMPLETA DO SÍTIO (18,60 ha) EM TUBO 3D CONTÍNUO
-    const boundaryGroup = new THREE.Group();
-    const boundaryPts = sitioCoords.map(p => new THREE.Vector3(p[0], p[1], p[2]));
-    const boundaryCurve = new THREE.CatmullRomCurve3(boundaryPts, true);
-    const boundaryTubeGeom = new THREE.TubeGeometry(boundaryCurve, Math.min(boundaryPts.length, 1600), 0.35, 6, true);
-    const boundaryTubeMat = new THREE.MeshStandardMaterial({{
-      color: 0xffea00, emissive: 0xffaa00, emissiveIntensity: 0.45, roughness: 0.3
     }});
-    const boundaryTubeMesh = new THREE.Mesh(boundaryTubeGeom, boundaryTubeMat);
-    boundaryGroup.add(boundaryTubeMesh);
-    scene.add(boundaryGroup);
+    ortoTex.wrapS = THREE.ClampToEdgeWrapping;
+    ortoTex.wrapT = THREE.ClampToEdgeWrapping;
+    ortoTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
 
-    // SETORES SOLARES P1, P2, P3
-    const sectorsGroup = new THREE.Group();
-    const sectorColors = {{
-      p1: {{ color: 0x0284c7, emissive: 0x0369a1 }},
-      p2: {{ color: 0x10b981, emissive: 0x059669 }},
-      p3: {{ color: 0xf59e0b, emissive: 0xd97706 }}
-    }};
-    for (const [sKey, sPtsArr] of Object.entries(setoresCoords)) {{
-      const sPoints = sPtsArr.map(p => new THREE.Vector3(p[0], p[1], p[2]));
-      const sCurve = new THREE.CatmullRomCurve3(sPoints, true);
-      const sTubeGeom = new THREE.TubeGeometry(sCurve, sPoints.length, 0.22, 5, true);
-      const sMat = new THREE.MeshStandardMaterial({{
-        color: sectorColors[sKey].color, emissive: sectorColors[sKey].emissive,
-        emissiveIntensity: 0.4, roughness: 0.4
-      }});
-      sectorsGroup.add(new THREE.Mesh(sTubeGeom, sMat));
+    const terrainMat = new THREE.MeshStandardMaterial({{
+      map: ortoTex, roughness: 0.88, metalness: 0.05
+    }});
+    const terrainMesh = new THREE.Mesh(geom, terrainMat);
+    terrainMesh.receiveShadow = true;
+    scene.add(terrainMesh);
+
+    // LINHA DE DIVISA DO SÍTIO NO RELEVO (18,60 ha COMPLETA E CONTÍNUA)
+    const sitioPts = sitioCoords.map(p => new THREE.Vector3(p[0], p[1], p[2]));
+    sitioPts.push(sitioPts[0]);
+    const sitioCurve = new THREE.CatmullRomCurve3(sitioPts);
+    const tubeGeom = new THREE.TubeGeometry(sitioCurve, sitioPts.length * 2, 0.40, 6, true);
+    const tubeMat = new THREE.MeshBasicMaterial({{ color: 0xfacc15 }});
+    const lineSitio = new THREE.Mesh(tubeGeom, tubeMat);
+    scene.add(lineSitio);
+
+    // SETORES SOLARES (P1, P2, P3)
+    const lineSectors = [];
+    const sectorColors = {{ p1: 0x38bdf8, p2: 0x4ade80, p3: 0xf43f5e }};
+    for (const [sId, sPts] of Object.entries(setoresCoords)) {{
+      const vPts = sPts.map(p => new THREE.Vector3(p[0], p[1], p[2]));
+      vPts.push(vPts[0]);
+      const sCurve = new THREE.CatmullRomCurve3(vPts);
+      const sTube = new THREE.TubeGeometry(sCurve, vPts.length * 2, 0.30, 6, true);
+      const sMesh = new THREE.Mesh(sTube, new THREE.MeshBasicMaterial({{ color: sectorColors[sId] }}));
+      scene.add(sMesh);
+      lineSectors.push(sMesh);
     }}
-    scene.add(sectorsGroup);
 
-    // MESAS SOLARES DE SOLO (233 mesas)
-    const solarGroup = new THREE.Group();
-    const tableGeom = new THREE.BoxGeometry(8.0, 0.22, 4.32);
-    tableGeom.rotateX(-THREE.MathUtils.degToRad(20));
-    const moduleMat = new THREE.MeshStandardMaterial({{ color: 0x1e3a8a, metalness: 0.8, roughness: 0.2 }});
+    // MESAS FOTOVOLTAICAS DE SOLO (233 mesas)
+    const solarTablesGroup = new THREE.Group();
+    scene.add(solarTablesGroup);
+
+    const moduleMat = new THREE.MeshStandardMaterial({{
+      color: 0x0f172a, roughness: 0.15, metalness: 0.85
+    }});
+    const structMat = new THREE.MeshStandardMaterial({{
+      color: 0x94a3b8, roughness: 0.5, metalness: 0.7
+    }});
+
+    const singleTableGeom = new THREE.Group();
+    const panelBox = new THREE.Mesh(new THREE.BoxGeometry(4.40, 0.08, 1.95), moduleMat);
+    panelBox.rotation.x = THREE.MathUtils.degToRad(-15.0);
+    panelBox.position.y = 1.25;
+    panelBox.castShadow = true;
+    singleTableGeom.add(panelBox);
+
+    const post1 = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.3), structMat);
+    post1.position.set(-1.8, 0.65, 0.3); post1.castShadow = true;
+    const post2 = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 1.3), structMat);
+    post2.position.set(1.8, 0.65, 0.3); post2.castShadow = true;
+    singleTableGeom.add(post1, post2);
 
     tables.forEach(t => {{
-      const mMesh = new THREE.Mesh(tableGeom, moduleMat);
-      mMesh.position.set(t.x, t.y + 1.2, t.z);
-      mMesh.castShadow = true;
-      solarGroup.add(mMesh);
-    }});
-    scene.add(solarGroup);
-
-    // =========================================================================
-    // EDIFICAÇÕES 3D (100% FIÉIS A visualizador_casa_arredores.html)
-    // =========================================================================
-    const complexGroup = new THREE.Group();
-    scene.add(complexGroup);
-
-    function createClayTileTextures() {{
-      const w = 512, h = 512;
-      const cDiff = document.createElement('canvas'); cDiff.width = w; cDiff.height = h;
-      const ctx = cDiff.getContext('2d');
-      const cBump = document.createElement('canvas'); cBump.width = w; cBump.height = h;
-      const ctxB = cBump.getContext('2d');
-      const colW = w / 12, rowH = h / 7;
-
-      const imgD = ctx.createImageData(w, h); const d = imgD.data;
-      const imgB = ctxB.createImageData(w, h); const b = imgB.data;
-
-      for (let py = 0; py < h; py++) {{
-        const rowIdx = Math.floor(py / rowH);
-        const ry = (py % rowH) / rowH;
-        const overlapShadow = ry < 0.11 ? (0.62 + 0.38 * (ry / 0.11)) : 1.0;
-        const overlapBump = (1.0 - ry) * 35;
-
-        for (let px = 0; px < w; px++) {{
-          const colIdx = Math.floor(px / colW);
-          const rx = (px % colW) / colW;
-          const wave = Math.sin(rx * Math.PI * 2.0);
-          const heightVal = (wave * 0.5 + 0.5);
-
-          const tileSeed = Math.sin((rowIdx * 17 + colIdx * 31) * 12.9898) * 43758.5453;
-          const tileVar = (tileSeed - Math.floor(tileSeed)) * 26 - 13;
-          const grain = (Math.random() - 0.5) * 14;
-          const shade = (0.76 + 0.30 * heightVal) * overlapShadow;
-
-          const r = Math.min(255, Math.max(0, (178 + tileVar + grain) * shade));
-          const g = Math.min(255, Math.max(0, (76 + tileVar * 0.45 + grain * 0.5) * shade));
-          const bl = Math.min(255, Math.max(0, (32 + tileVar * 0.25 + grain * 0.3) * shade));
-
-          const idx = (py * w + px) * 4;
-          d[idx] = r; d[idx+1] = g; d[idx+2] = bl; d[idx+3] = 255;
-          const bv = Math.min(255, Math.max(0, Math.floor(heightVal * 210 + overlapBump)));
-          b[idx] = bv; b[idx+1] = bv; b[idx+2] = bv; b[idx+3] = 255;
-        }}
-      }}
-      ctx.putImageData(imgD, 0, 0); ctxB.putImageData(imgB, 0, 0);
-
-      const mapTex = new THREE.CanvasTexture(cDiff);
-      mapTex.wrapS = THREE.RepeatWrapping; mapTex.wrapT = THREE.RepeatWrapping;
-      const bumpTex = new THREE.CanvasTexture(cBump);
-      bumpTex.wrapS = THREE.RepeatWrapping; bumpTex.wrapT = THREE.RepeatWrapping;
-      return {{ mapTex, bumpTex }};
-    }}
-
-    const clayTextures = createClayTileTextures();
-
-    // A) CASA DO SÍTIO (200 m², ALINHADA AOS KMZs 1 E 2)
-    const casaGroup = new THREE.Group();
-    casaGroup.position.set(casa.x, casa.y, casa.z);
-    complexGroup.add(casaGroup);
-
-    (function buildCasaSitioKMZ() {{
-      const cxU = casa.cx_utm;
-      const cyU = casa.cy_utm;
-      const Rs = [663412.325, 6968630.679];
-      const Rn = [663415.673, 6968642.764];
-      const uE = 0.266982, uN = 0.963702;
-      const nE = 0.963702, nN = -0.266982;
-      const H_RIDGE = 4.60;
-      const S_WEST = 0.34;
-      const S_EAST = 0.235;
-
-      function roofMetrics(e, n) {{
-        const along = (e - Rs[0]) * uE + (n - Rs[1]) * uN;
-        const perp = (e - Rs[0]) * nE + (n - Rs[1]) * nN;
-        const h = (perp <= 0) ? (H_RIDGE - S_WEST * Math.abs(perp)) : (H_RIDGE - S_EAST * perp);
-        return {{ lx: e - cxU, lz: -(n - cyU), along: along, perp: perp, h: h }};
-      }}
-
-      // Vértices Exatos telhado1.kmz (Ala Oeste)
-      const t1UTM = [
-        [663408.675, 6968631.318], Rs, Rn,
-        [663411.758, 6968643.518], [663408.972, 6968633.456], [663407.240, 6968633.914]
-      ];
-      const t1P = t1UTM.map(pt => roofMetrics(pt[0], pt[1]));
-
-      const t1Geom = new THREE.BufferGeometry();
-      const t1Pos = [], t1Uvs = [];
-      const t1Tris = [[0, 1, 2], [0, 2, 3], [0, 3, 4], [0, 4, 5]];
-      t1Tris.forEach(tri => {{
-        tri.forEach(vi => {{
-          t1Pos.push(t1P[vi].lx, t1P[vi].h, t1P[vi].lz);
-          t1Uvs.push(t1P[vi].along * 0.22, t1P[vi].perp * 0.28);
-        }});
-      }});
-      t1Geom.setAttribute('position', new THREE.Float32BufferAttribute(t1Pos, 3));
-      t1Geom.setAttribute('uv', new THREE.Float32BufferAttribute(t1Uvs, 2));
-      t1Geom.computeVertexNormals();
-
-      const roofMatOeste = new THREE.MeshStandardMaterial({{
-        map: clayTextures.mapTex, bumpMap: clayTextures.bumpTex, bumpScale: 0.045,
-        roughness: 0.72, metalness: 0.08, side: THREE.DoubleSide
-      }});
-      const t1Mesh = new THREE.Mesh(t1Geom, roofMatOeste);
-      t1Mesh.castShadow = true;
-      casaGroup.add(t1Mesh);
-
-      // Vértices Exatos telhado2.kmz (Ala Leste)
-      const t2UTM = [
-        Rs, [663420.916, 6968628.307], [663424.264, 6968640.392], Rn
-      ];
-      const t2P = t2UTM.map(pt => roofMetrics(pt[0], pt[1]));
-      const t2Geom = new THREE.BufferGeometry();
-      const t2Pos = [], t2Uvs = [];
-      [[0, 1, 2], [0, 2, 3]].forEach(tri => {{
-        tri.forEach(vi => {{
-          t2Pos.push(t2P[vi].lx, t2P[vi].h, t2P[vi].lz);
-          t2Uvs.push(t2P[vi].along * 0.22, t2P[vi].perp * 0.28);
-        }});
-      }});
-      t2Geom.setAttribute('position', new THREE.Float32BufferAttribute(t2Pos, 3));
-      t2Geom.setAttribute('uv', new THREE.Float32BufferAttribute(t2Uvs, 2));
-      t2Geom.computeVertexNormals();
-
-      const roofMatLeste = new THREE.MeshStandardMaterial({{
-        map: clayTextures.mapTex, bumpMap: clayTextures.bumpTex, bumpScale: 0.045,
-        roughness: 0.72, metalness: 0.08, side: THREE.DoubleSide
-      }});
-      const t2Mesh = new THREE.Mesh(t2Geom, roofMatLeste);
-      t2Mesh.castShadow = true;
-      casaGroup.add(t2Mesh);
-
-      // Cumeeira Central
-      const pRs = roofMetrics(Rs[0], Rs[1]);
-      const pRn = roofMetrics(Rn[0], Rn[1]);
-      const cumLineGeom = new THREE.BufferGeometry().setFromPoints([
-        new THREE.Vector3(pRs.lx, pRs.h + 0.03, pRs.lz),
-        new THREE.Vector3(pRn.lx, pRn.h + 0.03, pRn.lz)
-      ]);
-      casaGroup.add(new THREE.Line(cumLineGeom, new THREE.LineBasicMaterial({{ color: 0x7c2d12, linewidth: 3 }})));
-
-      // Paredes e Piso
-      const wallPts = [
-        [-7.3, -4.5], [-3.18, -5.82], [5.0, -8.19], [8.76, 3.89],
-        [0.17, 6.26], [-3.74, 7.02], [-6.53, -3.04], [-8.26, -2.59]
-      ];
-      const floorShape = new THREE.Shape();
-      wallPts.forEach((p, idx) => {{
-        if (idx === 0) floorShape.moveTo(p[0], -p[1]);
-        else floorShape.lineTo(p[0], -p[1]);
-      }});
-      const floorGeom = new THREE.ShapeGeometry(floorShape);
-      floorGeom.rotateX(Math.PI / 2);
-      const floorMesh = new THREE.Mesh(floorGeom, new THREE.MeshStandardMaterial({{ color: 0x9a3412, roughness: 0.8 }}));
-      floorMesh.position.y = 0.05;
-      casaGroup.add(floorMesh);
-
-      const wallMat = new THREE.MeshStandardMaterial({{ color: 0xf8fafc, roughness: 0.85 }});
-      const wallGeom = new THREE.BufferGeometry();
-      const wallVerts = [];
-      for (let i = 0; i < wallPts.length; i++) {{
-        const cur = wallPts[i];
-        const nxt = wallPts[(i + 1) % wallPts.length];
-        const h1 = 2.80, h2 = 2.80;
-        wallVerts.push(
-          cur[0], 0, cur[1],  nxt[0], 0, nxt[1],  nxt[0], h2, nxt[1],
-          cur[0], 0, cur[1],  nxt[0], h2, nxt[1], cur[0], h1, cur[1]
-        );
-      }}
-      wallGeom.setAttribute('position', new THREE.Float32BufferAttribute(wallVerts, 3));
-      wallGeom.computeVertexNormals();
-      casaGroup.add(new THREE.Mesh(wallGeom, wallMat));
-    }})();
-
-    // B) SALÃO 12x8m COM 36 MÓDULOS SOLARES
-    const salaoGroup = new THREE.Group();
-    salaoGroup.position.set(salao.x, salao.y, salao.z);
-    salaoGroup.rotation.y = -THREE.MathUtils.degToRad(28.02);
-    complexGroup.add(salaoGroup);
-
-    const matFloorConcrete = new THREE.MeshStandardMaterial({{ color: 0x64748b, roughness: 0.6 }});
-    const salaoFloor = new THREE.Mesh(new THREE.BoxGeometry(12.0, 0.25, 8.0), matFloorConcrete);
-    salaoFloor.position.y = 0.125;
-    salaoGroup.add(salaoFloor);
-
-    for (let s = 1; s <= 3; s++) {{
-      const step = new THREE.Mesh(new THREE.BoxGeometry(6.0, 0.20, 0.50), matFloorConcrete);
-      step.position.set(0, 0.125 - s * 0.20, 4.05 + s * 0.45);
-      salaoGroup.add(step);
-    }}
-
-    function createSalaoSolarRow(numCols = 9, modW = 1.134, modL = 1.95) {{
-      const rowGroup = new THREE.Group();
-      const gap = 0.03;
-      const totalW = numCols * modW + (numCols - 1) * gap;
-      const startX = -totalW / 2 + modW / 2;
-      for (let c = 0; c < numCols; c++) {{
-        const x = startX + c * (modW + gap);
-        const cell = new THREE.Mesh(new THREE.BoxGeometry(modW - 0.035, 0.04, modL - 0.035), moduleMat);
-        cell.position.set(x, 0.045, 0);
-        cell.castShadow = true;
-        rowGroup.add(cell);
-      }}
-      return rowGroup;
-    }}
-
-    const opt1Group = new THREE.Group();
-    const opt2Group = new THREE.Group();
-    const opt3Group = new THREE.Group();
-    salaoGroup.add(opt1Group, opt2Group, opt3Group);
-
-    // OPÇÃO 1: MADEIRA RÚSTICA (2 Águas com 36 módulos solares)
-    const rusticWoodMat = new THREE.MeshStandardMaterial({{ color: 0x4a2e18, roughness: 0.85 }});
-    const tileCeramicMat = new THREE.MeshStandardMaterial({{
-      map: clayTextures.mapTex, bumpMap: clayTextures.bumpTex, bumpScale: 0.05, roughness: 0.72
+      const inst = singleTableGeom.clone();
+      inst.position.set(t.x, t.y, t.z);
+      solarTablesGroup.add(inst);
     }});
 
-    const pilarPositions = [
-      [-5.7, 1.85, -3.7], [0, 1.85, -3.7], [5.7, 1.85, -3.7],
-      [-5.7, 1.85, 3.7],  [0, 1.85, 3.7],  [5.7, 1.85, 3.7]
-    ];
-    pilarPositions.forEach(p => {{
-      const pMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.18, 3.6, 12), rusticWoodMat);
-      pMesh.position.set(p[0], p[1], p[2]);
-      pMesh.castShadow = true;
-      opt1Group.add(pMesh);
-    }});
+    /* BUILDING_CODE_PLACEHOLDER */
 
-    const viga1 = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 12.2, 12), rusticWoodMat);
-    viga1.rotation.z = Math.PI / 2; viga1.position.set(0, 3.65, -3.7);
-    const viga2 = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 12.2, 12), rusticWoodMat);
-    viga2.rotation.z = Math.PI / 2; viga2.position.set(0, 3.65, 3.7);
-    opt1Group.add(viga1, viga2);
-
-    const roofWoodBack = new THREE.Mesh(new THREE.BoxGeometry(12.8, 0.10, 4.6), tileCeramicMat);
-    roofWoodBack.rotation.x = -THREE.MathUtils.degToRad(18.0);
-    roofWoodBack.position.set(0, 4.35, -2.15);
-    const roofWoodFront = new THREE.Mesh(new THREE.BoxGeometry(12.8, 0.10, 4.6), tileCeramicMat);
-    roofWoodFront.rotation.x = THREE.MathUtils.degToRad(18.0);
-    roofWoodFront.position.set(0, 4.35, 2.15);
-    opt1Group.add(roofWoodBack, roofWoodFront);
-
-    // 36 Painéis Solares (18 na água Frontal + 18 na água Posterior)
-    const solarBackOpt1 = new THREE.Group();
-    solarBackOpt1.rotation.x = -THREE.MathUtils.degToRad(18.0);
-    solarBackOpt1.position.set(0, 4.35, -2.15);
-    const r1Back1 = createSalaoSolarRow(9, 1.134, 1.95); r1Back1.position.set(0, 0.08, -1.05);
-    const r2Back1 = createSalaoSolarRow(9, 1.134, 1.95); r2Back1.position.set(0, 0.08, 1.05);
-    solarBackOpt1.add(r1Back1, r2Back1);
-
-    const solarFrontOpt1 = new THREE.Group();
-    solarFrontOpt1.rotation.x = THREE.MathUtils.degToRad(18.0);
-    solarFrontOpt1.position.set(0, 4.35, 2.15);
-    const r1Front1 = createSalaoSolarRow(9, 1.134, 1.95); r1Front1.position.set(0, 0.08, -1.05);
-    const r2Front1 = createSalaoSolarRow(9, 1.134, 1.95); r2Front1.position.set(0, 0.08, 1.05);
-    solarFrontOpt1.add(r1Front1, r2Front1);
-    opt1Group.add(solarBackOpt1, solarFrontOpt1);
-
-    // OPÇÃO 2: ESTRUTURA METÁLICA
-    const steelDarkMat = new THREE.MeshStandardMaterial({{ color: 0x1e293b, metalness: 0.8, roughness: 0.3 }});
-    const panelSandwichMat = new THREE.MeshStandardMaterial({{ color: 0x475569, metalness: 0.5, roughness: 0.4 }});
-    pilarPositions.forEach(p => {{
-      const pSteel = new THREE.Mesh(new THREE.BoxGeometry(0.20, 3.6, 0.20), steelDarkMat);
-      pSteel.position.set(p[0], p[1], p[2]);
-      opt2Group.add(pSteel);
-    }});
-    const roofSteelBack = new THREE.Mesh(new THREE.BoxGeometry(12.8, 0.08, 4.6), panelSandwichMat);
-    roofSteelBack.rotation.x = -THREE.MathUtils.degToRad(18.0);
-    roofSteelBack.position.set(0, 4.35, -2.15);
-    const roofSteelFront = new THREE.Mesh(new THREE.BoxGeometry(12.8, 0.08, 4.6), panelSandwichMat);
-    roofSteelFront.rotation.x = THREE.MathUtils.degToRad(18.0);
-    roofSteelFront.position.set(0, 4.35, 2.15);
-    opt2Group.add(roofSteelBack, roofSteelFront);
-
-    // OPÇÃO 3: 1 ÁGUA NO DECLIVE
-    [-5.7, 0, 5.7].forEach(x => {{
-      const pBack = new THREE.Mesh(new THREE.BoxGeometry(0.2, 4.1, 0.2), steelDarkMat);
-      pBack.position.set(x, 2.05, -3.7); opt3Group.add(pBack);
-      const pFront = new THREE.Mesh(new THREE.BoxGeometry(0.2, 2.9, 0.2), steelDarkMat);
-      pFront.position.set(x, 1.45, 3.7); opt3Group.add(pFront);
-    }});
-    const roofMono = new THREE.Mesh(new THREE.BoxGeometry(13.0, 0.12, 9.4), panelSandwichMat);
-    roofMono.rotation.x = THREE.MathUtils.degToRad(9.3);
-    roofMono.position.set(0, 4.25, 0);
-    opt3Group.add(roofMono);
-
-    opt1Group.visible = true;
-    opt2Group.visible = false;
-    opt3Group.visible = false;
-
-    // C) QUADRA DE AREIA 22x12m (TELAS H=6m; LADO OESTE ABERTO PARA A CASA)
-    const campoGroup = new THREE.Group();
-    campoGroup.position.set(campo.x, campo.y, campo.z);
-    campoGroup.rotation.y = -THREE.MathUtils.degToRad(28.02);
-    complexGroup.add(campoGroup);
-
-    const sandMat = new THREE.MeshStandardMaterial({{ color: 0xfde047, roughness: 0.95 }});
-    const sandMesh = new THREE.Mesh(new THREE.BoxGeometry(22.0, 0.30, 12.0), sandMat);
-    sandMesh.position.y = 0.15;
-    sandMesh.receiveShadow = true;
-    campoGroup.add(sandMesh);
-
-    const bordaMat = new THREE.MeshStandardMaterial({{ color: 0x78350f, roughness: 0.8 }});
-    const bordaMesh = new THREE.Mesh(new THREE.BoxGeometry(22.3, 0.40, 12.3), bordaMat);
-    bordaMesh.position.y = 0.20;
-    campoGroup.add(bordaMesh);
-
-    const postMatQuadra = new THREE.MeshStandardMaterial({{ color: 0xe2e8f0, metalness: 0.7, roughness: 0.3 }});
-    const quadraPostPositions = [
-      [-11, -6], [-5.5, -6], [0, -6], [5.5, -6], [11, -6],
-      [-11, 6], [-5.5, 6], [0, 6], [5.5, 6], [11, 6]
-    ];
-    quadraPostPositions.forEach(p => {{
-      const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.10, 6.0, 8), postMatQuadra);
-      pole.position.set(p[0], 3.0, p[1]);
-      campoGroup.add(pole);
-    }});
-
-    const telasGroup = new THREE.Group();
-    campoGroup.add(telasGroup);
-
-    const telaMat = new THREE.MeshBasicMaterial({{
-      color: 0x38bdf8, wireframe: true, transparent: true, opacity: 0.38, side: THREE.DoubleSide
-    }});
-
-    const telaSul = new THREE.Mesh(new THREE.PlaneGeometry(22.0, 6.0, 22, 6), telaMat);
-    telaSul.position.set(0, 3.0, -6.0);
-    telasGroup.add(telaSul);
-
-    const telaNorte = new THREE.Mesh(new THREE.PlaneGeometry(22.0, 6.0, 22, 6), telaMat);
-    telaNorte.position.set(0, 3.0, 6.0);
-    telasGroup.add(telaNorte);
-
-    const telaLeste = new THREE.Mesh(new THREE.PlaneGeometry(12.0, 6.0, 12, 6), telaMat);
-    telaLeste.position.set(11.0, 3.0, 0);
-    telaLeste.rotation.y = Math.PI / 2;
-    telasGroup.add(telaLeste);
-
-    const cableMat = new THREE.LineBasicMaterial({{ color: 0xe2e8f0, linewidth: 2 }});
-    const cablePts = [
-      new THREE.Vector3(-11, 6.0, -6), new THREE.Vector3(11, 6.0, -6),
-      new THREE.Vector3(11, 6.0, 6), new THREE.Vector3(-11, 6.0, 6)
-    ];
-    telasGroup.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(cablePts), cableMat));
-
-    const netGameMat = new THREE.MeshBasicMaterial({{ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.75 }});
-    const net = new THREE.Mesh(new THREE.PlaneGeometry(8.5, 1.0), netGameMat);
-    net.position.set(0, 2.2, 0);
-    net.rotation.y = Math.PI / 2;
-    campoGroup.add(net);
-
-    // D) CHALÉS 1 A 5 (22 m² CADA, CHALÉS 4 E 5 GIRADOS PARA A CASA)
-    const chaleWallMat = new THREE.MeshStandardMaterial({{ color: 0x78350f, roughness: 0.8 }});
-    const chaleRoofMat = new THREE.MeshStandardMaterial({{ color: 0x9a3412, roughness: 0.7 }});
-    const chaleGlassMat = new THREE.MeshStandardMaterial({{ color: 0x38bdf8, roughness: 0.2, metalness: 0.8 }});
-    const chalePilarMat = new THREE.MeshStandardMaterial({{ color: 0x475569, roughness: 0.9 }});
-    const chaleDeckMat = new THREE.MeshStandardMaterial({{ color: 0x5c2d16, roughness: 0.75 }});
-
-    chalesData.forEach(c => {{
-      const cGroup = new THREE.Group();
-      cGroup.position.set(c.x, c.y, c.z);
-      if (c.id === 4 || c.id === 5) {{
-        cGroup.rotation.y = Math.atan2(casa.x - c.x, casa.z - c.z);
-      }} else {{
-        cGroup.rotation.y = -THREE.MathUtils.degToRad(28.02);
-      }}
-
-      const pilotiCoords = [
-        [-2.4, -1.8], [0.0, -1.8], [2.4, -1.8],
-        [-2.4, 1.8],  [0.0, 1.8],  [2.4, 1.8]
-      ];
-      pilotiCoords.forEach(pt => {{
-        const pMesh = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.16, 4.0, 8), chalePilarMat);
-        pMesh.position.set(pt[0], -1.9, pt[1]);
-        pMesh.castShadow = true;
-        cGroup.add(pMesh);
-      }});
-
-      const baseDeck = new THREE.Mesh(new THREE.BoxGeometry(5.50, 0.20, 4.00), chaleDeckMat);
-      baseDeck.position.set(0, 0.10, 0);
-      cGroup.add(baseDeck);
-
-      const body = new THREE.Mesh(new THREE.BoxGeometry(5.40, 2.70, 2.80), chaleWallMat);
-      body.position.set(0, 1.55, -0.55);
-      cGroup.add(body);
-
-      const rGeom = new THREE.BufferGeometry();
-      const rPts = [
-        -2.90, 2.75, -2.20,  -2.90, 2.75, 2.20,   0.00, 4.10, 2.20,
-        -2.90, 2.75, -2.20,   0.00, 4.10, 2.20,   0.00, 4.10, -2.20,
-         0.00, 4.10, -2.20,   0.00, 4.10, 2.20,   2.90, 2.75, 2.20,
-         0.00, 4.10, -2.20,   2.90, 2.75, 2.20,   2.90, 2.75, -2.20
-      ];
-      rGeom.setAttribute('position', new THREE.Float32BufferAttribute(rPts, 3));
-      rGeom.computeVertexNormals();
-      const rMesh = new THREE.Mesh(rGeom, chaleRoofMat);
-      cGroup.add(rMesh);
-
-      const railMat = new THREE.MeshStandardMaterial({{ color: 0x334155, roughness: 0.5 }});
-      const railFront = new THREE.Mesh(new THREE.BoxGeometry(5.40, 0.90, 0.06), railMat);
-      railFront.position.set(0, 0.65, 1.95);
-      const railL = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.90, 1.20), railMat);
-      railL.position.set(-2.67, 0.65, 1.35);
-      const railR = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.90, 1.20), railMat);
-      railR.position.set(2.67, 0.65, 1.35);
-      cGroup.add(railFront, railL, railR);
-
-      const win = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 1.8), chaleGlassMat);
-      win.position.set(0, 1.45, 0.86);
-      cGroup.add(win);
-
-      complexGroup.add(cGroup);
-    }});
-
-    // ESFERA SOLAR NO CÉU
-    const sunSphereGeom = new THREE.SphereGeometry(24, 16, 16);
-    const sunSphereMat = new THREE.MeshBasicMaterial({{ color: 0xfff08a }});
+    // ESFERA SOLAR E TRAÇADO ASTRONÔMICO
+    const sunSphereGeom = new THREE.SphereGeometry(18, 16, 16);
+    const sunSphereMat = new THREE.MeshBasicMaterial({{ color: 0xfff07c }});
     const sunSphere = new THREE.Mesh(sunSphereGeom, sunSphereMat);
     scene.add(sunSphere);
 
-    // CÁLCULOS ASTRONÔMICOS DO SIMULADOR SOLAR
-    const LAT_RAD = -27.395 * Math.PI / 180.0;
-    const LON_DEG = -49.347;
-    const R_SUN_ORBIT = 1800;
+    const R_SUN_ORBIT = 1100.0;
+    const LAT_RAD = -27.40 * Math.PI / 180.0;
 
-    function computeSunAngles(dayOfYear, hourOfDay) {{
-      const b = (360.0 / 365.0) * (dayOfYear - 81) * Math.PI / 180.0;
-      const decl = 23.45 * Math.PI / 180.0 * Math.sin(b);
-      const eot = 9.87 * Math.sin(2 * b) - 7.53 * Math.cos(b) - 1.5 * Math.sin(b);
-      const timeOffset = eot + 4.0 * (LON_DEG - (-45.0));
-      const trueSolarTime = hourOfDay + timeOffset / 60.0;
-      const omega = (trueSolarTime - 12.0) * 15.0 * Math.PI / 180.0;
+    function computeSunAngles(dayOfYear, hour) {{
+      const b = (2.0 * Math.PI / 365.0) * (dayOfYear - 1);
+      const delta = 0.006918 - 0.399912 * Math.cos(b) + 0.070257 * Math.sin(b)
+                    - 0.006758 * Math.cos(2 * b) + 0.000907 * Math.sin(2 * b)
+                    - 0.002697 * Math.cos(3 * b) + 0.00148 * Math.sin(3 * b);
 
-      const vEast = -Math.cos(decl) * Math.sin(omega);
-      const vNorth = -Math.sin(LAT_RAD) * Math.cos(decl) * Math.cos(omega) + Math.cos(LAT_RAD) * Math.sin(decl);
-      const vUp = Math.cos(LAT_RAD) * Math.cos(decl) * Math.cos(omega) + Math.sin(LAT_RAD) * Math.sin(decl);
+      const omega = (hour - 12.0) * 15.0 * Math.PI / 180.0;
 
-      const alpha = Math.asin(Math.max(-1.0, Math.min(1.0, vUp)));
-      let azDeg = Math.atan2(vEast, vNorth) * 180.0 / Math.PI;
+      const sinAlpha = Math.sin(LAT_RAD) * Math.sin(delta) + Math.cos(LAT_RAD) * Math.cos(delta) * Math.cos(omega);
+      const alpha = Math.asin(Math.max(-1.0, Math.min(1.0, sinAlpha)));
+
+      let gamma = 0.0;
+      if (Math.abs(Math.cos(alpha)) > 1e-5) {{
+        const cosGamma = (Math.sin(delta) - Math.sin(LAT_RAD) * Math.sin(alpha)) / (Math.cos(LAT_RAD) * Math.cos(alpha));
+        gamma = Math.acos(Math.max(-1.0, Math.min(1.0, cosGamma)));
+        if (Math.sin(omega) > 0) gamma = 2.0 * Math.PI - gamma;
+      }}
+
+      const vUp = Math.sin(alpha);
+      const vNorth = Math.cos(alpha) * Math.cos(gamma);
+      const vEast = Math.cos(alpha) * Math.sin(gamma);
+
+      let azDeg = (gamma * 180.0 / Math.PI + 180.0) % 360.0;
       if (azDeg < 0) azDeg += 360.0;
 
       return {{
@@ -1007,12 +541,12 @@ def main():
     }}
 
     let isSunPlaying = false;
-    function toggleSunPlay() {{
+    window.toggleSunPlay = function() {{
       isSunPlaying = !isSunPlaying;
       const btn = document.getElementById('btnPlaySun');
       btn.textContent = isSunPlaying ? '⏸️ Pausar' : '▶️ Simular Dia';
       btn.style.background = isSunPlaying ? '#e11d48' : '#0284c7';
-    }}
+    }};
 
     function updateSunSimulation() {{
       const day = parseFloat(document.getElementById('sliderDayOfYear').value);
@@ -1032,7 +566,7 @@ def main():
 
       if (sun.alphaRad > 0.0) {{
         sunLight.intensity = Math.min(1.4, Math.sin(sun.alphaRad) * 1.5 + 0.1);
-        sunLight.position.set(sun.vEast * R_SUN_ORBIT, sun.vUp * R_SUN_ORBIT, -sun.vNorth * R_SUN_ORBIT);
+        sunLight.position.set(sun.vEast * R_SUN_ORBIT - 109.50, sun.vUp * R_SUN_ORBIT, -sun.vNorth * R_SUN_ORBIT - 11.50);
         sunSphere.position.copy(sunLight.position);
         sunSphere.visible = true;
       }} else {{
@@ -1047,7 +581,7 @@ def main():
       updateSunSimulation();
     }};
 
-    // CONTROLE DE OPÇÕES DO SALÃO
+    // CONTROLE DE OPÇÕES DO SALÃO 12x8m
     const optionDescriptions = {{
       1: "<b>Opção 1: Madeira Rústica (Duas Águas)</b><br>Pilares de tora de eucalipto tratado, tesouras de madeira rústica e telhas cerâmicas terracota com 36 módulos solares fotovoltaicos (18 na água Sul + 18 na água Norte). 100% aberto sem paredes.",
       2: "<b>Opção 2: Estrutura Metálica (Duas Águas)</b><br>Pilares e vigas em perfil de aço escuro com telhas termoacústicas sandwich e 36 módulos solares fotovoltaicos.",
@@ -1055,9 +589,9 @@ def main():
     }};
 
     window.setComplexOption = function(opt) {{
-      opt1Group.visible = (opt === 1);
-      opt2Group.visible = (opt === 2);
-      opt3Group.visible = (opt === 3);
+      if (typeof optGroup1 !== 'undefined') optGroup1.visible = (opt === 1);
+      if (typeof optGroup2 !== 'undefined') optGroup2.visible = (opt === 2);
+      if (typeof optGroup3 !== 'undefined') optGroup3.visible = (opt === 3);
 
       for (let i = 1; i <= 3; i++) {{
         const btn = document.getElementById('btnOpt' + i);
@@ -1071,15 +605,22 @@ def main():
     // CÂMERAS E NAVEGAÇÃO
     window.focusOn = function(target) {{
       let tCam, tTarget;
+      // Posicionamento global rigoroso das edificações no espaço SIGSC:
+      // Casa: (-109.50, 162.58, -11.50)
+      // Salão: (-75.41, 168.73, -27.91)
+      // Quadra: (-56.07, 168.88, -15.32)
       if (target === 'casa') {{
-        tCam = new THREE.Vector3(casa.x + 32, casa.y + 18, casa.z + 36);
-        tTarget = new THREE.Vector3(casa.x, casa.y + 2.5, casa.z);
+        tCam = new THREE.Vector3(-109.50 + 32, 162.58 + 20, -11.50 + 36);
+        tTarget = new THREE.Vector3(-109.50, 162.58 + 2.5, -11.50);
       }} else if (target === 'salao') {{
-        tCam = new THREE.Vector3(salao.x + 26, salao.y + 14, salao.z + 24);
-        tTarget = new THREE.Vector3(salao.x, salao.y + 2.5, salao.z);
+        tCam = new THREE.Vector3(-75.41 + 24, 168.73 + 14, -27.91 + 20);
+        tTarget = new THREE.Vector3(-75.41, 168.73 + 2.5, -27.91);
+      }} else if (target === 'quadra' || target === 'campo') {{
+        tCam = new THREE.Vector3(-56.07 + 25, 168.88 + 16, -15.32 + 22);
+        tTarget = new THREE.Vector3(-56.07, 168.88 + 2.0, -15.32);
       }} else if (target === 'chales') {{
-        tCam = new THREE.Vector3(salao.x + 45, salao.y + 30, salao.z - 50);
-        tTarget = new THREE.Vector3(salao.x + 5, salao.y + 4.0, salao.z - 25);
+        tCam = new THREE.Vector3(-75.41 + 42, 168.73 + 28, -27.91 - 48);
+        tTarget = new THREE.Vector3(-75.41 + 5, 168.73 + 2.0, -27.91 - 25);
       }} else if (target === 'p1') {{
         const t0 = tables[0];
         tCam = new THREE.Vector3(t0.x - 60, t0.y + 70, t0.z + 120);
@@ -1116,54 +657,67 @@ def main():
       requestAnimationFrame(step);
     }}
 
-    let isWire = false;
-    window.toggleWireframe = function() {{ isWire = !isWire; matTerrain.wireframe = isWire; }};
-    let showBoundary = true;
-    window.toggleBoundary = function() {{ showBoundary = !showBoundary; boundaryGroup.visible = showBoundary; }};
-    let showSectors = true;
-    window.toggleSectors = function() {{ showSectors = !showSectors; sectorsGroup.visible = showSectors; }};
-    let showSolar = true;
-    window.toggleSolarPanels = function() {{ showSolar = !showSolar; solarGroup.visible = showSolar; }};
+    window.toggleBoundary = function() {{
+      lineSitio.visible = !lineSitio.visible;
+      document.getElementById('btnBoundary').classList.toggle('btn-toggle-active', lineSitio.visible);
+    }};
 
-    window.addEventListener('resize', onWindowResize, false);
-    function onWindowResize() {{
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }}
+    window.toggleSectors = function() {{
+      const vis = !lineSectors[0].visible;
+      lineSectors.forEach(l => l.visible = vis);
+      document.getElementById('btnSectors').classList.toggle('btn-toggle-active', vis);
+    }};
 
-    updateSunSimulation();
+    window.toggleSolarPanels = function() {{
+      solarTablesGroup.visible = !solarTablesGroup.visible;
+      const btn = document.getElementById('btnSolar');
+      btn.innerText = solarTablesGroup.visible ? "☀️ Ocultar Painéis Solares Solo" : "☀️ Exibir Painéis Solares Solo";
+      btn.classList.toggle('btn-toggle-active', solarTablesGroup.visible);
+    }};
 
-    let lastTime = performance.now();
-    function animate(now) {{
+    window.toggleWireframe = function() {{
+      terrainMat.wireframe = !terrainMat.wireframe;
+    }};
+
+    // LOOP DE ANIMAÇÃO
+    function animate() {{
       requestAnimationFrame(animate);
-      const dt = (now - lastTime) / 1000.0;
-      lastTime = now;
 
       if (isSunPlaying) {{
-        const sliderH = document.getElementById('sliderSolarHour');
-        let h = parseFloat(sliderH.value) + dt * 0.75;
-        if (h > 18.5) h = 5.5;
-        sliderH.value = h.toFixed(2);
+        const sHour = document.getElementById('sliderSolarHour');
+        let curH = parseFloat(sHour.value) + 0.035;
+        if (curH > 18.5) curH = 5.5;
+        sHour.value = curH.toFixed(2);
         updateSunSimulation();
       }}
 
       controls.update();
       renderer.render(scene, camera);
     }}
-    animate(performance.now());
+
+    updateSunSimulation();
+    animate();
+
+    window.addEventListener('resize', () => {{
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    }});
   </script>
 </body>
 </html>
 """
 
-    with open(HTML_OUT, "w", encoding="utf-8") as f:
-        f.write(html_code)
-    print(f"6. Sucesso! visualizador_3d_sitio.html salvo ({os.path.getsize(HTML_OUT):,} bytes)")
+    html_code = html_code.replace("/* BUILDING_CODE_PLACEHOLDER */", full_building_js)
 
-    shutil.copyfile(HTML_OUT, INDEX_OUT)
-    print(f"7. index.html atualizado ({os.path.getsize(INDEX_OUT):,} bytes)")
-    print("================================================================================")
+    with open(OUTPUT_HTML, "w", encoding="utf-8") as f_out:
+        f_out.write(html_code)
+    print(f"7. Sucesso! visualizador_3d_sitio.html salvo ({os.path.getsize(OUTPUT_HTML):,} bytes)")
+
+    with open(INDEX_HTML, "w", encoding="utf-8") as f_idx:
+        f_idx.write(html_code)
+    print(f"8. index.html atualizado ({os.path.getsize(INDEX_HTML):,} bytes)")
+    print("=" * 80)
 
 if __name__ == "__main__":
     main()
