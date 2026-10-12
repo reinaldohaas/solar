@@ -2,21 +2,11 @@
 # -*- coding: utf-8 -*-
 """
 ===============================================================================
-GERADOR DO VISUALIZADOR 3D: CASA DO SÍTIO E ARREDORES (MDT 1,0 m & DRONE HD 8cm)
+GERADOR DO VISUALIZADOR 3D DEDICADO: CASA DO SÍTIO E ARREDORES
+MDT LiDAR 1,0 m Nativo (SIGSC) & Ortofoto Drone HD 8 cm (2026)
 ===============================================================================
-Gera o arquivo 'visualizador_casa_arredores.html' focado exclusivamente na Casa do
-Sítio, Salão de Eventos 12×8m, Quadra de Areia 22×12m e Chalés 1 a 5.
-
-Características Técnicas:
-  - Extensão Focal: 222,48 m (E-W) × 158,42 m (N-S)
-  - MDT LiDAR Oficial: 1,0 metro nativo do SIGSC (sem distorção de 10m)
-  - Textura: Ortofoto Drone HD 2026 nativa de 8 cm/pixel
-  - Modelos 3D em Escala 1:1 rigorosa:
-      * Casa do Sítio: Telhado cerâmico de 2 águas, cumeeira, beirais, paredes e esquadrias
-      * Salão Multiuso 12×8m: Estrutura, platibanda a 3,90m e Usina Solar (18 módulos 580W)
-      * Quadra de Areia 22×12m: Caixa de areia, marcação 16×8m, rede central e postes 6m com cabos
-      * Chalés 1 a 5: 35 m² cada, posicionados nas suas cotas reais no relevo
-      * Árvores de escala 1:1 e régua interativa de medição 3D
+Gera 'visualizador_casa_arredores.html' focado na Casa do Sítio, Salão de Eventos,
+Quadra de Areia e Chalés 1 a 5, com precisão métrica 1:1 rigorosa.
 """
 
 import os
@@ -36,21 +26,21 @@ HTML_OUT = os.path.join(SOLAR_DIR, "visualizador_casa_arredores.html")
 
 def main():
     print("=" * 80)
-    print("GERANDO VISUALIZADOR 3D DEDICADO: CASA DO SÍTIO E ARREDORES")
+    print("GERANDO VISUALIZADOR 3D: CASA DO SÍTIO E ARREDORES (MDT 1,0 m)")
     print("=" * 80)
 
-    # 1. Carrega limites exatos da Ortofoto HD do Drone
+    # 1. Carrega limites exatos da Ortofoto HD do Drone (EPSG:31982)
     with rasterio.open(ORTO_DRONE_TIF) as src_o:
         b = src_o.bounds
-        width_m = b.right - b.left
-        height_m = b.top - b.bottom
-        cx_utm = (b.left + b.right) / 2.0
-        cy_utm = (b.bottom + b.top) / 2.0
-        print(f"1. Área Focal do Drone:")
+        width_m = float(b.right - b.left)
+        height_m = float(b.top - b.bottom)
+        cx_utm = float((b.left + b.right) / 2.0)
+        cy_utm = float((b.bottom + b.top) / 2.0)
+        print(f"1. Área do Drone:")
         print(f"   Dimensões: {width_m:.2f} m × {height_m:.2f} m")
-        print(f"   Centro UTM: E {cx_utm:.2f}, N {cy_utm:.2f} (SIRGAS 2000 UTM 22S)")
+        print(f"   Centro UTM: E {cx_utm:.2f}, N {cy_utm:.2f}")
 
-        # Carrega a imagem RGB da ortofoto em alta qualidade (2048px)
+        # Extrai textura RGB em alta resolução (2048px de largura)
         rgb = src_o.read([1, 2, 3])
         img = Image.fromarray(np.transpose(rgb, (1, 2, 0)))
         w_px, h_px = img.size
@@ -60,37 +50,33 @@ def main():
         buf = BytesIO()
         img_resized.save(buf, format='JPEG', quality=88)
         b64_texture = base64.b64encode(buf.getvalue()).decode('ascii')
-        print(f"   Textura HD codificada: {len(b64_texture):,} caracteres base64")
+        print(f"   Textura Drone HD: {len(b64_texture):,} caracteres base64")
 
-    # 2. Carrega o MDT LiDAR Oficial em Resolução Nativa de 1,0 metro
+    # 2. Carrega o MDT LiDAR Oficial na mesma janela
     print("\n2. Extraindo MDT LiDAR de 1,0 m da mesma janela...")
     with rasterio.open(MDT_SIGSC_TIF) as src_m:
         win = from_bounds(b.left, b.bottom, b.right, b.top, src_m.transform)
         elev_raw = src_m.read(1, window=win)
         rows, cols = elev_raw.shape
         elev = np.array(elev_raw, dtype=np.float32).copy()
-        print(f"   Grade 3D LiDAR: {cols} colunas × {rows} linhas = {rows*cols:,} vértices")
-        print(f"   Espaçamento real da malha: {width_m/(cols-1):.2f} m × {height_m/(rows-1):.2f} m")
+        print(f"   Grade 3D LiDAR: {cols} colunas × {rows} linhas ({rows*cols:,} vértices)")
+        print(f"   Espaçamento real: {width_m/(cols-1):.2f} m × {height_m/(rows-1):.2f} m")
         print(f"   Cotas naturais: Mínima = {elev.min():.2f} m, Máxima = {elev.max():.2f} m")
 
-    # 3. Terraplanagem Cirúrgica e Nivelamento estrito sob os pisos
-    print("\n3. Aplicando nivelamento estrito sob os platôs...")
-    # Coordenadas relativas 3D (X = E - cx_utm, Z = -(N - cy_utm))
-    # Salão 12x8m: centroide UTM E 663449.59, N 6968652.91
-    # Quadra 22x12m: centroide UTM E 663468.93, N 6968640.32
-    # Casa do Sítio: centroide UTM E 663415.50, N 6968636.50
-    salao_lx = 663449.59 - cx_utm
-    salao_lz = -(6968652.91 - cy_utm)
-    quadra_lx = 663468.93 - cx_utm
-    quadra_lz = -(6968640.32 - cy_utm)
-    casa_lx = 663415.50 - cx_utm
-    casa_lz = -(6968636.50 - cy_utm)
+    # 3. Posicionamento das Edificações em Coordenadas Locais 3D
+    # (X = E - cx_utm, Z = -(N - cy_utm))
+    casa_lx = float(663415.50 - cx_utm)
+    casa_lz = float(-(6968636.50 - cy_utm))
+    salao_lx = float(663449.59 - cx_utm)
+    salao_lz = float(-(6968652.91 - cy_utm))
+    quadra_lx = float(663468.93 - cx_utm)
+    quadra_lz = float(-(6968640.32 - cy_utm))
 
+    cota_casa = 540.90
     cota_salao = 547.05
     cota_quadra = 547.25
-    cota_casa = 540.90
 
-    # Coordenadas dos vértices da malha
+    # Malha de coordenadas para nivelamento estrito sob os pisos
     half_w = width_m / 2.0
     half_h = height_m / 2.0
     gy, gx = np.mgrid[0:rows, 0:cols]
@@ -98,12 +84,11 @@ def main():
     wz = -half_h + gy * (height_m / (rows - 1))
 
     elev_final = elev.copy()
+    rot_deg = 31.02
+    rot_rad = float(np.radians(rot_deg))
+    cos_a, sin_a = np.cos(rot_rad), np.sin(rot_rad)
 
-    # Rotação do Salão e Quadra (31.02 graus)
-    ang = np.radians(31.02)
-    cos_a, sin_a = np.cos(ang), np.sin(ang)
-
-    # 3.1 Platô do Salão (12m x 8m)
+    # 3.1 Platô do Salão 12x8m (rotação 31.02)
     dx_s = wx - salao_lx
     dz_s = wz - salao_lz
     lx_s = dx_s * cos_a + dz_s * sin_a
@@ -111,7 +96,7 @@ def main():
     in_salao = (np.abs(lx_s) <= 6.5) & (np.abs(lz_s) <= 4.8)
     elev_final[in_salao] = cota_salao
 
-    # 3.2 Platô da Quadra (22m x 12m)
+    # 3.2 Platô da Quadra de Areia 22x12m (rotação 31.02)
     dx_q = wx - quadra_lx
     dz_q = wz - quadra_lz
     lx_q = dx_q * cos_a + dz_q * sin_a
@@ -125,18 +110,19 @@ def main():
     in_casa = (np.abs(dx_c) <= 7.0) & (np.abs(dz_c) <= 6.5)
     elev_final[in_casa] = cota_casa
 
-    # Normalização em Uint16 para Three.js
+    # Normalização Uint16 para Three.js
     z_min = float(elev_final.min())
     z_max = float(elev_final.max())
-    z_range = z_max - z_min
+    z_range = float(z_max - z_min)
     u16_elev = ((elev_final - z_min) / z_range * 65535.0).clip(0, 65535).astype(np.uint16)
     b64_elev = base64.b64encode(u16_elev.tobytes()).decode('ascii')
 
-    casa_base_y = cota_casa - z_min
-    salao_base_y = cota_salao - z_min
-    quadra_base_y = cota_quadra - z_min
+    # Cotas relativas no espaço 3D (Y local do Three.js)
+    casa_base_y = float(cota_casa - z_min)
+    salao_base_y = float(cota_salao - z_min)
+    quadra_base_y = float(cota_quadra - z_min)
 
-    # Dados dos Chalés 1 a 5
+    # Chalés 1 a 5
     chales_data = [
         {"id": 1, "utm": [663457.29, 6968674.96], "cota": 544.50},
         {"id": 2, "utm": [663448.54, 6968667.08], "cota": 545.20},
@@ -145,17 +131,26 @@ def main():
         {"id": 5, "utm": [663469.69, 6968600.54], "cota": 541.60}
     ]
     for c in chales_data:
-        c["lx"] = round(c["utm"][0] - cx_utm, 2)
-        c["lz"] = round(-(c["utm"][1] - cy_utm), 2)
+        c["lx"] = round(float(c["utm"][0] - cx_utm), 2)
+        c["lz"] = round(float(-(c["utm"][1] - cy_utm)), 2)
+        c["base_y"] = round(float(c["cota"] - z_min), 2)
 
-    # Monta o HTML autônomo
-    print("\n4. Gerando interface WebGL Three.js responsiva...")
+    chales_cx = float(np.mean([c["lx"] for c in chales_data]))
+    chales_cz = float(np.mean([c["lz"] for c in chales_data]))
+    chales_cy = float(np.mean([c["base_y"] for c in chales_data]))
+
+    print(f"   Cotas relativas no Three.js (Z_MIN={z_min:.2f}m):")
+    print(f"     Casa do Sítio: Y={casa_base_y:.2f}m")
+    print(f"     Salão 12x8m:   Y={salao_base_y:.2f}m")
+    print(f"     Quadra 22x12m: Y={quadra_base_y:.2f}m")
+
+    # Gera o HTML autônomo e robusto
     html_code = f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Casa do Sítio e Arredores — Relevo 1,0 m & Drone HD</title>
+  <title>Casa do Sítio e Arredores — Relevo 1,0 m & Ortofoto HD 8 cm</title>
   <style>
     * {{ box-sizing: border-box; margin: 0; padding: 0; }}
     body {{ overflow: hidden; background: #090d16; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }}
@@ -184,7 +179,6 @@ def main():
       transition: all 0.2s ease; text-align: center;
     }}
     .btn:hover {{ background: #0284c7; border-color: #38bdf8; }}
-    .btn.active {{ background: #0284c7; border-color: #38bdf8; }}
     .btn-full {{ grid-column: span 2; }}
 
     .toggle-row {{ display: flex; align-items: center; justify-content: space-between; font-size: 12px; margin-top: 10px; color: #cbd5e1; }}
@@ -253,13 +247,15 @@ def main():
     const Z_MIN = {z_min:.4f};
     const Z_MAX = {z_max:.4f};
     const Z_RANGE = {z_range:.4f};
+    const ROT_ANG = {rot_rad:.6f};
 
     const container = document.getElementById('canvas-container');
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x090d16);
 
     const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.5, 3000);
-    camera.position.set({casa_lx + 45}, 40, {casa_lz + 45});
+    // Câmera inicial perfeitamente posicionada acima do terreno olhando para a Casa do Sítio
+    camera.position.set({casa_lx + 45:.2f}, {casa_base_y + 35:.2f}, {casa_lz + 45:.2f});
 
     const renderer = new THREE.WebGLRenderer({{ antialias: true }});
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -271,27 +267,23 @@ def main():
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.maxPolarAngle = Math.PI / 2 - 0.02;
-    controls.target.set({casa_lx}, 0, {casa_lz});
+    controls.target.set({casa_lx:.2f}, {casa_base_y + 2:.2f}, {casa_lz:.2f});
+    controls.update();
 
-    // Iluminação Solar
-    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444455, 0.85);
+    // Iluminação
+    const hemiLight = new THREE.HemisphereLight(0xffffff, 0x444455, 0.90);
     scene.add(hemiLight);
 
-    const sunLight = new THREE.DirectionalLight(0xfff8e7, 1.25);
-    sunLight.position.set(120, 220, 100);
+    const sunLight = new THREE.DirectionalLight(0xfff8e7, 1.30);
+    sunLight.position.set(120, {casa_base_y + 150:.2f}, 100);
+    sunLight.target.position.set({casa_lx:.2f}, {casa_base_y:.2f}, {casa_lz:.2f});
+    scene.add(sunLight.target);
     sunLight.castShadow = true;
     sunLight.shadow.mapSize.width = 2048;
     sunLight.shadow.mapSize.height = 2048;
-    sunLight.shadow.camera.near = 10;
-    sunLight.shadow.camera.far = 600;
-    const d = 160;
-    sunLight.shadow.camera.left = -d;
-    sunLight.shadow.camera.right = d;
-    sunLight.shadow.camera.top = d;
-    sunLight.shadow.camera.bottom = -d;
     scene.add(sunLight);
 
-    // 1. GERAÇÃO DO TERRENO MDT 1,0 m
+    // 1. TERRENO MDT 1,0 m
     const b64Elev = "{b64_elev}";
     const binStr = atob(b64Elev);
     const u16Arr = new Uint16Array(binStr.length / 2);
@@ -307,13 +299,12 @@ def main():
       for (let c = 0; c < COLS; c++) {{
         const idx = r * COLS + c;
         const norm = u16Arr[idx] / 65535.0;
-        const yVal = norm * Z_RANGE; // cota relativa a Z_MIN
+        const yVal = norm * Z_RANGE;
         pos.setY(idx, yVal);
       }}
     }}
     geom.computeVertexNormals();
 
-    // Textura Ortofoto HD
     const texImg = new Image();
     const tex = new THREE.Texture();
     texImg.onload = function() {{
@@ -332,7 +323,7 @@ def main():
     terrainMesh.receiveShadow = true;
     scene.add(terrainMesh);
 
-    // Wireframe de 1 metro
+    // Wireframe de 1m
     const wireMat = new THREE.MeshBasicMaterial({{
       color: 0x38bdf8,
       wireframe: true,
@@ -343,15 +334,6 @@ def main():
     const wireMesh = new THREE.Mesh(geom, wireMat);
     scene.add(wireMesh);
 
-    // Função de amostragem de elevação local
-    function getTerrainHeight(lx, lz) {{
-      const u = (lx + WIDTH_M * 0.5) / WIDTH_M;
-      const v = (lz + HEIGHT_M * 0.5) / HEIGHT_M;
-      const c = Math.max(0, Math.min(COLS - 1, Math.round(u * (COLS - 1))));
-      const r = Math.max(0, Math.min(ROWS - 1, Math.round(v * (ROWS - 1))));
-      return (u16Arr[r * COLS + c] / 65535.0) * Z_RANGE;
-    }}
-
     // GRUPO DE EDIFICAÇÕES 3D
     const edifGroup = new THREE.Group();
     scene.add(edifGroup);
@@ -359,13 +341,11 @@ def main():
     // =========================================================================
     // 2. CASA DO SÍTIO (DUAS ÁGUAS + PAREDES + ESQUADRIAS)
     // =========================================================================
-    const casaBaseY = {cota_casa} - Z_MIN;
     const casaMeshGroup = new THREE.Group();
-    casaMeshGroup.position.set({casa_lx}, casaBaseY, {casa_lz});
+    casaMeshGroup.position.set({casa_lx:.2f}, {casa_base_y:.2f}, {casa_lz:.2f});
 
-    // Paredes
     const casaWallMat = new THREE.MeshStandardMaterial({{ color: 0xf8fafc, roughness: 0.75 }});
-    const casaRoofMat = new THREE.MeshStandardMaterial({{ color: 0x9a3412, roughness: 0.85 }}); // Cerâmica terracota
+    const casaRoofMat = new THREE.MeshStandardMaterial({{ color: 0x9a3412, roughness: 0.85 }});
 
     const wallUTMLocal = [
         [-3.07, -5.38],
@@ -399,20 +379,10 @@ def main():
     // Telhado Duas Águas
     const roofGeom = new THREE.BufferGeometry();
     const roofPts = [
-      // Água Oeste
-      -7.0, 3.10, -7.5,
-      -7.0, 3.10, 7.5,
-      0.0, 4.60, 7.5,
-      -7.0, 3.10, -7.5,
-      0.0, 4.60, 7.5,
-      0.0, 4.60, -7.5,
-      // Água Leste
-      0.0, 4.60, -7.5,
-      0.0, 4.60, 7.5,
-      7.5, 3.10, 7.5,
-      0.0, 4.60, -7.5,
-      7.5, 3.10, 7.5,
-      7.5, 3.10, -7.5
+      -7.0, 3.10, -7.5, -7.0, 3.10, 7.5, 0.0, 4.60, 7.5,
+      -7.0, 3.10, -7.5, 0.0, 4.60, 7.5, 0.0, 4.60, -7.5,
+      0.0, 4.60, -7.5, 0.0, 4.60, 7.5, 7.5, 3.10, 7.5,
+      0.0, 4.60, -7.5, 7.5, 3.10, 7.5, 7.5, 3.10, -7.5
     ];
     roofGeom.setAttribute('position', new THREE.Float32BufferAttribute(roofPts, 3));
     roofGeom.computeVertexNormals();
@@ -425,25 +395,21 @@ def main():
     // =========================================================================
     // 3. SALÃO 12x8m COM USINA SOLAR 10,44 kWp
     // =========================================================================
-    const salaoBaseY = {cota_salao} - Z_MIN;
     const salaoGroup = new THREE.Group();
-    salaoGroup.position.set({salao_lx}, salaoBaseY, {salao_lz});
-    salaoGroup.rotation.y = -ang;
+    salaoGroup.position.set({salao_lx:.2f}, {salao_base_y:.2f}, {salao_lz:.2f});
+    salaoGroup.rotation.y = -ROT_ANG;
 
-    // Piso e paredes
     const salaoWallMat = new THREE.MeshStandardMaterial({{ color: 0x334155, roughness: 0.6 }});
     const salaoBody = new THREE.Mesh(new THREE.BoxGeometry(11.0, 3.50, 8.11), salaoWallMat);
     salaoBody.position.y = 1.75;
     salaoBody.castShadow = true;
     salaoGroup.add(salaoBody);
 
-    // Platibanda e Laje
     const platiMat = new THREE.MeshStandardMaterial({{ color: 0x475569 }});
     const plati = new THREE.Mesh(new THREE.BoxGeometry(11.4, 0.40, 8.5), platiMat);
     plati.position.y = 3.70;
     salaoGroup.add(plati);
 
-    // Módulos Solares (18 painéis)
     const solarMat = new THREE.MeshStandardMaterial({{ color: 0x1e3a8a, metalness: 0.8, roughness: 0.2 }});
     for (let r = 0; r < 2; r++) {{
       for (let c = 0; c < 9; c++) {{
@@ -457,24 +423,20 @@ def main():
     // =========================================================================
     // 4. QUADRA DE AREIA 22x12m COM REDES E POSTES 6m
     // =========================================================================
-    const quadraBaseY = {cota_quadra} - Z_MIN;
     const quadraGroup = new THREE.Group();
-    quadraGroup.position.set({quadra_lx}, quadraBaseY, {quadra_lz});
-    quadraGroup.rotation.y = -ang;
+    quadraGroup.position.set({quadra_lx:.2f}, {quadra_base_y:.2f}, {quadra_lz:.2f});
+    quadraGroup.rotation.y = -ROT_ANG;
 
-    // Piso de areia
     const sandMat = new THREE.MeshStandardMaterial({{ color: 0xfde047, roughness: 0.95 }});
     const sand = new THREE.Mesh(new THREE.BoxGeometry(22.0, 0.30, 12.0), sandMat);
     sand.position.y = 0.15;
     quadraGroup.add(sand);
 
-    // Mureta de contenção
     const bordaMat = new THREE.MeshStandardMaterial({{ color: 0x78350f, roughness: 0.8 }});
     const borda = new THREE.Mesh(new THREE.BoxGeometry(22.3, 0.40, 12.3), bordaMat);
     borda.position.y = 0.20;
     quadraGroup.add(borda);
 
-    // 10 Postes Metálicos de 6m
     const postMat = new THREE.MeshStandardMaterial({{ color: 0xe2e8f0, metalness: 0.7, roughness: 0.3 }});
     const postPositions = [
       [-11, -6], [-5.5, -6], [0, -6], [5.5, -6], [11, -6],
@@ -486,7 +448,6 @@ def main():
       quadraGroup.add(pole);
     }});
 
-    // Rede Central (Vôlei h=2,43m)
     const netMat = new THREE.MeshBasicMaterial({{ color: 0xffffff, wireframe: true, transparent: true, opacity: 0.6 }});
     const net = new THREE.Mesh(new THREE.PlaneGeometry(8.5, 1.0), netMat);
     net.position.set(0, 2.0, 0);
@@ -503,16 +464,14 @@ def main():
     const chaleRoofMat = new THREE.MeshStandardMaterial({{ color: 0x7f1d1d, roughness: 0.8 }});
 
     chales.forEach(c => {{
-      const cBaseY = c.cota - Z_MIN;
       const cGrp = new THREE.Group();
-      cGrp.position.set(c.lx, cBaseY, c.lz);
+      cGrp.position.set(c.lx, c.base_y, c.lz);
 
       const body = new THREE.Mesh(new THREE.BoxGeometry(7.0, 2.80, 5.0), chaleMat);
       body.position.y = 1.40;
       body.castShadow = true;
       cGrp.add(body);
 
-      // Telhado
       const rGeom = new THREE.ConeGeometry(4.5, 1.4, 4);
       rGeom.rotateY(Math.PI / 4);
       const rf = new THREE.Mesh(rGeom, chaleRoofMat);
@@ -522,27 +481,28 @@ def main():
       edifGroup.add(cGrp);
     }});
 
-    // INTERAÇÕES E CÂMERAS
+    // CÂMERAS E INTERAÇÕES
     function goToView(target) {{
       if (target === 'casa') {{
-        camera.position.set({casa_lx + 18}, {casa_base_y + 12}, {casa_lz + 18});
-        controls.target.set({casa_lx}, {casa_base_y}, {casa_lz});
+        camera.position.set({casa_lx + 24:.2f}, {casa_base_y + 16:.2f}, {casa_lz + 24:.2f});
+        controls.target.set({casa_lx:.2f}, {casa_base_y + 2:.2f}, {casa_lz:.2f});
       }} else if (target === 'salao') {{
-        camera.position.set({salao_lx + 22}, {salao_base_y + 14}, {salao_lz + 20});
-        controls.target.set({salao_lx}, {salao_base_y}, {salao_lz});
+        camera.position.set({salao_lx + 24:.2f}, {salao_base_y + 16:.2f}, {salao_lz + 22:.2f});
+        controls.target.set({salao_lx:.2f}, {salao_base_y + 2:.2f}, {salao_lz:.2f});
       }} else if (target === 'quadra') {{
-        camera.position.set({quadra_lx + 24}, {quadra_base_y + 16}, {quadra_lz + 22});
-        controls.target.set({quadra_lx}, {quadra_base_y}, {quadra_lz});
+        camera.position.set({quadra_lx + 28:.2f}, {quadra_base_y + 18:.2f}, {quadra_lz + 24:.2f});
+        controls.target.set({quadra_lx:.2f}, {quadra_base_y + 2:.2f}, {quadra_lz:.2f});
       }} else if (target === 'chales') {{
-        camera.position.set(55, 60, -25);
-        controls.target.set(55, 20, -25);
+        camera.position.set({chales_cx + 25:.2f}, {chales_cy + 22:.2f}, {chales_cz + 28:.2f});
+        controls.target.set({chales_cx:.2f}, {chales_cy + 2:.2f}, {chales_cz:.2f});
       }} else if (target === 'aerea') {{
-        camera.position.set(0, 160, 120);
-        controls.target.set(0, 20, 0);
+        camera.position.set({casa_lx + 20:.2f}, {casa_base_y + 140:.2f}, {casa_lz + 120:.2f});
+        controls.target.set({casa_lx + 20:.2f}, {casa_base_y + 5:.2f}, {casa_lz:.2f});
       }} else if (target === 'pedestre') {{
-        camera.position.set({casa_lx + 4}, {casa_base_y + 1.70}, {casa_lz + 10});
-        controls.target.set({casa_lx}, {casa_base_y + 1.70}, {casa_lz});
+        camera.position.set({casa_lx + 5:.2f}, {casa_base_y + 1.70:.2f}, {casa_lz + 8:.2f});
+        controls.target.set({casa_lx:.2f}, {casa_base_y + 1.70:.2f}, {casa_lz:.2f});
       }}
+      controls.update();
     }}
 
     function toggleEdif(show) {{
